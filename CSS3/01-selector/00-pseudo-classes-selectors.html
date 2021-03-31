@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类选择器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* E:root     选中根节点，在HTML执行则选中html,在xml执行则选中xml... */
+        :root,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+        div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+        #green {
+            background-color: green;
+        }
+
+        #blue {
+            background-color: blue;
+        }
+        p{
+            position: fixed;
+            width: 500px;
+            top: 300px;
+            left: 40px;
+            z-index: 199;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            width: 80px;
+            height: 50px;
+            color: black;
+            background: rgb(212, 233, 28);
+            font-size: 30px;
+            border-radius: 5px;
+            margin: 20px;
+            text-align: center;
+        }
+      
+        /* 没有被选中的元素 */
+        /* div:not(:target){
+            display: none;
+        } */
+        /* 被选中的元素提升z-index值 */
+        div:target{
+            z-index: 100;
+           border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        Pseudo-Classes Selectors
+        伪类选择器：被选中元素的一种状态。
+
+        E:root     选中根节点，在HTML执行则选中html,在xml执行则选中xml...
+
+        E:not(seletor)   没有被选中的元素
+            例一 ：div:not(.demo) {  类名不是.demo的元素
+                    color: orange;
+                }
+            例二：选中E下面非最后一个元素的e元素集合
+                    E e:not(:last-child){
+                        color:red;
+                    }
+
+        E:target   被选中的元素
+     -->
+    
+    <div id="red">red</div>
+    <div id="green">green</div>
+    <div id="blue">blue</div>
+    <p>
+        <a href="#red">red</a>
+        <a href="#green">green</a>
+        <a href="#blue">blue</a>
+     </p>
+    
+</body>
+
+</html>

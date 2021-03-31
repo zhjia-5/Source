@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<button>点击</button>
+
+<body>
+    <script>
+
+        /* 
+        在非箭头函数下， this 指向调用其所在函数的对象，且是离谁近就是指向谁
+        （此对于常规对象，原型链，getter & setter等都适用）；构造函数下，
+        this与被创建的新对象绑定；DOM事件，this指向触发事件的元素；
+        内联事件分两种情况，bind绑定， call & apply 方法等 */
+        let person = {
+            name: '张三',
+            init: function () {
+                document.getElementsByTagName('button')[0].onclick = () => {
+                    console.log(this.name);//这里的this指向为  张三
+                }
+            }
+        }
+
+        person.init();
+    </script>
+</body>
+
+</html>

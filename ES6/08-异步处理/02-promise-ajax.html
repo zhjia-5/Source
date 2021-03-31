@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		function ajax(options) {
+			return new Promise((resolve, reject) => {
+				var xhr = null;
+				if (window.XMLHttpRequest) {
+					xhr = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					xhr = new ActiveXObject('Microsoft.XMLHTTP');
+				} else {
+					return alert('当前浏览器不支持XMLHTTPRequest');
+				}
+				var method = "";
+				var data = "";
+				var isAsync = typeof options.isAsync === 'undefined' ? true : options.isAsync;
+				var url = options.url;
+				var success = typeof options.success === 'function' ? options.success : function () { };
+				var error = typeof options.success === 'function' ? options.error : function () { };
+				if (options.method) {
+					method = options.method.toUpperCase();
+				} else {
+					method = 'GET';
+				}
+				// 0 - 4
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status === 200) {
+							// 在此处推向resolve状态
+							resolve(JSON.parse(xhr.responseText));
+						}
+						else {
+							// 在此处推向reject状态
+							reject(xhr.status);
+						}
+					}
+
+				}
+				if (typeof options.data === 'object') {
+					for (var prop in options.data) {
+						data += prop + '=' + options.data[prop] + '&';
+					}
+					// console.log(data)
+					data = data.slice(0, data.length - 1);
+				} else {
+					data = options.data;
+				}
+				if (method === 'GET') {
+					xhr.open(method, url + '?' + data, isAsync);
+					xhr.send();
+				} else {
+					// 建立连接
+					xhr.open(method, url, isAsync);
+					xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencode');
+					// key=value&key1=value
+					// 发送数据的
+					xhr.send(data);
+				}
+			});
+		}
+
+		const pro = ajax({
+			method: 'get',
+			url: './data.json'
+		});
+		
+		pro.then(data => {
+			console.log(data)//成功的回调
+		}, err => {
+			console.log(err)//失败的回调
+		});
+	</script>
+</body>
+
+</html>

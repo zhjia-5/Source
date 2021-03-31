@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>date2</title>
+	</head>
+	<body>
+		<!-- 
+		js定时器:
+		  setInterval()
+		  clearInterval()
+		  setTimeout()
+		  clearTimeout()
+		  全局对象window上的方法，内部函数this指向vindow
+		  注意：setInterval("func()",1000);
+		
+		  定时器：setInterval(function(){}，time);
+		  每隔多少时间执行一次,时间不能为变量.方法所定时执行间隔不是很准
+		  返回值：数字。
+		  清除定时器：clearInterval(返回值)结束定时；
+		  
+		  -->
+		<script type="text/javascript">
+			 //setInterval定时器演示
+			/* var firstTime = new Date().getTime();
+			 setInterval(function(){
+				 var lastTime = new Date().getTime();
+				 console.log(lastTime - firstTime);
+				 firstTime = lastTime ;
+			 },1000); */
+			 
+			 //clearInterval清除定时器
+			/* var i = 0;
+			 var timer = setInterval(function(){
+				if(i == 20)
+					clearInterval(timer);
+					console.log(i ++);
+			 },20); */
+			 
+			 // setTimeout演示，该方法常用于非会员试看时间，当试看时间结束停止播放。
+			/* var timer = setTimeout(function(){
+				 console.log("hello");
+			 },1000);//10000毫秒以后执行function。 */
+			 
+			 // clearTimeout(timer);//清除定时器
+			 
+			 
+		</script>
+		
+	</body>
+</html>

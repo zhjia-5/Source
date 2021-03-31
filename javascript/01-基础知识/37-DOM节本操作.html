@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>dom3</title>
+</head>
+<!-- DOM节本操作：
+	节点的类型
+		元素节点 ———— 1  div.nodeType 返回1
+		属性节点 ———— 2  
+		文本节点 ———— 3  div.childNodes[0].nodeType == 2
+		注释节点 ———— 8
+		document ———— 9
+		documentFragment ———— 11
+	遍历节点树：
+		parentNode -> 父节点（最顶端parentNode为 #document）；
+		childNodes -> 子节点们
+		firstChild -> 第一个子节点
+		lastChild  -> 最后一个子节点
+		previousSibling -> 前一个兄弟节点
+   	    nextSibling -> 后一个兄弟节点
+	   
+	基于元素节点树的遍历：
+		parentElement - - > 		返回当前元素的父元素节点（ie9及其以下不兼容）
+
+		children - -> 				返回当前元素的子元素节点
+
+		firstElementChild - -> 		返回的是第一个元素节点（ie9及其以下不兼容）
+
+		lastElementChild - -> 		返回的是最后一个元素节点（ie9及其以下不兼容）
+
+		previousElementSibling - -> 返回前一个兄弟元素节点（ie9及其以下不兼容）
+
+		nextElementSibling - -> 	返回后一个兄弟元素节点（ie9及其以下不兼容）
+		
+		node.childElementCount  ==  node.children.length 当前元素节点的子元素
+	节点的四个属性：
+		nodeName
+			元素的标签名，一大写形式表示，只读
+		nodeValue
+			Text节点 或Comment节点的文本内容，可读写
+		nodeType
+			该节点的类型，只读  重点
+		attributes
+			Element节点属性集合(少用)
+	节点另一个方法：
+		Node.hasChildNodes();	返回boolean型：是否含有子节点-->
+
+<body>
+	<div>
+		<strong>strong</strong>
+		<span>span</span>
+		<em>em</em>
+		<i>i</i>
+	</div>
+
+	<script type="text/javascript">
+		/* var strong = document.getElementsByTagName("strong")[0];
+		//控制台操作 ：strong.nextSibling */
+
+		var div = document.getElementsByTagName("div")[0];
+		// 控制台操作：div.parentNode
+		console.log(
+				div.childNodes,
+				div.firstChild,
+				div.lastChild
+				);
+
+
+
+			// var div = document.getElementsByTagName("div")[0];
+			// function returnElementChild(node){
+			// 	var temp = {
+			// 		length : 0,
+			// 		push : Array.prototype.push,
+			// 		splice : Array.prototype.splice
+			// 	},
+			// 		child = node.childNodes,
+			// 		len = child.length; 
+
+			// 	for (var i = 0; i < len; i++) {
+			// 		if(child[i].nodeType === 1){//判读节点类型 
+			// 			temp.push(child[i]);
+			// 		}
+			// 	}
+			// 	return temp;
+			// }
+			// console.log(returnElementChild(div));
+	</script>
+</body>
+
+</html>

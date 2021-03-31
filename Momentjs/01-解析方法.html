@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/moment.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- https://momentjs.com/   英文网-->
+    <!-- http://momentjs.cn/  中文网-->
+    <script>
+        console.log(moment());  //获取Moment对象
+
+         // ISO_8601格式
+         //moment(string) 带格式
+         console.log(
+             moment('2013-039'),//2013年第39天  2013-02-08
+             moment('2013050'),//2013年第50天  2013-02-19
+             moment('2013W065'),//2013年第6星期第5天  2013-02-08
+             moment('2013-02-08T09'),//  2013-02-08 9:00
+         );
+
+        //  moment(string) 匹配多个格式
+        console.log(moment('29-06-2021',['MM-DD-YYYY','DD-MM','DD-MM-YYYY']));
+        
+        // 特殊格式
+        console.log('2020-01-01T05:10:33',moment.ISO_8601);
+
+        // 将 时间戳 转为moment对象   参数为毫秒
+       console.log(moment(1318781876405));
+
+        //unix()   参数为秒   
+        console.log(moment.unix(1318781876405/1000));
+   </script>
+</body>
+</html>

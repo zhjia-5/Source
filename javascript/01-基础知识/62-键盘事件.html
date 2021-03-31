@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>键盘事件</title>
+	</head>
+	<body>
+		<!-- 
+		 按下的触发顺序 ： 
+			keydown > keypress > keyup
+		 
+		 keydown和keypress的区别：
+			keydown可以响应任意键盘按键。
+			keypress只可以相应字符类键盘按键。
+			keypress返回ASCII码，可以转换成相应的字符。
+		 
+		 String.fromCharCode(ASCII码)；把ASSCII码转换成字符字符	
+		 e.charCode:返回该事件的ASSII码
+		 -->
+		 
+		 <script type="text/javascript">
+			 
+			 document.onkeydown = function (e){
+				 console.log('keydown'+",ASSCII码："+e.charCode);
+				 
+			 }
+			 document.onkeypress = function (e){
+			 	 console.log('keypress'+",ASSCII码："+e.charCode);
+			 }
+			 document.onkeyup = function (e){
+			 	 console.log('keyup'+",ASSCII码："+e.charCode);
+			 }
+			 
+		 	/* document.onkeypress = function (e){
+				console.log(String.fromCharCode(e.charCode));//将ASSCII码转成字符
+			} */
+		 </script>
+	</body>
+</html>

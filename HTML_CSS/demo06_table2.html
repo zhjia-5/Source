@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表格2</title>
+	</head>
+	<body>
+		<!-- 
+		 6.5 合并行
+		 使用rowspan属性来合并行。所谓的合并行，指的是将“众向的N个单元格”合并
+		 语法<td rowspan = "跨越的行数"></td>
+		 6.6 合并列
+		 使用colspan属性来合并列。所谓的合并列，指的是将“横向的N个 单元格”合并
+		 语法：<td = "跨越的列数"></td>
+		 
+		 注意：进行合并的时候，必须同一个区域内。thead  tbody tfoot
+		 -->
+		<table border="1px" cellspacing="1px" cellpadding="1px" height="100px">
+			<tr>
+				<tH colspan="3">第一行第一列</tH>
+			</tr>
+			<tr>
+				<td rowspan="2">第二行第一列</td>
+				<td>第二行第二列</td>
+				<td rowspan="2">第二行第三列</td>
+			</tr>
+			<tr>
+				<td>第三行第二列</td>
+			</tr>
+
+			<!-- test -->
+			<table border="1px" cellspacing="1px" cellpadding="1px">
+				<caption>学生成绩表</caption>
+				<tr>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>成绩</th>
+				</tr>
+				<tr>
+					<td>张三</td>
+					<td>男</td>
+					<td>250</td>
+				</tr>
+				<tr>
+					<td>李四</td>
+					<td>男</td>
+					<td>520</td>
+				</tr>
+				<tr>
+					<td>平均分</td>
+					<td colspan="2">385</td>
+				</tr>
+			</table>
+		</table>
+	</body>
+</html>

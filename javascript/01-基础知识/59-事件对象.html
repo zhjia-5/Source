@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件对象</title>
+	</head>
+	<body>
+		<!-- 
+		 事件对象
+		 e || window.event 
+		 非ie用：e     ie浏览器用：window.event
+		 因为在ie浏览器中e会失效
+		 
+		 事件源对象：
+		 event.target 		火狐、chrome有
+		 
+		 event.srcElement   IE、chrome有
+
+
+		 事件委托：
+		 利用事件冒泡，和事件源对象进行处理
+		 优点：
+			1，性能 不需要循环所有的元素一个个绑定事件
+			
+			2，灵活 当有新的子元素时不需要重新绑定事件 
+		 
+		 
+		 
+		 -->
+		<div style="width: 100px;height: 100px;background-color: #FF0000;"></div>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+		<script type="text/javascript">
+			var div = document.getElementsByTagName('div')[0];
+			div.onclick = function(e) {
+				var event = e || window.event; //事件对象
+				var target = event.target || event.srcElement; //事件源对象
+				console.log(event);
+				console.log(target);
+			}
+
+			//事件委托
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.onclick = function (e){
+				var event = e || window.event;
+				var target = event.target || event.srcElement;
+				console.log(target.innerText);
+			}
+		</script>
+
+
+	</body>
+</html>

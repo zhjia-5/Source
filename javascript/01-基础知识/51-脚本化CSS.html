@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			div{
+				border-radius: 50%;
+			}
+		</style>
+		<title>脚本化CSS</title>
+	</head>
+	<body>
+		<!-- 
+		 读写元素css属性
+		 dom.style.prop
+		 可读写…*行间样式*，没有兼容性问题，碰到float这样的保留字属性，前面加css
+		 dom.style : 返回类数组Css样式表
+		 该方法只能从获取或修改行间（行内）属性。外部样式和内部样式都不可以获取和修改
+		 
+		 
+		 eg：float  ——>cssFloat
+		 组合单词变成小驼峰式写法:
+		 例如：background-color，在JavaScript中不能识别"-"号，需要改成backgroundColor
+		 
+		 复合属性必须拆解:
+		 例如：div.style.border="1px red solid";需要拆开写：
+			div.style.borderWidth="1px";
+			div.style.borderStyle="solid";
+			div.style.borderColor="red";
+		 
+		 写入的值必须是字符串格式. -->
+		 
+		 <div style="width: 200px; height: 300px; border-style: solid; background-color: #FFFF00;">
+		 	
+		 </div>
+		 <script type="text/javascript">
+			var div = document.getElementsByTagName('div')[0];
+			console.log(div.style);//返回CSS样式属性类数组
+			div.style.backgroundColor = "red";//更改背景
+			div.style.width = "300px";//更改宽 ，值需要加 双引号
+		 </script>
+	</body>
+</html>

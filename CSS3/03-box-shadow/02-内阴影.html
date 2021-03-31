@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内阴影</title>
+    <style>
+        body{
+            background: #000;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            border: 2px solid #fff;
+            /* background: transparent; */
+            position: absolute;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+
+            box-shadow: inset 5px 5px 10px 15px  #0ff;
+        }
+        /* 
+        内阴影：需要在前面或者后面加inset标识
+         box-shadow: inset 5px 5px 0px 0px #0ff;
+            第一个值：X轴偏移量  可正负
+            第二个值：Y轴偏移量  可正负
+            第三个值：阴影模糊度
+            第四个值: 阴影大小,值越大阴影越小，值越小阴影越大
+            第五个值：阴影颜色
+
+            阴影在背景颜色和文字的中间
+            如果不设置阴影大小，默认和元素本身一样大
+
+         */
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

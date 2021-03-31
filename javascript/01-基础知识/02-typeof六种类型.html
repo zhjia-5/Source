@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* var zhang ={
+				lastName : "zhang",
+				age : 28,
+				sex : "man"
+			}
+			document.write(zhang.age); */
+			
+		/* 	typeof 的六种类型:
+							number
+							string
+							boolean
+							object
+							function
+							undefined
+			查看变量的类型
+			var num = 123;
+			document.write(typeof(num));
+		 */	
+		
+		/*隐式转换 
+		var num = "2" *  "1";
+		console.log(typeof(num) + ":" +num);
+		*/
+	   
+	/* 显示转换 
+		Number(mix)				转number类型
+		parseInt(number)		转成int类型,即转换成十进制，只保留有效数字，例parseInt(123abc)打印出来的结为123
+		parseInt(string,radix)	转成int类型（例：parseInt("10",16):以目标为基地转换成16进制） radix取值范围2~36
+		parseFloat(string)		去掉除了第一个小数点以外的其他非数字字符
+		toString(radix)			需要使用对象来调用，如果带参：toString（2）：以radix为基底来转换2进制
+		String(mix)				转换成string类型
+		Boolean()				转换成 boolean类型
+	 */
+	 /*  var demo = true;
+	   var num =Number(demo);//转成number类型
+	   console.log("数据类型：" + typeof(num) + ":" + num); */
+	   
+	  /* var demo = "100.01abc";//去掉除了第一个小数点以外的其他非数字字符
+	   var num =parseFloat(demo);//转成float类型
+	   console.log("数据类型：" + typeof(num) + ":" + num); */
+	   
+	   /* var demo = "100.01abc";
+	    var num =demo.toString();//需要使用对象来调用，如果带参（radix）则以radix为基底来转换
+	    console.log("数据类型：" + typeof(num) + ":" + num); */
+		
+		/* // 将10101010转换成16进制
+		var num1 = 10101010;
+		var num2 = parseInt(num1,2);
+		console.log("转换结果 ：" + num2.toString(16)); */
+	   
+	   
+	   /* 
+		隐式类型转换
+		isNaN          number
+		++/--  +/-	   number
+		+			   number,如果+号左右两边是字符串则为string
+		- * / -%	   number
+		&&  ||  !	   boolean
+		<  >  <=  >=   number(有数据的比较就会转换成 number)
+		==  !=		   number
+	   
+	   */
+	  
+	   /* 不发生类型转换
+	   长得一样才返回true，除了NaN===NaN返回false
+		===
+		!==
+		 
+		 */
+		</script>
+		
+	</body>
+</html>

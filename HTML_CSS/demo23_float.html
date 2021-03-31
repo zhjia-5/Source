@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#div1{
+				margin: 100px auto;
+				width: 500px;
+				height: 600px;
+				background-color: #666560;
+			}
+			.clearfloat::after{/* 在父元素上清除浮动 */
+				clear:both;
+				content:"";
+				display:block;
+				height:();
+				visibility:hidden;
+			}
+			#top{
+				width: 500px;
+				height: 100px;
+				background-color: yellow;
+				text-align: center;
+				line-height: 100px;
+				float: left;
+			}
+			#left{
+				width: 100px;
+				height: 400px;
+				background-color: orange;
+				float: left;
+				text-align: center;
+				line-height: 400px;
+			}
+			#center{
+				width: 300px;
+				height: 400px;
+				background-color: greenyellow;
+				float: left;
+				text-align: center;
+				line-height: 400px;
+			}
+			#right{
+				width: 100px;
+				height: 400px;
+				background-color: blueviolet;
+				float: right;
+				text-align: center;
+				line-height: 400px;
+			}
+			#foot{
+				width: 500px;
+				height: 100px;
+				background-color: #FFAADD;
+				float: left;
+				text-align: center;
+				line-height: 100px;
+			}	
+		</style>
+		<title>float布局</title>
+	</head>
+	<body>
+		<div id="div1 class="clearfloat"" >
+			<div id="top">
+				top
+			</div>
+			<div id="left">
+				left
+			</div>
+			<div id="center">
+				center
+			</div>
+			<div id="right">
+				right
+			</div>
+			<div id="foot">
+				foot
+			</div>
+		</div>
+		<!-- 
+		1，正常文档流：normal flow
+		
+		2，脱离文档流
+		浮动float 
+			float属性 		说明
+			none  			不浮动
+			left 			向左浮动
+			right 			向右浮动
+		1）浮动后的影响
+			不管浮动前的元素是块级元素还是行内元素，浮动以后将会自动变为一个块级元素。
+			即使设置display：inline以后其依然是个块级元素。
+			块级元素宽度会默认会占一行，所以漂浮一个块级元素时我们都会为其指定一个宽度。
+		2）对父元素的影响
+			元素浮动以后即完全脱离文档流，这时不会再影响父元素的高度，也就是浮动元素不会撑开父元素。
+			这个现象称为“父元素高度塌陷”
+		3）对兄弟元素的影响
+			a，遇到同样是浮动起来的兄弟元素，同一方向浮动的，会从上到下，从左到右挨个排列，
+			不是同一个浮动方向，那就一左一右。
+			b，遇到没有浮动起来的兄弟元素，其下方的元素会上移。如果元素能容纳内容，
+			将会环绕在浮动元素周围。如果容纳不下，将会挤到浮动元素下面。
+		4）对页面的影响
+			浮动会使元素完全脱离文档流，也就是不再在文档中在占用位置。
+			
+		3，清除浮动
+		浮动带来布局的灵活，但是也带来了一些负面影响，就是父元素高度塌陷，导致页面布局混乱。
+		清除浮动的方式有三种：
+		1）使用clear ：both属性来清除浮动带来的影响。
+			注意 ：clear属性不是用在浮动元素身上，是用在浮动元素后面的元素上。
+			语法：
+				clear属性值 			说明
+				left 				清除左浮动
+				right 				清除右浮动
+				both 				左右浮动一起清除
+			在浮动元素后面添加一个<div style="clear:both;"></div>	
+		2）使用overflow ：hidden属性来清除浮动带来的影响。注意：overflow属性
+			不是用在浮动元素本身上，使用在浮动元素的父元素上。
+			使用这个方式，避免了在浮动元素后面添加没有显示意义的元素，但是他在 
+			清除浮动影响的同时，会隐藏超出元素大小的内容信息，有时不是我们想要的效果。
+		3）使用伪元素::after和clear：both两种方式结合。（最佳）	
+		::after和::before是css3中常用的伪元素。
+			.clearfloat::after{
+				clear:both;
+				content:"";
+				display:block;
+				height:();
+				visibility:hidden;
+			}
+			注意：.clearfix的class属性不是在用在浮动元素本身上，
+			也是用在浮动元素的父元素上。——clearfloat为自定义名称。
+		定位布局 
+		 -->
+	</body>
+</html>

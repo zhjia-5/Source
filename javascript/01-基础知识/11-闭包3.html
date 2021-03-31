@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>闭包3</title>
+	</head>
+	<body>
+		<script type="text/jscript">
+				/* 以下为立即执行函数，但执行不到里面的函数：
+					function(){
+						doucment.write(j + " ");
+					} */
+			function test(){
+				var arr = [];
+				for(var i = 0; i <  10; i ++){
+					(function (j) {			  //j 为形参，会随i的++而++。
+						arr[j] = function (){ //此处的j也随i++而++,
+							document.write(j + " ");//此处为赋值语句，会被返回到arr[j]中保存，
+						}							//等到myArr[j]();才会执行。
+					} (i));//i 为实参，随for循环而++
+				}
+				return arr;//使用立即执行函数后，每次所遍历到的立即执行函数都是唯一的，
+			}
+			var myArr = test();
+			for(var j = 0; j < 10; j ++){
+				myArr[j]();
+			}
+			//打印结果：0 1 2 3 4 5 6 7 8 9
+		</script>
+	</body>
+</html>

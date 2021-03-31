@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+        .div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin-top: 100px;
+        }
+        .div2{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            opacity: 0.5;
+            margin-top: 100px;
+            margin-top: 150px;
+        }
+        /* margin塌陷解决方法：
+            方法一：给父级设置边框或内边距(不建议使用)；
+
+            方法二：触发bfc(块级格式上下文),改变父级的渲染规则
+                    改变父级的渲染规则有以下四种方法,给父级盒子添加
+                    (1)position:absolute/fixed
+                    (2)display:inline-block;
+                    (3)float:left/right
+                    (4)overflow:hidden
+                    这四种方法都能触发bfc,但是使用的时候都会带来不同的麻烦,
+                    具体使用中还需根据具体情况选择没有影响的来解决margin塌陷
+            
+            方法三：margin合并问题也可以用bfc解决,
+                   给box2加上一层父级元素并加上overflow:hidden;        
+         */
+    </style>
+</head>
+<body>
+    <p></p>
+    <div class="div1">
+        <div class="div2"></div>
+    </div>
+</body>
+</html>

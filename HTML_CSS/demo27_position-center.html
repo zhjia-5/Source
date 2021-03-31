@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			/* 屏幕居中对齐方式一 */
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			/* 将宽高设置为元素宽度的付一半大小 */
+			margin: -100px 0 0 -100px;
+			background: orange;
+		}
+
+		#div2 {
+			/* 屏幕居中对齐方式二 */
+			width: 150px;
+			height: 150px;
+			background: red;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		#div3 {
+			/* 屏幕居中对齐方式三 */
+			width: 100px;
+			height: 100px;
+			background: yellow;
+			position: absolute;
+			left: calc(50% - 50px);
+			/* css3新特性 */
+			top: calc(50% - 50px);
+		}
+
+
+		#div4 {
+			/* 屏幕居中对齐方式四   css3新特性*/
+			width: 50px;
+			height: 50px;
+			background: #f0f;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		/* 屏幕居中对齐方式五：在父元素上添加  css3新特性*/
+		/* 
+		display: flex;
+		justify-content: center;
+		align-items: center; */
+	</style>
+</head>
+
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<div id="div4"></div>
+</body>
+
+</html>

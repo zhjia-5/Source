@@ -1,0 +1,59 @@
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>查看可视窗口的尺寸</title>
+	</head>
+	<body>
+		<!--     
+		查看可视窗口的尺寸：
+		 3C标准的浏览器兼容（ie8及其以下不兼容 ）；
+		 window.innerWidth 
+		 window.innerHeight 
+		 
+		 ****标准模式下，任意浏览器都兼容****
+		 document.documentElement.clientWidth 
+		 document.documentElement.clientHeight
+		 
+		 怪异模式下的浏览器：
+		 document.body.clientWidth
+		 document.body.clientHeight
+		 什么是怪异模式？	
+			无<!DOCTYPE html>为怪异模式。
+		 如何判断怪异模式？
+			控制台运行 document.compatMode（compatMode:兼容模式）
+			返回"CSS1Compat" : 标准模式
+			返回"BackCompat" : 向后兼容（怪异模式）
+		 -->
+		 <hr style="width: 10000px; border: 1px solid black;">
+		 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<script type="text/javascript">
+		// 封装一个方法，返回浏览器可视窗口的尺寸：getViewportOffset()
+			function getViewportOffset(){
+				if(window.innerWidth){//如果该方法有值，说明为3C标准模式。
+					return{
+						x : window.innerWidth,
+						y : window.innerHeight
+					}
+				}else{//如果不是3C标准模式，就是标准模式或者怪异模式
+					if(document.compatMode === "BackCompat"){//如果是怪异模式
+					return{
+						x : document.body.clientWidth,
+						y : document.body.clientHeight
+					}
+					}else{//否则为标准模式
+					return{
+						x : document.documentElement.clientWidth,
+						y : document.documentElement.chientHeight
+					}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

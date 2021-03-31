@@ -1,0 +1,21 @@
+	主流浏览器			内核
+		IE				trident
+		chrome			webkit/blink
+		Firefox			gecko
+		opera			presto
+		Safari			webkit
+
+	定义变量使用：var
+
+	命名规则
+		1，变量名必须以英文名 字母、_ 、$开头
+		2，变量名可以包括英文字母、_ 、$、数字
+		3，不可以用系统的关键字，保留字作为变量名。
+
+
+	原始值  栈stack：number string Boolean undefined	null
+
+	引用值  堆heap： array object function  ...date regexp
+
+
+

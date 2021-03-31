@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+</head>
+<body>
+    <button class="btn">获取</button>
+    <script>
+       /* 
+        fetch(url,responseObj)基本使用:
+            该函数接收两个参数：
+                1，url 必选：字符串，请求地址：'http://101.132.72.36:5100/api/local'
+                2，responseObj 可选：对象，请求配置：
+                 （1）请求配置对象的属性：
+                        method:字符串，请求方法，默认值GET
+                        headers:对象，请求头信息
+                        body:请求体的内容，必须匹配请求头中的Content-Type
+                        mode:字符串，请求模式
+                            cors:默认值，配置为该值，会在请求投中加入origin referer
+                            on-cors:配置为该值，不会在请求投中加入origin 和heferer，跨域时可能出问题。
+                            same-origin:指示请求必须在同一个域中发生，如果请求其他域，则会报错。
+                        credentials:如何携带凭据
+                        cache配置缓存模式
+
+            fetch 的返回值：Promise对象
+                当收到服务器的返回结果后，Promise进入resolved状态，状态数据为Response对象
+                当网络发生错误（或其他导致无法完场交互式的错误）时，Promise进入rejected状态
+                状态数据为错误信息59090
+                    Response对象
+                        - ok ：boolean ， 当相应信息码在200~299之间时为true，其他为false
+                        - status ：number，响应的状态码
+                        - text() : 用于处理文本格式的Ajax响应。它从响应中获取文本流，将其读完，
+                                   然后返回一个被解决为string 对象的 Promise。
+                        - blob() : 用于处理二进制文本格式（比如图片，电子表格）的Ajax响应。
+                                   它读取文件的原始数据，一旦读取完整个文件，就返回一个
+                                   被解决的blob对象的Promise.
+                        - json() : 用于处理JSON格式的Ajax的响应。 它将JSON数据流转为一个被解决为
+                                    JavaScript对象的Promise      
+                        - redirect():可以用于重定向到另一个URL，他会创建一个新的Promise，
+                                     已解决来自重定向的URL的响应。                          
+       
+       
+  */
+
+        async function getProvinces(){
+            const url = 'http://101.132.72.36:5100/api/local';
+            
+            const config = {
+                method:'get',
+                headers:{
+                    aaa:"123"
+                }
+            }
+
+            try{
+                const resp =await fetch(url,config);
+                const result =await resp.json();//.text();
+                console.log(result);
+            }catch (err){
+                console.log(err);
+                
+            }
+            
+        }
+
+        document.getElementsByClassName('btn')[0].onclick = function(){
+            getProvinces();
+        }
+    </script>
+</body>
+</html>

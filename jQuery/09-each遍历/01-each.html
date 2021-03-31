@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>遍历元素语法1</title>
+		<script src="../jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<!-- 
+		 遍历元素
+		 主要是遍历，创建，添加，删除元素操作
+		 jQuery隐式迭代是对同一元素做了同样的操作。如果要给同一类元素做不同的操作，就需要用到遍历。
+		 语法 1：
+			$('div').each(function(index,domEle) {...})
+		 1), each()方法遍历匹配的每一个元素，主要用DOM处理。each每一个
+		 2)，里面的回调函数有2个参数：index是每个元素的索引号；demEle是每个DOM元素对象，不是jQuery对象。
+		 3)，所以想要遍使用jQuery方法，需要这个dom元素转换为jQuery对象$(domEle)
+		 如果针对同一类元素做不同操作 ，需要用到遍历元素（类似for，但是比for强大）
+		 -->
+		 <script type="text/javascript">
+		 	$(function() {
+				var sum = 0;  //定义个变量接收总和
+				var arr = ['red','blue','orange']; //定义个数组存放颜色。
+				$('div').each(function(index,domEle) {//回调函数第一个参数一定是索引号，名字可以自定义。
+					$(domEle).css('color',arr[index]);//$(domEle)：将dom元素转成jque元素。并循环为每个div修改颜色
+					//通过text()获取元素内容，获取到的内容为字符串需要转换成number，并循环相加。
+					sum += parseInt($(domEle).text());
+				})
+				console.log(sum);
+			})
+		 </script>
+	</body>
+</html>

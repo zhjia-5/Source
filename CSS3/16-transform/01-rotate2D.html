@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2d旋转</title>
+    <style>
+        div{
+            position: absolute;
+            left: calc(50% - 250px);
+            top: calc(50% - 175px);
+            width: 500px;
+            height: 350px;
+            border: 1px solid  #000;
+            background-image: url('./img/P001.jpg');
+            background-size: cover;
+
+            /* 2D的旋转效果 */
+            transform-origin: 0 0;/* 旋转中心为0 0  中心坐标参照的是div元素*/
+            transform: rotate(60deg);/* 参照旋转中心来旋转 */
+            
+            transform-origin: 250px 175px;/* 旋转中心为250px 175px */
+            transform: rotate(60deg);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

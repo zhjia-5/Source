@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>对象克隆</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 浅层克隆 ：原始值和引用值一起被克隆
+				如果obj有引用值属性（language），
+				当obj1在language添加信息时，obj的language也会跟着添加。
+				原因：引用值的指向也被克隆到obj1,其指向同一个地址。
+			
+			function clone(origin,target){//源   目的
+				var target = target || {}//如果客户没有传参
+				for (var prop in origin){//for in 循环
+					target[prop] = origin[prop];//属性赋值
+				}
+				return target;
+			}
+			clone(obj,obj1); */
+			
+			
+			
+			/* 深度克隆
+			1,判断是原始值还是引用值
+				遍历对象for(var prop in obj)，利用typeof()="object"为引用值，
+				否则为原始值，还有另一种结果为null（少有出现）.
+			2,如果是引用值判断数组还是对象
+				判断对象与数组的三种方法：
+					1，constructor ：[].constructor	
+					2，instanceof : [] instanceof Array 
+					3，toString : obj.prototype.toString.call([]);
+			3,建立相应的数组或对象
+			4,递归
+		 */
+			var obj = {
+				name : "abc",
+				age : 20,
+				sex : "male",
+				language : ["chinese","english","german"]
+			}
+			var obj1 = {}
+		// 深度克隆
+		function deepClone(origin,target){
+			var target = target || {},//如果用户没传参数，就将{}赋给target
+				toStr = Object.prototype.toString,//toString方法：Object.prototype.toString.call(),返回值有："[object Array]"与"[object object]"
+				arrStr = "[object Array]";
+				for(var prop in origin){//for in循环属性
+					if(origin.hasOwnProperty(prop)){//判断obj[prop]是否是自身属性，还是继承过属性
+						if(origin[prop] !== null && typeof(origin[prop]) == "object"){//用typeof()判断是引用值还是原始值
+							// if(toStr.call(origin[prop]) == arrStr){//判断是数组还是对象
+							// 	target[prop] = [];//prop表示属性变量，不能加双引号。
+							// }else{
+							// 	target[prop] = {};//如果是对象,就在target[prop]建立空对象
+							// }
+							target[prop] = toStr.call(origin[prop]) == arrStr ? [] : {};  //三元运算符
+							deepClone(origin[prop],target[prop]);//递归
+						}else{
+							target[prop] = origin[prop];//如果为原始值就直接赋值
+						}
+					}
+				}
+				return target;
+		}
+		deepClone(obj,obj1);
+		console.log(obj1);
+		</script>
+	</body>
+</html>

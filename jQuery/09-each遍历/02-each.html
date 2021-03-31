@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>遍历元素语法2</title>
+		<script src="../jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<!-- 
+		 语法 2：
+		 	$.each(object,function(index,element) {...})
+		 1),$.each()方法可用于遍历任何对象。主要用于数据处理，比如数组，对象
+		 2),里面的函数有2个参数：index是每个元素的索引号，element遍历内容。
+		 -->
+		 <script type="text/javascript">
+		 	var sum = 0;  //定义个变量接收总和
+		 	var arr = ['red','blue','orange']; //定义个数组存放颜色。
+			$(function() {
+				//遍历div元素
+				$.each($('div'),function(index,domEle){
+					console.log(index);//div的索引
+					console.log(domEle);//div元素
+				})
+				//遍历数组
+				$.each(arr,function(index,ele) {
+					console.log(index);//数组索引号
+					console.log(ele);//数组元素
+				})
+				// 遍历对象
+				$.each({
+					name:'lisi',
+					age: 20,
+					sex:'male'
+				},function(index,ele) {
+					console.log(index);//这里的索引为：属性名
+					console.log(ele);//这里的元素为：属性值
+				})
+			})
+		 </script>
+	</body>
+</html>

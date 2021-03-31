@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- 
+	一，定位布局简介    
+		 浮动布局比较灵活，但是不容易控制，定位布局缺乏灵活性，
+		 但是却可以精准定位页面元素。
+		 在实际开发中，优先考虑浮动布局，然后再是定位布局。
+		 定位布局都是通过position和top，left，right，bottom等属性来实现的，
+		 position共有4种定位方式。
+			相对定位 	relative
+			绝对定位 	absolute
+			固定定位 	fixed
+			静态定位 	static 
+			
+	1,相对定位 relative  口诀：父相子绝
+		在css中 ，可以使用position：relative来实现相对定位。
+		参照物：无论祖父元素是否开启定位，都按照父元素的四条边来定位。
+		注意：无论是否移动元素仍然占据原来的空间，因此移动元素会导致被其他元素覆盖或被覆盖。
+		语法：	
+			position：relative
+				top:像素值；
+				bottom：像素值；
+				left：像素值；
+				right：像素值；
+		相对定位的特点：
+			如果不设置元素的偏移量，元素不会发生改变。
+			相对定位不会使元素脱离文本流，元素在文本流中的位置不会改变。
+			相对定位不会改变元素原来的特性，块和行内元素的宽高都不会改变。
+			相对定位会使元素的层级提升，使元素可以覆盖文本流中的元素。
+			
+	2，绝对定位 absolute
+		position：absolute;设置绝对定位方式。
+		参照物：1，已开启绝对定位最近的祖先父元素
+				2，如果祖父级元素没开启定位则参考浏览器4条边
+		语法：position：absolute;
+				top:像素值;
+				bottom:像素值;
+				left:像素值;
+				right:像素值;
+		绝对定位的特点：
+			绝对定位会使元素完全脱离文本流
+			未证实		绝对定位的块元素的宽高会被其内容撑开。
+			绝对定位会是行内元素变成块级元素。
+			一般使用绝对定位时也会为其父元素制定一个relative相对定位，
+			以确保元素可以相对于父元素进行定位。
+			
+	3，固定定位 fixed
+		在css中，我们可以使用position：fixed；实现固定定位。
+		参照物：浏览器4条边。固定不变
+		语法：
+			position：fixed；
+				top:像素值;
+				bottom:像素值;
+				left:像素值;
+				right:像素值;
+		fixed和absolute有很多共同点
+				1，会改变行内元素的呈现模式，使display值变更为block。
+				2，会让元素脱离普通流，不占据空间。
+				3，默认会覆盖到非定位元素上。
+		fixed与absolute最大的区别：
+					absolute的参照物是可以被设置的。
+					fixed的参照物是固定的，与浏览器条边距离恒定不变。
+	
+	4,静态定位 static
+		在默认情况下，也就是元素没有指定 position属性时，这个元素就是静态定位
+		在实际开发中position：static；极少使用。
+		
+	二，z-index
+		当元素开启定位position属性后，就可以设置z-index 属性。
+		作用：提升定位元素所在的层级。
+		值越大，显示的优先级越高。
+		注意：父元素优先级越高也不会覆盖子元素。
+
+	解决父元素margin-top 塌陷的方法 	
+		需触发一个盒子的bfc( block format context) 
+		四种方法
+			1 position:absolute
+			2 display:inline-block
+			3 float:left/right
+			4 overflow:hidden
+
+ -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				top: 200px;
+				left: 200px;
+			}
+			#div2{
+				width: 200px;
+				height: 200px;
+				background-color: orange;
+				position: absolute;
+				top: 300px;
+				left: 300px;
+			}
+			#div3{
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				position: absolute;
+				top: 400px;
+				left: 400px;
+			}
+			#div4{
+				width: 300px;
+				height: 300px;
+				background-color: #EFEEEC;
+				position: relative;
+				top: 600px;
+				left: 600px;
+			}
+			#div5{
+				width: 100px;
+				height: 100px;
+				background-color: #ADFF2F;
+				position: absolute;
+				top: 100px;
+				left: -50px;
+			}
+			#div6{
+				width: 200px;
+				height: 200px;
+				background-color: brown;
+				position: fixed;
+				top: 300px;
+				left: 300px;
+			}
+			#div7{
+				width: 100px;
+				height: 100px;
+				background-color: #008B8B;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				z-index: 11;
+			}
+			#div8{
+				width: 100px;
+				height: 100px;
+				background-color: #008000;
+				line-height: 150px;
+				position: fixed;
+				top: 50px;
+				left:50px;
+				z-index: 10;
+			}
+			
+		</style>
+		<title>定位布局</title>
+	</head>
+	<body>
+		 <div id="div1">
+		 	绝对定位absolute
+		 </div>
+		 <div id="div2">
+		 	绝对定位absolute
+		 </div>
+		 <div id="div3">
+		 	绝对定位absolute
+		 </div>
+		 
+		 <div id="div4">
+			 相对定位relative
+		 	<div id="div5">
+		 		绝对定位absolute
+		 	</div>
+		 </div>
+		 <div id="div6">
+		 	固定定位
+		 </div>
+		 
+		<div id="div7">
+			z-index=11
+		</div>
+		<div id="div8">
+			z-index=10
+		</div>
+		
+	</body>
+</html>

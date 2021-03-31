@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		div {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+			background-color: yellowgreen;
+			font-size: 40px;
+			position: fixed;
+			bottom: 200px;
+			border-radius: 30%;
+			opacity: 0.5;
+			cursor: pointer;
+		}
+
+		#div1 {
+			right: 200px;
+		}
+
+		#div2 {
+			right: 50px;
+		}
+
+		p {
+			width: 2000px;
+			height: 2500px;
+		}
+	</style>
+	<title>scroll</title>
+</head>
+
+<body>
+	<div id="div1">开始</div>
+	<div id="div2">停止</div>
+	<script type="text/javascript">
+		var start = document.getElementById('div1');
+		var shop = document.getElementById('div2');
+		var key = true;//锁
+		var timer = 0;//定时器返回值
+		start.onclick = function () {
+			if (key) {
+				timer = setInterval(function () {
+					window.scrollBy(0, 3);//scroll累加功能-即滚动速度
+				}, 200);
+			}
+			key = false;//相当于同步锁，执行后如果不把锁关掉，再次点击会出现scroll加速
+		}
+		shop.onclick = function () {
+			clearInterval(timer);//清除定时器
+			key = true;//把锁打开，以便下次start
+		}
+
+		var p = document.getElementsByTagName('p')[0];
+		window.onscroll = function (e) {
+			if(window.pageYOffset > 2300){
+				window.scrollTo(0,window.scrollHeight)//滑到底部置顶
+			}
+			console.log(
+				"  scrollWidth:" + document.documentElement.scrollWidth,//等同window.scrollWidth
+				"  scrollHeight:" + document.documentElement.scrollHeight,//等同window.scrollHeight
+				"  scrollTop:" + document.documentElement.scrollTop,
+				"  scrollLeft:" + document.documentElement.scrollLeft,
+				"  pageXOffset:" + window.pageXOffset,//与scrollLeft 一样
+				"  pageYOffset:" + window.pageYOffset//与scrollTop 一样
+			)
+		}
+
+	</script>
+	<!--
+		  让滚动条滚动
+		  window上有三个方法
+		  scroll() 与  scrollTo()  功能一致
+		  scrollBy()
+		  
+		  三个方法功能类似，用法都是讲将X,Y坐标传入，
+		  即实现让滚动到当前位置 。
+		  
+		  区别：scrollBy()会在之前的数据基础上做累加
+		   
+		   eg：利用 scrollBy()快速阅读的功能
+
+		网页正文宽度：document.body.scrollWidth;
+		网页正文高度：document.body.scrollHeight;
+		网页被卷去的高：document.body.scrollTop;
+		网页被卷去的左：document.body.scrollLeft;
+		  
+		  -->
+	<p>
+		padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回nullpadding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin查看元素的
+		位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin查看元素的
+		位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素对于无定论位父级的元素 ，返回相对
+		文档的坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent对于无定论位父级的元素
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin查看元素的
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent对于无定论位父级的元素
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin查看元素的
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+		返回相对于最近的有定位的父级的坐标。对于
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+		注意：横向的body有8px的margin查看元素的
+		位置:对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+		注意：横向的body有8px的margin查看元素的
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+		b对于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父
+		级的元素ody.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。v对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		注意：横向的body有8px的margin查看元素的
+		dom.offsetLeft 左边离父级的距离对
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		dom.offsetTop 顶边离父级的距离对
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin查看元素的
+
+		位置:对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+
+		位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPositionv对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin查看元素的
+
+		位置:对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+
+		位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有对于无定论位父级的元素 ，返回相对文档的坐标。对
+
+		于有定位父级的元素定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition对于对于无定论位父级的元素 ，返回相对文档
+
+		的坐标。对于有定位父级的元素无定论位父级的元素 ，返回相对文
+
+		档的坐标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin查看元素的
+
+		位置:v对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+
+		位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin查看元素的
+
+		位置:对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+
+		位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin查看元素的
+
+		位置:对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+
+		位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offs对于无定论位父级的元素 ，返回相对文档的坐标。对于
+
+		有定位父级的元素etParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin查看元素的
+
+		位置:对于无定论位父级的元素 ，返回相对文档的坐标。对于有定
+
+		位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition对于无定论位父级的元素 ，返回相对文档的坐
+
+		标。对于有定位父级的元素
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有v定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPositio对于无定论位父级的元素 ，返回相对文档的坐
+
+		标。对于有定位父级的元素n
+		dom.offsetLeft 左边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		dom.offsetTop 顶边离父级的距离对
+
+		于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的
+
+		元素
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。对于
+
+		无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元
+
+		素
+		注意：横向的body有8px的margin对于无定论
+
+		位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		dom.offsetParent对于无定论位父级的元素
+
+		，返回相对文档的坐标。对于有定位父级的元素
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition
+		dom.offsetLeft 左边离父级 查看元素
+
+		的尺寸:包含padding和margin
+		dom.offsetWidth
+		dom.offsetHeight查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，
+
+		body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition
+		查看元素的尺寸:包含padding和margin
+		dom.offsetWidth
+		dom.offsetHeight
+		查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的
+
+		坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body
+
+		，body.offsetParent返回null
+		eg：求元素相对于文档的坐标
+
+		getElementPosition
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，body.offsetParent返回null
+		eg：求元素相对于文档的坐标getElementPosition
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin查看元素的位置:
+		dom.offsetLeft 左边离父级的距离
+		dom.offsetTop 顶边离父级的距离
+		对于无定论位父级的元素 ，返回相对文档的坐标。对于有定位父级的元素
+		返回相对于最近的有定位的父级的坐标。
+		注意：横向的body有8px的margin
+		注意：横向的body有8px的margin
+		dom.offsetParent
+		返回最近的有定位的父级，如无，返回body，body.offsetParent返回null
+		eg：求元素相对于文档的坐标getElementPosition</p>
+</body>
+
+</html>

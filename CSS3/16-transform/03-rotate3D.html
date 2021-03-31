@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rotate3D</title>
+    <style>
+       body{
+            /* 给body增加3D显示层 */
+            perspective: 800px;
+            transform-style:preserve-3d
+        }
+        div{
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            background: url('./img/P001.jpg');
+            background-size:cover;
+            transform-origin: 0 0;
+            transform: rotate3d(2, 1 ,0 ,60deg);
+            /* 2 : 1 : 0相当于
+                X轴处是200px
+                Y轴处是100px
+                Z轴处是0px
+                然后按照这个比例去旋转
+            */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

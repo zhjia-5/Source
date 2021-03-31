@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-slice-splice</title>
+</head>
+
+<body>
+    <script>
+        // 含头不含尾。
+
+        // slice(start,end) 不修改原数组，返回一个新数组。
+        const arr = ["a", "b", "c", "d", "e", "f"];
+        const arr2 = arr.slice(2, 3);
+        console.log("arr2:"+arr2);
+
+        // 语法一：splice(start,end):剪切角标从start ~ end-1 的子串，返回被剪切的子串，原数组也被修改。
+        const arr3 = ["a", "b", "c", "d", "e", "f"];
+        const arr4 = arr3.splice(0,3);
+        console.log("arr4:"+arr4);
+
+        // 语法二：splice(index,num)：剪切角标为index开始数量为num的字串。
+        const arr5 = ["a", "b", "c", "d", "e", "f"];
+        const arr6 = arr5.splice(3,2);
+        console.log("arr5:"+ arr5);
+        console.log("arr6:"+ arr6);
+    </script>
+</body>
+
+</html>

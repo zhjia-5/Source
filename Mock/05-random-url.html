@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./mock.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(Mock.Random.url());// 随机生成一个url
+
+        console.log(Mock.Random.url('http'));//随机生成协议为'http'的url
+
+        console.log(Mock.Random.url('http','baidu.com'));//随机生成协议为'http',域名为bai.com的url
+    
+        console.log(Mock.Random.domain());// 随机生成一个域名
+
+        console.log(Mock.Random.email());// 随机生成一个邮箱url
+        console.log(Mock.Random.email('qq.com'));// 随机生成一个邮箱url
+
+        console.log(Mock.Random.ip());// 随机生成一个ip地址
+    </script>
+</body>
+</html>

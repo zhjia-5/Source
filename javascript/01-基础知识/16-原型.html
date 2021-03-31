@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			 1,定义：原型是function对象的一个属性，他定义了构造函数
+			 制造出来的对象的公共祖先。通过该构造函数产生的对象，
+			 可以继承原型的属性和方法。原型也是对象。
+			 
+			 2，利用原型的特点和概念，可以提取共有属性。
+			 3，对象如何查看原型-->隐式属性-->__proto__
+			 4,对象如何查看对象的构造函数-->constructou
+			 
+			 */
+		// Person.prototype--原型
+		// Person.prototype = {} 是祖先
+			Person.prototype = {
+				name : "zhangsan",
+				age : 20,
+				sex : 'male',
+				height : 180
+			}
+			function Person(lastName,weight){
+				this.lastName = lastName;
+				this.weight = weight;
+			}
+			var person = new Person("li",120);
+			
+			// 增加属性
+			person.chengji = 100;
+			
+			// 删除属性
+			 delete person.lastName;
+			 
+			 // 查看属性
+			 person.name;
+			 
+			 // 修改属性
+			person.weight = 130;
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

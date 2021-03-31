@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>try_catch</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			try{}catch(e){}finally:
+			 当在try{}里发生错误时，会执行错误前面的代码，错误后面的代码不执行
+			 catch{}是捕捉错误的信息。
+			 
+			 Error.name的六种值应对的信息：
+				1，EvalError : eval()的使用与不定义不一致
+				2，RangeError ：数值越界
+				3，ReferenceError :非法或不能 识别的引用数值
+				4，SyntaxError : 发生语法解析错误
+				5，TypeError :　操作数类型错误
+				6，URIError :　URI处理函数使用不当
+			 
+			 
+			 */
+			try{
+				console.log("a");
+				console.log(b);
+				console.log(c);
+				console.log("d");
+			}catch(e){
+				console.log(e.name + ":" + e.message);
+			}
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 20px;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        a{
+            text-decoration: none;
+            background: #ccc;
+            display: block;
+            width: 100%;
+        }
+        /* 没有被选中的隐藏 */
+        .textDiv:not(:target){
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div>Accordion List</div>
+        <a href="#text1">content1</a>
+        <div id="text1" class="textDiv">text1</div>
+        <a href="#text2">content2</a>
+        <div id="text2" class="textDiv">text2</div>
+        <a href="#text3">content3</a>
+        <div id="text3" class="textDiv">text3</div>
+    </div>
+</body>
+</html>

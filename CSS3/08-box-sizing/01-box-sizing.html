@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3新特性-box-sizing</title>
+    <!-- 
+        css3盒子模型
+            1，box-sizing : content-box;
+                盒子大小为width + padding + border(以前默认值的)
+
+            2，box-sizing : border=box;
+                盒子大小为width（padding + border 不能超过width）
+
+        可以*{  box-sizing:border-box; }将所有的box转为CSS3模式     
+     -->
+    <style>
+        .div1{
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 10px solid black;
+            box-sizing: content-box;/* 不写默认为该属性  结果元素宽高为240px*/
+        }
+        .div2{
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 10px solid black;
+            box-sizing: border-box;/* 结果元素宽高还是200px */
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+
+</body>
+</html>

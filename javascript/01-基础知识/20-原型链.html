@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型链</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			原型链：
+				1,原型链的增删改查与原型一致
+				
+				2,绝大多数对象的最终都会继承自Object.prototype
+				
+				3,Object.create(原型)
+					null undefined没有原型。
+			 */
+			
+			
+			/* Grand.prototype.lastName = "zhang";
+			function Grand (){
+			}
+			var grand = new Grand();
+			
+			Father.prototype = grand;
+			function Father(){
+				this.name = "san"
+			}
+			var father = new Father();;
+			
+			Son.prototype = father;
+			function Son(){
+				this.hobbit = "read";
+			}
+			var son = new Son(); */
+			
+			
+			
+			
+			/* // var obj = Object.create(原型);
+			Person.prototype.name = "sunny";
+			function Person(){
+				this.lastName = "zhang";
+			}
+			//创建一个和父类一样的原型对象,如果父类构造函数里自定义了其他属性，
+			// 则子类原型不会跟着改变。
+			var person = Object.create(Person.prototype);
+		// person.__proto__为：name: "sunny", constructor: function Person
+			 */
+			
+			
+			
+			/* 
+			var obj = Object.crecte(原型)；
+			Object.prototype.toString = function (){
+			}
+			 */
+			// toString方法重写
+			Person.prototype = {
+				toString : function (){
+					return  "hello";
+				}
+			}	
+			function Person(){
+				
+			}
+			var person = new Person();
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request对象</title>
+</head>
+
+<body>
+    <button class="btn">获取</button>
+    <script>
+        /*  Request 对象
+            除了使用基本的fetch方法，还可以通过创建一个Request对象来完成请求
+            （实际上fetch的内部会帮你创建一个Request对象）
+            
+            注意点:尽量保证每次请求都是一个新的Request对象 */
+
+        let req;
+
+        function getRequestInfo() {
+            // 如果没有req就创建 一个新的req
+            if (!req) {
+                const url = 'http://101.132.72.36:5100/api/local';
+                req = new Request(url, {});
+                console.log(req);
+            }
+            return req.clone();//复制一个全新的对象并返回
+        }
+
+        async function getProvinces() {
+
+            try {
+                // fetch 参数可以接收一个Request对象
+                const resp = await fetch(getRequestInfo());
+                const result = await resp.json();//.text();
+                console.log(result);
+            } catch (err) {
+                console.log(err);
+
+            }
+
+        }
+
+        document.getElementsByClassName('btn')[0].onclick = function () {
+            getProvinces();
+        }
+    </script>
+</body>
+
+</html>

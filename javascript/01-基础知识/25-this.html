@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>this</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 			
+			this: 谁调用就指向谁，没人调用就指向window（例：test();）
+			1,函数预编译过程 this -->window
+			 
+			 2,全局作用域里 this-->window
+			 
+			 3,call/apply可以改变函数运行时this指向
+			 
+			 4，obj.func();    func()里面的this指向obj
+			 */
+			
+			
+			// 1,函数预编译过程 this -->window
+			/*function test(){
+				var a = 123;
+				function b(){
+					
+				}
+			}
+			test(1);
+			new test();
+			
+			 AO{
+				arguments : [1],
+				this : window,	//test(1)为window 、new test()为Object.create(test.prototype);
+				c : 1,
+				a : undefined,
+				b : function (){}
+			} */
+			
+			
+			var name = "222";
+			var a = {
+				name : "111",
+				say : function(){
+					console.log(this.name);
+				}
+			}
+			var fun = a.say;
+			fun();		//结果：222，全局window调用	
+			a.say();	//结果：111，a调用 
+			
+			var b = {
+				name : "333",
+				say : function(fun){
+					fun();
+				}
+			}
+			b.say((a.say));		//结果：222，fun()的调用者为window
+			b.say() = a.say;
+			b.say();			//结果：333，b调用
+			 
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <ul class="ul">
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <p>第1个p标签</p>
+    </ul>
+    <!-- 
+		 parent()  			$("li").parent() 					查找父级元素
+		 children(selector) $("ul").children("li") 				相当于$("ul > li")，最近一级（亲儿子）
+		 find(selector) 	$("ul").find("li") 		 			相当于$("ul li")后代选择器 		
+		 siblings(selector) $(".first").siblings("li") 			查找兄弟节点，不包括自身
+		 next([expr])    	$(".first").next() 					查找当前元素之后一个同辈元素		 
+		 nextAll([expr])    $(".first").nextAll() 				查找当前元素之后所有的同辈元素		 
+		 prevt([expr]) 		$(".last").prevt() 	 				查找当前元素之前一个同辈元素	
+		 prevtAll([expr]) 	$(".last").prevtAll() 	 			查找当前元素之前所有的同辈元素
+     -->
+<script>
+    $('.ul li').css('border','1px solid red');
+    // .praent()给父级加边框
+    $('.ul li').eq(2).parent().css('border','2px solid black');
+    // .children() 给所有子元素加背景  可以在参数限定哪些子元素：
+    $('.ul').children().css('background','skyblue');
+    // sibling()  
+    $('.ul li').eq(0).siblings().css('color','red');
+    
+
+</script>
+</body>
+</html>

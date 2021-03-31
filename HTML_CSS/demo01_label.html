@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>段落与文字</title>
+</head>
+
+<body>
+
+	<!-- 
+			
+			HTML的基本结构如下：
+			1，文档类型声明
+			2，html标签对
+			3，head标签对
+			4，body标签对 
+			
+			在HTML中共有六个级别的标题标签：h1,h2,h3,h4,h5,h6
+			其中h为herder的缩写。
+			这6个标题标签在页面的重要性是由区别的，其中h1标签的重要性最高，
+			h6标签的重要性最低。
+			一个页面中只能有一个h1标签，而h2-h6可以有多个。
+			-->
+	<h1>这是一级标题</h1>
+	<h2>这是二级标题</h2>
+	<h3>这是三级标题</h3>
+	<h4>这是四级标题</h4>
+	<h5>这是五级标题</h5>
+	<h6>这是六级标题</h6>
+
+	<!-- 
+			 段落<p>
+			 p:全称paragraph，就是段落的意思，作用：自动换行，
+			 段落与段落之间拉开了一点距离。
+			 -->
+	<h3>段落演示</h3>
+	<p>水陆草木之花，可爱着甚蕃。</p>
+	<p>水陆草木之花，可爱着甚蕃。</p>
+
+	<!-- 
+			 换行标签：<br />
+			 -->
+	<h3>静夜思</h3>
+	床前明夜光，疑是地上霜。<br />
+	举头望明月，低头思故乡。<br />
+
+
+	<!-- 
+			 文本标签
+			 粗体标签：strong  b
+			 斜体标签：i  em  cite
+			 上标标签：sup
+			 下标标签：sub
+			 划线标签：s  u
+			 字号标签：big  small
+			 水平线标签：hr,horizon的缩写
+			 删除线标签  del
+			 -->
+	<b>粗体标签：strong b</b>
+	<br>
+	<br>
+	<em> 斜体标签：i em cite</em>
+	<br>
+	<br>
+	上标标签：sup : 10<sup>2</sup>
+	<br>
+	<br>
+	下标标签：sub : H<sub>2</sub>SO<sub>4</sub>
+	<br>
+	<br>
+	<u>划线标签：s u</u>
+	<br>
+	<br>
+	<big>字号标签：big</big>
+	<br>
+	<br>
+	<small>字号标签:small</small>
+	<br>
+	<br>
+	水平线标签：hr
+	<hr>
+	<br>
+	<br>
+	<del>原价￥19999</del>
+	<!-- 
+			 div：全称division（分区），用来划分一个区域，div里面的内容会独占一行
+			 div标签最重要的用途：划分区域，然后结合css针对该 区域进行样式控制。
+			 -->
+	<div id="">
+		div：全称division（分区），用来划分一个区域，div里面的内容会独占一行
+	</div>
+	div标签最重要的用途：划分区域，然后结合css针对该 区域进行样式控制。
+	<br>
+	<br>
+	<!-- 特殊符号
+			  显示结果		描述		实体名称			实体编号
+							空格		&nbsp; 			&#160
+				<			小于号		&lt; （less than的缩写）				
+				>			大于号		&gt; （great than的缩写）		
+				&			和号		&amp;
+				"			引号		&quot
+				,			撇号		&qpos;(ie不支持)
+				............
+				©			版权		&copy;
+				®			注册商标		&reg;
+				™			商标		&trade;
+				
+			在HTML中，标签可以分为2种：
+				1，一般标签（对标签）。	
+				2，自闭和标签（但标签） 。
+			 -->
+	<script>
+		var arr = new Array(6)
+		arr[0] = "George"
+		arr[1] = "John"
+		arr[2] = "Thomas"
+		arr[3] = "James"
+		arr[4] = "Adrew"
+		arr[5] = "Martin"
+		
+		const arr2 =  arr.slice();
+		document.write(arr2 + "<br/>")
+		// document.write(arr.slice() +"<br/>")
+
+		
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>off解绑事件</title>
+		<script src="../jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				cursor: pointer;
+			}
+			ul{
+				list-style: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<ul>
+			<li>1事件委托</li>
+			<li>2事件委托</li>
+		</ul>
+		<span style="cursor: pointer;">one()方法一次性事件绑定</span>
+		<script type="text/javascript">
+			/* 
+			一：事件处理off()解绑事件
+				off()方法可以移除通过on()方法添加的事件处理程序。
+			 语法：	
+				$("div").off();  解绑div元素所有的事件处理程序。
+				$("div").off("click"); 解除div元素上面的点击事件，后面的foof是侦听函数名。
+				$("ul").off("click","li"); 解除事件委托
+			 
+			 */
+			$(function() {
+				//添加事件
+				$('div').on({
+					mouseover : function() {
+						$(this).css('backgroundColor','orange');
+					},
+					mouseout : function() {
+						$(this).css("backgroundColor","yellow");
+					}
+				});
+				// 事件委托
+				$("ul").on("click","li",function() {
+					$(this).css("color","red");
+				});
+				
+				// 1,解除div身上的所有事件。
+				// $("div").off();
+				
+				// 2,解除div身上的单种类型事件
+				$("div").off("mouseover");
+				
+				//3,解除事件委托:解除ul下的li的点击事件。
+				$("ul").off("click","li");	
+				
+			});
+			
+		</script>
+	</body>
+</html>

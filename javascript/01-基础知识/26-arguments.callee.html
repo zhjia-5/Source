@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>arguments_callee</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			arguments.callee-->指向函数自身引用
+			在匿名中会使用到arguments.callee()
+				因为有名函数function test(){}的自身引用为test。
+				如果是匿名函数就需要使用arguments.callee代替函数自身引用
+			使用aguments.callee在匿名立即执行函数计算20阶乘！
+			公式 ：n = n * (n-1) */
+			
+			/*
+			 var num = (function (n){
+				if(n == 1){
+					return 1;
+				}
+				return n *= arguments.callee(n - 1);
+			}(20))
+			console.log(num);
+			 */
+			
+			
+			// test
+			var foo = 123;
+			function print(){
+				this.foo = 234;
+				console.log(foo);
+			}
+			// print();//结果：234,调用者为window，但foo值被更改
+			new print();//结果：123，this.foo的this所属为：var this=Object.create(print.prototype),所以它改变不了foo的值
+			
+			
+		</script>
+	</body>
+</html>

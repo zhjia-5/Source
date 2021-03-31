@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     /* 
+        1）需要给父级加上景深高度
+          perspective:800px : 好像让屏幕离眼睛有800px距离
+          perspective-origin: 200px 200px; 眼睛垂直屏幕的地方 
+
+          再给div设置transform:translateZ(500px):
+                表示让元素在屏幕上向眼睛考经500px
+
+        2）translateZ(num)  当num值为正数时：
+          num值越大，元素的在屏幕上的投影就越大，所以元素在屏幕上显示越大。
+          num值越小，元素的在屏幕上的投影就越小，所以元素在屏幕上显示越小。
+
+        3）translateZ(num)  当num值为负数时：
+          num值越大，元素的在屏幕上的投影就越大，所以元素在屏幕上显示越大。
+          num值越小，元素的在屏幕上的投影就越小，所以元素在屏幕上显示越小。
+    */
+    :root {
+      height: 100%;/* 需要给跟标签设置高度body才会有高度 */
+    }
+
+    body {
+      height: 100%;
+       /* 景深高度，即z轴的高度 */
+      perspective: 800px;
+      /* perspective-origin: 200px 200px;眼睛垂直屏幕的地方 */
+    }
+
+    div {
+      position: absolute;
+      top: 200px;
+      width: 200px;
+      height: 200px;
+      box-shadow: 0px 5px 10px #000;
+      background-image: url('./img/P001.jpg');
+      background-size: 200px 200px;
+      transform: rotateY(45deg);
+    }
+    .div2{
+      left: 200px;
+    }
+    .div3{
+      left: 400px;
+    }
+    .div4{
+      left: 600px;
+    }
+    .div5{
+      left: 800px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="div1"></div>
+  <div class="div2"></div>
+  <div class="div3"></div>
+  <div class="div4"></div>
+  <div class="div5"></div>
+<script>
+  document.body.onmousemove = function(e){
+    // 眼睛垂直屏幕的地方
+    this.style.perspectiveOrigin = e.pageX + 'px ' + e.pageY +'px';
+  }
+</script>
+</body>
+
+</html>

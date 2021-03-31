@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        } */
+
+        .main {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            color: #3c3c3c;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+        }
+
+        a {
+            flex: 1;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #3c3c3c;
+            display: inline-block;
+            width: 96px;
+            height: 20px;
+            background: #ccc;
+            text-align: center;
+            
+        }
+        /* 选择了.main下不是最后一个a的元素集合 */
+        .main a:not(:last-of-type){
+            border-right: 1px solid  #3c3c3c;
+        }
+        .textDiv{
+            width: 100%;
+            height: 180px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 20px;
+            display: none;
+           
+        }
+        /* 被锚点a选中的元素 */
+        .textDiv:target{
+            display: block;
+            background: rgba(185, 184, 184, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <a href="#div1">评论</a>
+        <a href="#div2">商品信息</a>
+        <a href="#div3">商品售后</a>
+        <div id="div1" class="textDiv">商品评论区：******鞋子不错,下次再买。</div>
+        <div id="div2" class="textDiv">商品信息描述:40英寸，灰白色</div>
+        <div id="div3" class="textDiv">商品售后:7天无理由退货，全国包邮。</div>
+    </div>
+</body>
+
+</html>

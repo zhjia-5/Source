@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM</title>
+	</head>
+	<body>
+		<div>div1</div>
+		<script type="text/javascript">
+			/* 
+			 1,DOM-->Docment Object Model
+			 
+			 2,DOM定义了表示和修改文档所需要的方法。
+			 DOM对象即为宿主对象，由浏览器厂商定义，
+			 用来操作HTML和xml功能的一类对象的集合。
+			 也有人称DOM是对HTML以及xml的标准编程接口。
+			 html演变：xml-xhtml-html...
+
+			访问行内样式（style对象）
+			css样式属性 		JavaScript样式属性名(注意：驼峰命名法)
+			color 				style.color
+			font-size 			style.fontSize
+			font-family 		style.fontFamily
+			font-weight 		style.fontWeight
+			background-color 	style.backgruondColor
+
+			访问非行内样式
+			Window.getComputedStyle(ele,'伪类')[attr];  
+				-获取当前元素所有最终使用的CSS属性值，只读的
+				-ele：用与获取样式的元素
+				-'伪类'：可选，指定一个要匹配的伪类元素的字符串，如果是普通元素就写null,或省略不写
+				-方法不需要ele调用
+	
+			element.currentStyle[attr]  ——(仅限IE浏览器)	
+				-currentSytle 对象返回了元素上的样式表
+				-方法需要ele调用
+			 */
+			// DOM对象
+			var div = document.getElementsByTagName("div")[0];//通过标签名获取对象。
+													 //可能会有很多div标签，数组[0]表示第一个div标签。。。	
+			div.style.width = "100px";
+			div.style.height = "100px";
+			div.style.backgroundColor = "red";
+			 
+			var count = 0;
+			div.onclick = function (){
+				if(count % 2 == 0){
+					this.style.backgroundColor = "blue";
+				}else{
+					this.style.backgroundColor = "red";
+				}
+				count ++;
+			} 
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,144 @@
+
+*{
+    padding:0;
+    margin: 0;
+    text-decoration: none;
+}
+body{
+    font-size: 14px;
+    overflow: scroll;
+}
+body,html{
+    height: 100%;
+}
+body::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #eee;
+    padding-left: 18px;
+    background: #354457;
+}
+.left-menu{
+    position: fixed;
+    top: 70px;
+    height: calc(100% - 70px);
+    width: 200px;
+    background: #4d5e70;
+}
+.right-content{
+    margin: 70px 0px 0px 200px;
+    background-color: #eee;
+    float: left;
+    width: calc(100% - 200px);
+    min-height: calc(100% - 70px);
+}
+dl{
+    line-height: 40px;
+    color: #b3bcc5;
+}
+dt{
+    padding-left:10px;
+    font-size: 18px;
+}
+dd{
+    padding-left: 40px;
+    cursor:pointer;
+    font-size: 16px;
+}
+dd:hover{
+    background: rgba(255,255,255,0.5);
+    color: #354457;
+}
+dl .active{
+    background: #eee;
+    color: #354457;
+}
+/* .student-list{
+    display: none;
+} */
+.student-add{
+    display: none;
+}
+.student-list table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+}
+.student-list thead{
+    background: #e3e8ee;
+    color: #646987;
+}
+.student-list tbody tr:nth-child(odd){/* 奇数的背景色 */
+    background-color: #fff;
+}
+.student-list .btn{
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.student-list .btn.edit{
+    background-color: #5cb85c;
+}
+.student-list .btn.remove{
+    background-color: #f00;
+}
+.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+}
+.modal-montent{
+    /* display: none; */
+    width: 500px;
+    height: 400px;
+    background: #fff;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 20px;
+}
+.student-form{
+    margin-top: 20px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.student-form div{
+    margin: 10px 0;
+}
+.student-form div label{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+.student-form div label.sex{
+    width: auto;
+}
+.button {
+    padding: 5px 25px;
+}
+
+#student-list-tbody tr:hover{
+    background: rgba(0, 0, 0, 0.3);
+}

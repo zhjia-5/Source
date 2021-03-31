@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合并两个对象</title>
+</head>
+
+<body>
+    <script>
+        obj1 = {
+            name: 'zhangsan',
+            age: '20'
+        }
+        obj2 = {
+            name: "lisi",
+            height: '180cm'
+        }
+
+        obj = {
+            ...obj1,
+            ...obj2
+        }
+        // 第二个会覆盖第一个 
+        console.log(obj);
+        /*  age: "20"
+            height: "180cm"
+            name: "lisi */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- 
+        （3）animation-timing-function	过渡类型
+            取值    linear              线性
+                    ease                平滑过渡
+                    ease-in             慢到快
+                    ease-out            快到慢
+                    step-start          等同于 steps(1, start) 
+                    step-end            等同于 steps(1, end)
+                    steps(num, end | start):
+                        第二个参数是可选的，默认值为 end。
+                        start：保留下一帧状态，直到这段动画时间结束
+                        end：保留当前帧状态，直到这段动画时间结束
+     -->
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background:red;
+            position: absolute;
+            left: 0;
+        }
+        .start{
+            animation: run 4s steps(1,start);/* 一开始就跳到第二帧 */
+        }
+        .end{
+            top: 110px;
+            animation: run 4s steps(1,end) forwards;/* 一开始先显示第一帧，forwards:将最后一帧作为结束状态 */
+        }
+        @keyframes run{
+            0%{
+                left: 0px;
+            }
+            25%{
+                left: 100px;
+            }
+            50%{
+                left: 200px;
+            }
+            75%{
+                left: 300px;
+            }
+            100%{
+                left: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+   <div class="start">start</div>
+    <div class="end">end</div>
+</body>
+</html>

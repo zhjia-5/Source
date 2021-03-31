@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>用户登录注册</title>
+    <style>
+        .main {
+            position: relative;
+            box-sizing: border-box;
+            padding: 20px;
+            width: 300px;
+            height: 300px;
+            background: #9999;
+            margin: 50px auto;
+            box-shadow: 2px 2px 5px #999;
+        }
+
+        .title {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        input {
+            width: 250px;
+            height: 30px;
+            margin-bottom: 10px;
+            outline: none;
+            text-indent: 10px;
+        }
+
+        .input3 {
+            display: none;
+        }
+
+        button {
+            box-sizing: border-box;
+            width: 250px;
+            height: 30px;
+            background: #6b6a6a;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .btn1 {
+            position: absolute;
+            left: 25px;
+            top: 180px;
+        }
+
+        .btn2 {
+            position: absolute;
+            left: 25px;
+            top: 220px;
+            display: none;
+        }
+
+        .register {
+            position: absolute;
+            bottom: 0px;
+            right: 120px;
+            font-size: 16px;
+            color: rgb(92, 88, 88);
+            cursor: pointer;
+        }
+        .login-back {
+            position: absolute;
+            bottom: 0px;
+            right: 120px;
+            font-size: 16px;
+            color: rgb(92, 88, 88);
+            cursor: pointer;
+            display: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <p class="title">用户名密码登录</p>
+        <input type="text" class="input1" name="username"  maxlength="10" placeholder="请输入用户名">
+        <input type="password" class="input2" name="password"  maxlength="14" placeholder="请输入密码">
+        <input type="password" class="input3" name="rePassword"  maxlength="14" placeholder="请再次输入密码">
+        <p class="register">立即注册</p>
+        <p class="login-back">返回登录</p>
+        <button class="btn1">登 录</button>
+        <button class="btn2">注 册</button>
+    </div>
+    <script>
+        // 正则表达式判断输入框
+
+        // post登录请求
+        $('.btn1').click(function () {
+            var name = $('input[name=username]').val();//获取用户名  zhjia
+            var psw = $('input[name=password]').val();//获取密码   123456
+            $.ajax({
+                url: 'http://api.duyiedu.com/api/student/stuLogin',
+                type: 'post',
+                data: {
+                    appkey: 'zhjia_1611123253059',
+                    account: name,
+                    password: psw
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    alert(data.msg);
+                },
+                error:function(status){
+                    alert(status);
+                }
+            });
+        });
+        // 点击注册
+        $('.register').click(function () {
+            $('.btn1').css('display', 'none');
+            $('.btn2').css('display', 'block');
+            $('.input3').css('display', 'block');
+            $('.login-back').css('display','block');
+            $(this).css('display','none');
+        });
+        // 点击返回登录
+        $('.login-back').click(function () {
+            $('.btn1').css('display', 'block');
+            $('.btn2').css('display', 'none');
+            $('.input3').css('display', 'none');
+            $('.register').css('display','block');
+            $(this).css('display','none');
+        });
+        // post注册请求
+        $('.btn2').click(function () {
+            var name = $('input[name=username]').val();//获取用户名  zhjia
+            var psw = $('input[name=password]').val();//获取密码   123456
+            var rePassword = $('input[name=rePassword]').val();//获取再次输入的密码
+            $.ajax({
+                url: 'http://api.duyiedu.com/api/student/stuRegister',
+                type: 'post',
+                data: {
+                    appkey: 'zhjia_1611123253059',
+                    account: name,
+                    username: name,
+                    password: psw,
+                    rePassword: rePassword
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.msg);
+                    console.log(data);
+                },
+                error:function(status){
+                    alert(status);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

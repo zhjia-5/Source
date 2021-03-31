@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外阴影</title>
+    <style>
+        body{
+            background: #000;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            border: 2px solid #fff;
+            /* border-radius: 50%; */
+            /* background: transparent; */
+            position: absolute;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+            /* 多个方向多颜色的阴影设置 */
+            box-shadow: inset -10px 0px 10px #0f0,
+                        inset 0px 10px 10px #00f,
+                        inset 10px 0px 10px #f00,
+                        inset 0px -10px 10px #0ff,/* z-index最高 */
+
+                        -10px 0px 10px #0ff,
+                        0px 10px 10px #f00,
+                        10px 0px 10px #00f,
+                        0px -10px 10px #0f0;/* z-index最高 */
+        }
+        /* 
+        外阴影：
+
+         box-shadow: 5px 5px 0px 5px #0ff;
+            第一个值：X轴偏移量  可正负
+            第二个值：Y轴偏移量  可正负
+            第三个值：阴影模糊度
+            第四个值: 阴影大小
+            第五个值：阴影颜色
+
+            阴影在背景颜色和文字的中间
+            在给单个方向设置阴影是最后面设置的方向z-index最高，
+            如果不设置阴影大小，默认和元素本身一样大
+
+         */
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

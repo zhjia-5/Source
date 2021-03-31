@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>javascript</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			js运行三部曲
+			
+			 一：语法分析
+				检查有无语法错误
+			 二：预编译
+				函数预编译在函数执行之前执行。
+				预编译前奏：
+					imply global 暗示全局变量：即任何变量，如果变量未经声明就赋值，
+					此变量就为全局对象所有。
+					一切声明的全局变量，全是window的属性。
+					global object  =>  go 
+					window就是全局的域。
+					例如：
+						a = 10;
+						window.a = 10; window{ a: 10}
+						console.log(a);--->等效于console.log(window.a);
+				预编译四部曲：		
+					⑴：创建AO对象,AO:执行期上下文（Activation Object）
+					⑵：找函数里形参和变量声明，将变量和形参作为AO属性名，值为undefined。
+					⑶：将实参值和形参统一,即将实参传给形参。
+					⑷：在函数体里面找函数声明，将函数名作为AO属性名，值为函数体。
+			 三：解析执行
+			 
+			 */
+			/* function fn(a){
+				
+				console.log(a);
+				
+				var a = 123;
+				
+				console.log(a);
+				
+				function a(){}//函数声明
+				
+				console.log(a);
+				
+				var b = function(){}//函数表达式
+				
+				console.log(b);
+				 
+				function d(){}
+			}
+			fn(1); */
+			
+		   
+		  /* 
+		  执行步奏：
+		  AO{
+		   	a : undefined-> 1 -> function a(){}
+		   	b : undefined 
+		   	d : function d(){}
+		   }
+		   输出结果
+		   console.log(a)--->function a(){}
+		   console.log(a)--->123
+		   console.log(a)--->123
+		   console.log(b)--->function(){} */
+		/* 
+		生成了一个GO对象 Global Object
+		 Go{
+			 a:123;
+		 }
+		 GO === window
+		 结果为：123
+		 
+		var a = 123;
+		function a (){}
+		console.log(a);
+		*/
+	   /* 
+	   
+	   GO{
+		   b : 123;	//b未声明就赋值属于暗示全局GO，即 window
+	   }
+	   
+	   */
+	   /* function test(){
+		   var a = b = 123,
+		   console.log(a);
+	   }
+	   test(); 
+	   
+	   AO{
+	    		   a : undefined;	//a已声明未直接赋值属于AO
+		}		   
+	   */
+	 
+	   console.log(bar());
+	   function bar(){
+		   foo = 10;
+		   function foo(){}
+		   var foo = 11;
+		   return foo;//相当于console.log(foo);
+		   // 结果为：11
+	   }
+	   
+		</script>
+	</body>
+</html>

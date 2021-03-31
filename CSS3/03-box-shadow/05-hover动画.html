@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hover</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            position: absolute;
+            left: calc(50% - 50px);
+            top: calc(50% - 50px);
+            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s;/* 监听所有事件过渡  的  时间 */
+        }
+
+        div::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            box-shadow:0px 10px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s;/* 监听所有事件过渡  的  时间 */
+            opacity: 0;
+        }
+        div:hover{
+            transform: scale(2,2);/* 宽高放大的倍数 */
+        }
+        div:hover::after{
+            opacity: 1;
+        }
+
+
+        /*  */
+        p{
+            width: 100px;
+            height: 100px;
+            box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+        p:hover{
+            width: 110px;
+            height: 110px;
+            box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
+            /* transition: all 1s; */
+        }
+    </style>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p>
+</body>
+</html>

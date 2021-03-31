@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.5.1.min.js"></script>
+    <script>
+        console.log(jQuery);
+        // $ === jQuery  返回true
+        console.log($ === jQuery);
+        // 一下三种写法和window.onload具有相同的功能
+        // 写法一
+        $(document).ready(function(){
+            var box = document.getElementById('box');
+            console.log(box);
+        });
+        // 写法二
+        $().ready(function(){
+            var box = document.getElementById('box');
+            console.log(box);
+
+        });
+        // 写法三
+        $(function(){
+            var box = document.getElementById('box');
+            console.log(box);
+            console.log("ready 加载完毕");
+        });
+        document.addEventListener('DOMContentLoaded',function(){
+            console.log('dom加载完毕');
+        });
+        // 因为图片不存在所以加载慢，最后找不到图片会报错
+        window.onload = function(){
+            console.log('页面加载完毕');
+        }
+
+     /* 以上三种写法和window.onload的区别：
+        $()、document.addEventListener、两种方法当document加载完后就执行。
+        而window.onload 是等到页面所有的东西加载完才会执行。   
+        其先后顺序为：
+            1    document.addEventListener()  该方法为原生的所有比$快
+            2    $()                          该方法基于原生的，其还要处理其他东西
+            3    window.onload
+    */
+
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <img src="http://www.baidu.com/1.png" alt=""><!-- 该图片不存在 -->
+</body>
+</html>

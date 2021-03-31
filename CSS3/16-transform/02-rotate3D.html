@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D旋转</title>
+    <style>
+        body{
+            /* 给body增加3D显示层 */
+            perspective: 800px;
+            transform-style:preserve-3d
+        }
+        div{
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            background: url('./img/P001.jpg');
+            background-size:cover;
+            /* 3D旋转 */
+            transform-origin: 0 0;/* 旋转中心为0 0 */
+            /* X Y 轴都旋转 60度 */
+            transform: rotateX(60deg);/* 沿X轴旋转 */
+            transform: rotateY(60deg);/* 沿着Y轴旋转 */
+            transform: rotateZ(60deg);/* 沿着Z轴旋转 */
+            /* 简写：transform:rotateX(60deg) rotateY(60deg) rotate(60deg)*/
+            
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

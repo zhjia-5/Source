@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件处理on</title>
+		<script src="../jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: #999999;
+			}
+			.div1{
+				background-color: yellow;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<ul>
+			<li>第1个li</li>
+			<li>第2个li</li>
+			<li>第3个li</li>
+		</ul>
+		<script type="text/javascript">
+			/* 
+		jQuery事件注册
+		一：单个事件语法：	
+			element.event(function() {}	)
+				$('div').click(function() { 事件处理程序 })  
+			 其他事件和原生基本一致。
+			 比如mouseove、mouseout、blur、focus、change、keydown、keyup、resize、scroll等...
+			 
+		 二：on()绑定事件
+			 on()方法在匹配元素上绑定一个或多个事件的事件处理函数，可以接受4个参数
+				语法：
+					element.on(events,{object}[selector],fn)
+						1,events:一个或多个用空格分隔的事件类型，如click或 keydown
+						2,传进来的数据
+						3,selector:元素的子元素、选择器。
+						4,fn:回调函数，即绑定在元素身上的侦听函数。
+					
+				(1),on优势一：
+					可以绑定多个事件，多个处理事件处理程序。
+					$('div').on({
+						mouseover:function() {},
+						mouseout:function() {},
+						click:function() {}
+					});
+					
+				(2),on优势2二：
+					如果事件处理程序相同,事件之间用空格隔开 
+					$('div').on('mouseover mouseout',function() {
+						$(this).toggleClass('currrent');
+					});
+				(3),on优势三：
+					可以事件委派操作。事件委派的定义就是，把原来加给子元素身上的事件
+					绑定在父元素身上，就是把事件委派给父元素。
+					$('ul').on('click','li',function() {
+						alert('hello!');
+					})
+					在此之前有bind(),live(),delegate()等方法来处理事件绑定或者事件委派，
+					最新版本的用on代替他们。
+			 */
+			
+		
+		/* 
+		//  on()绑定事件(1)
+			如果事件处理程序不同  $('选择器').on({});
+			$('div').on({
+				mouseover:function() {
+					$(this).css('backgroundColor','skyblue');
+				},
+				mouseout:function() {
+					$(this).css('backgroundColor','green');
+				},
+				click:function() {
+					$(this).css('width','200');
+					$(this).css('height','200');
+				}
+			}); */
+		
+		// on()绑定事件(2)：如果事件处理程序相同
+		$('div').on('mouseover mouseout',function() {
+			$(this).toggleClass('div1');//删除或添加类名
+		});
+		
+		// 优势(3):可以事件委派操作，点击li改变ul背景颜色。
+		// 此处使用对象参数
+		$('ul').on('click','li',{color:'yellow'},function(event) {
+			$('ul').css('background',event.data.color);
+		});
+		</script>
+		
+	</body>
+</html>

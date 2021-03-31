@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>层叠样式表</title>
+		<link rel="stylesheet" type="text/css" href="./css/demo12.css"/>
+		<style>
+			p{
+				font: "microsoft yahei";
+				font-size: 50px;
+				color: brown;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<!--
+		 一：css简介
+		 CSS指的是 Cascading Sytle Shheet层叠样式表，是用来控制网页外观的一门技术。 
+		 css有四个版本，从css到css3.0
+		 二：css的引入方式
+		 在一个页面引入css，共有三种方式。
+		 1 外部样式表  
+				语法：<link rel="stylesheet" type="text/css" href="文件路径"/>
+		 2 内部样式表
+				语法：<style type="text/css"/>  <style/>
+		 3 行内样式表 
+		 
+		 优先级： 由近到远
+				  行内样式表  ————  内部样式表 ———— 外部样式表
+		但是内部样式 > 外部样式 有一个前提：内部样式css样式的位置一定在外部样式的引用后面
+		原因是代码是从上到下加载，下面会覆盖上面的样式
+		 
+		 css中可以用！important标记来改变某个样式的权重值。
+		 -->
+		<d style="color: yellow;">外部样式表</d>
+		<p>内部徐样式表</p>
+		<b style="color: #FFCC00; font-size: 30px;">行内样式表</b>
+	</body>
+</html>

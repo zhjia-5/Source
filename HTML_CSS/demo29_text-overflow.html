@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+           
+            width: 300px;
+            height: 20px;
+            border: 1px solid #424242;
+            /* 单行文本超出显示省略号 ... */
+            word-break: keep-all;  /* 等同white-space: nowrap;超出不换行 */
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+        /* 多行文本超出部分隐藏  容器的高度需是行高的倍数 */
+        p{
+            width: 300px;
+            height: 40px;
+            border: 1px solid #424242;
+            line-height: 20px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="div1">单行文本超出显示单行文本超出显示单行文本超出显示</div>
+    <p>多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏</p>
+</body>
+</html>

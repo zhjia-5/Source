@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<title>flex弹性布局</title>
+		<style>
+			div{
+				display: flex;/* 设置弹性盒模型 */
+				width: 80%;
+				height:500px;
+				margin: 0 auto;
+				background-color: #CCCCCC;
+				/* flex-direction: row-reverse;反向排列 */
+				flex-direction: row;
+				/* justify-content: flex-end;右对齐 */
+				/* justify-content: space-between; 元素间隔一样 */
+				/* justify-content: space-around;元素左右边距一样 */
+				/* justify-content: center;主轴居中对齐 */
+				/* align-items: center;辅轴居中对齐 */
+				/* align-items: baseline; */
+				flex-wrap: wrap; /* 是否换行 */
+				/* align-content: space-between;多行辅轴对其 */
+				align-content: space-around;
+				
+			}
+			div span{
+				width: 100px;
+				height: 50px;
+				margin-right: 1px;
+				background-color: yellow;
+				line-height: 50px;
+				text-align: center;
+			}
+			div span:nth-child(10){
+				margin-right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		 <div>
+			<span>1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+			<span>6</span>
+			<span>7</span>
+			<span>8</span>
+			<span>9</span>
+			<span>10</span>
+		 </div>
+	</body>
+</html>
+<!-- 
+		一 传统布局与flex布局
+		 传统布局: 							flex弹性布局:
+		 ● 兼容性好 						● 操作方便，布局极为简单，移动端应用很广泛
+		 ● 布局繁琐							● pc端浏览器支持情况较差
+		 ● 局限性,不能在移动端很好的布局	  ● IE 11或更低版本不支持或仅支持部分
+		 
+		 建议：
+			1，如果是PC端页面布局，我们还是传统布局。
+			2，如果是移动端或者不考虑兼容性问题的pc端页面布局，我们还是使用flex弹性布局。
+		
+		二 flex布局原理：
+			
+			注意：设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。	
+			
+			容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。
+			主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；
+			交叉轴的开始位置叫做cross start，结束位置叫做cross end。
+			项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
+			
+		三、容器的属性
+			以下6个属性设置在容器上。
+			flex-direction：
+			flex-direction属性决定主轴的方向（即项目的排列方向）,主轴不是固定的。
+				row（默认值）：	主轴为水平方向，起点在左端。
+				row-reverse：	主轴为水平方向，起点在右端。
+				column：		主轴为垂直方向，起点在上沿。
+				column-reverse：主轴为垂直方向，起点在下沿。
+			
+			flex-wrap：
+			默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+				nowrap（默认）：	不换行。
+				wrap：			换行，第一行在上方。
+				wrap-reverse：	换行，第一行在下方。
+				
+			flex-flow：
+			flex-flow属性是flex-direction属性和flex-wrap属性的简写形式。
+				row nowrap（默认值）：主轴为水平方向，起点在左端。不换行。
+			
+			justify-content：
+			justify-content属性定义了项目在主轴上的对齐方式。(那个是主轴就以哪个为准)
+				flex-start（默认值）：	左对齐
+				flex-end：				右对齐
+				center： 				居中
+				space-between：			两端对齐，项目之间的间隔都相等。
+				space-around：			每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+				
+			align-items：
+			align-items属性定义项目在辅轴上如何对齐。
+				flex-start：		辅轴的起点对齐。
+				flex-end：			辅轴的终点对齐。
+				center：			辅轴的中点对齐。
+				baseline: 			项目的第一行文字的基线对齐。
+				stretch（默认值）：	如果项目未设置高度或设为auto，将占满整个容器的高度。
+			
+			align-content：
+			align-content属性定义了多个项目的对齐方式。如果项目只有一个项目，需要设置flex-wrap:wrap;才有效
+				flex-start：		与交叉轴的起点对齐。
+				flex-end：			与交叉轴的终点对齐。
+				center：			与交叉轴的中点对齐。
+				space-between：		与交叉轴端对两齐，项目之间的间隔平均分布。
+				space-around：		每个项目两侧的间隔都相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+				stretch（默认值）：	项目占满整个交叉轴。
+			
+		
+		来源：https://www.runoob.com/w3cnote/flex-grammar.html
+		 -->

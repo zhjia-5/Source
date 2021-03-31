@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input表单新属性</title>
+</head>
+<body>
+    <!-- 
+        required        required                内容不能为空
+        placeholder     "提示文本/占位符"        存在默认的值不显示，没有兼容性问题
+        autofocus       autofocus               页面加载完自动聚焦
+        multiple        multiple                可以选多个文件提交(flie类型的input)
+        autocomplete    off/on                  当用户在字段开始键入时，浏览器基于之前输入过的值，
+                                                应该显示出在字段中填写的选项。
+                                                默认打开"on"，关闭"off"
+                                                使用条件：需要放在表单内同时加上name属性，同时成功提交过。
+                                                因隐私问题一帮搜索框需要设置off       
+     -->
+     <form action="">
+         输入：<input type="text" name="username" required="required" placeholder="请输入文本"
+               autofocus="autofocus" autocomplete="on" >
+         提交：<input type="submit"  value="提交">
+     </form>
+</body>
+</html>

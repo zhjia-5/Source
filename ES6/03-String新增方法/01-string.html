@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string </title>
+</head>
+
+<body>
+    <script>
+        let str = 'abcdefg';
+        let str1 = 'abc';
+
+        //es5方法：返回str1在str中的索引值
+        console.log(str.indexOf(str1));//返回 0
+
+        // es6新增的新方法
+        // includes()：返回布尔值，表示是否找到了参数字符串。
+        // startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
+        // endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。
+        console.log(str.includes(str1));//true
+        console.log(str.startsWith(str1));//true
+        console.log(str.endsWith(str1));//false
+
+        // repeat()方法返回一个新字符串，表示将原字符串重复n次。
+        console.log(str.repeat(2));// "abcdefgabcdefg"
+
+    </script>
+</body>
+
+</html>

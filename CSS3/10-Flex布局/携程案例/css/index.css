@@ -1,0 +1,209 @@
+/* 携程网样式  */
+body, html {
+	height: 100%;
+    font: 400 16px/1.5 PingFangSC-regular,Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;
+}
+a { text-decoration: none; }
+a:hover{ text-decoration: none; }
+a:visited{ text-decoration: none; }
+ul{ list-style: none; }
+body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -moz-user-select: none;
+	min-width: 320px;
+    max-width: 540px;
+    margin: 0 auto;
+    background: #fafafc;
+}
+.search-index{
+	display: flex;
+	position: fixed;
+	top: 0;
+	z-index: 10px;
+	/*如果设置left:0;的话就不会居中
+	  另一种个居中对齐的方式是：
+		left:50%;
+		transfrom:translateX(-50%); */
+	width: 100%;
+	min-width: 320px;
+	max-width: 540px;
+	height: 44px;
+	background:linear-gradient(to right,#4B90ED,#DEF0FE);
+}
+.user{
+	width: 44px;
+	height: 44px;
+	font-size: 12px;
+}
+.user img{
+	width: 70%;
+	height: 70%;
+	margin: 6px 6px;
+}
+.search{
+	flex: 1;
+	border: 0;
+	margin: 5px 5px;
+	background-color: #ffffff;
+	border-radius: 20px;
+	box-shadow: 2px 2px 3px #888888;
+}
+.search input{
+	width: 100%;
+	height: 100%;
+	border: 0;
+	outline: 0;/* 聚焦后外边框 */
+	border-radius: 20px;
+	padding-left: 30px;
+	font-size: 14px;
+	color: #A39787;
+}
+
+.focus{
+	position: relative;
+	z-index: -9;
+	margin-top: 44px;
+	width: 100%;
+	height: 150px;
+}
+.focus img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: 2s;
+}
+.focus .on{
+	opacity: 1;
+}
+
+.nav{
+	display: flex;
+	height: 80px;
+	margin-top: 20px;
+	background-color: #FFFFFF;
+	box-shadow: 1px 1px #9D9D9D;
+	border-radius: 10px;
+	padding: 10px;
+}
+.nav a{
+	flex: 1;
+	text-align: center;
+	font-size: 12px;
+	color: #000000;
+}
+.nav img{
+	width: 30%;
+	height: 50%;
+	margin-bottom: 10px;
+}
+nav a{ color: #FFFFFF; }
+nav a:hover{ color: yellow; }
+nav{
+	display: flex;
+	margin: 8px auto;
+	border-radius: 10px;
+	overflow: hidden;/* 把超出的部分隐藏才会显示圆角， */
+	flex-direction: column;
+	color: #FFFFFF;
+	text-align: center;
+	text-shadow: 1px 1px rgba(0,0,0,.2);/* 文字阴影 */
+}
+.nav-main{
+	flex: 1;
+	display: flex;
+	height: 88px;
+	margin: 1px 0;
+	line-height: 88px;
+}
+.nav-main:nth-child(1){
+	background: linear-gradient(to right,#FA5D56,#FFBD49);
+	/* background: -moz-linear-gradient(to right,#FA5D56,#FFBD49);
+	background: -ms-linear-gradient(to right,#FA5D56,#FFBD49);
+	background: -o-linear-gradient(to right,#FA5D56,#FFBD49); */
+	}
+.nav-main:nth-child(2){
+	background: linear-gradient(to right,#4B90ED,#53BCED);
+	/* background: -moz-linear-gradient(to right,#4B90ED,#53BCED);
+	background: -ms-linear-gradient(to right,#4B90ED,#53BCED);
+	background: -o-linear-gradient(to right,#4B90ED,#53BCED); */
+	}
+.nav-main:nth-child(3){
+	background: linear-gradient(to right,#35C3A9,#6CD557);
+	background: -moz-linear-gradient(to right,#35C3A9,#6CD557);
+	background: -ms-linear-gradient(to right,#35C3A9,#6CD557);
+	background: -o-linear-gradient(to right,#35C3A9,#6CD557);
+	}
+
+.nav-mid {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+/* -n+2：前两个元素的; n+2：从第二个开始 */
+.nav-mid:nth-child(-n+2){
+	border-right: 1px #FFFFFF solid;
+}
+.nav-small {
+	flex: 1;
+	line-height: 44px;
+}
+/* 各区域内的第二个子元素 */
+.nav-mid .nav-small:nth-child(2){
+	border-top: 1px #FFFFFF solid;
+}
+
+/* 底部导航栏 */
+.subnav-entry{
+	display: flex;
+	border-radius: 10px;
+	flex-wrap: wrap;
+}
+.subnav-entry a{
+	flex: 20%;/* flex可以设置为百分比 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+.subnav-entry img{
+	flex: 1;
+	width: 30px;
+	height: 30px;
+	margin-bottom: 5px;
+}
+.nav-buttom{
+	display: flex;
+	margin: 0 8px;
+}
+.nav-buttom a{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-top: 1px solid #B9BBB7;
+	border-bottom: 1px solid #B9BBB7;
+	padding: 10px 0;
+	color: #000000;
+	font-size: 12px;
+}
+.nav-buttom img{
+	width: 20px;
+	height: 20px;
+	margin-bottom: 5px;
+}
+.info{
+	margin-top: 5px;
+	font-size: 14px;
+	text-align: center;
+	color: #B9BBB7;
+}
+.info a{
+	font-size: 14px;
+	text-align: center;
+	color: #B9BBB7;
+}

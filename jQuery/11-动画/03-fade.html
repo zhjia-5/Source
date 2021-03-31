@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="fadeOut">淡出</button>
+    <button id="fadeIn">淡入</button>
+    <button id="fadeToggle">切换</button>
+    <button id="fadeTo">改变透明度</button>
+    <div class="box" style="width: 200px; height: 300px;background: orange;"></div>
+    <script>
+        // 淡出演示
+        $('#fadeOut').click(function(){
+            // $('.box').fadeOut();
+            // $('.box').fadeOut('fast');
+            // $('.box').fadeOut('nomal');
+            // $('.box').fadeOut('slow');
+            $('.box').fadeOut(1000,function(){
+                console.log('淡出结束');
+            });
+        });
+        // 淡入演示
+        $('#fadeIn').click(function(){
+            // $('.box').fadeIn();
+            // $('.box').fadeIn('fast');
+            // $('.box').fadeIn('nomal');
+            // $('.box').fadeIn('slow');
+            $('.box').fadeIn(1000,function(){
+                console.log('淡入结束');
+            });
+        });
+        // 淡出淡入切换
+        $('#fadeToggle').click(function(){
+            // $('.box').fadeToggle();
+            // $('.box').fadeToggle('fast');
+            // $('.box').fadeToggle('nomal');
+            // $('.box').fadeToggle('slow');
+            $('.box').fadeToggle(1000,function(){
+                console.log('淡出淡入结束');
+            });
+        });
+        // 改变透明度
+        $('#fadeTo').click(function(){
+            // $('.box').fadeTo('nomal',0.3);
+            // $('.box').fadeTo('fast',0.5);
+            // $('.box').fadeTo('slow',0.3);
+            $('.box').fadeTo(1000,0.5,function(){
+                console.log('已经修改透明度');
+            });
+        });
+    </script>
+
+</body>
+</html>

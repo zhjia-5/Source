@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>类数组</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			 类数组：
+			 1，可以利用属性名模拟数组的特性
+			 
+			 2，可以动态的增长数组的长度
+			 
+			 3，如果强行让数组调用push方法，则会根据length属性值的位置进行属性的扩充
+			 
+			 */
+			var a = 1;
+			function b(){}
+			
+			var obj = {
+				"0" : "a",
+				"1" : "b",
+				"2" : "c",
+				"length" : 3,
+				"push" : Array.prototype.push,
+				"splice" : Array.prototype.splice
+			}
+			obj.push("d");
+			/* 属性要为索引（数字）属性，必须有length属性，最好加上push
+			push:底层原理
+			Array.prototype.push = function(target){
+				this[this.length] = target;//this.length==obj.leng==3,将参数target赋值给类数组第三位
+				this.length ++;//然后该类数组长度++
+			} */
+		</script>
+	</body>
+</html>

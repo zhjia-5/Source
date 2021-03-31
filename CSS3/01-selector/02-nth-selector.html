@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--   
+    结构伪类选择器:
+    -------------CSS是从1开始查数，自然数n是从0开始查数-----------
+     ------------注意E后面需要加空格或者可加子元素(ul li:first-child)------------
+     ------------需要子元素为同种类型----------------------------
+    E e:first-child	     选择父元素E下第一个e，相当于E:nth-last-child(1)
+    E e:last-child	     选择父元素E下最后一个e，相当于E:nth-last-child(1)
+    E e:nth-child(n)	 选择父元素E下第n个子元素，n从1开始,如果括号是n表示全选。也可以为关键字（even偶数，odd奇数）
+    
+    ------------不需要子元素为同种类型 需要加写子元素-----------------------
+    E e:first-of-type	 选择父元素E下同种标签(e)的第一个元素，相当于E:nth-of-type(1)	
+    E e:last-of-type	 选择父元素E下同种标签(e)的倒数第一个元素，相当于E:nth-last-of-type(1)	
+    E e:nth-of-type(n)	 与:nth-child(n)作用类似，用作选择使用同种标签(e)的第n个元素	
+    
+   
+    ---------------------------------------------------------------------
+    E :nth-last-child(n)	选择父元素E的倒数第n个子元素，n从1开始计算
+    E e:nth-last-of-type	与:nth-last-child作用类似，用作选择同种标签(e)的倒数第一个元素	
+    E :only-child	        选择父元素E下仅有的一个子元素，相当于E:first-child:last-child或E:nth-child(1):nth-last-child(1)	
+    E :only-of-type      	选择父元素E下使用同种标签的唯一子元素，相当于E:first-of-type:last-of-type或E:nth-of-type(1):nth-last-of-type(1)	
+    E :empty	            选择空节点，即没有子元素的元素，而且该元素也不包含任何文本节点	
+    E :root	                选择文档的根元素，对于HTML文档，根元素永远HTML
+    input:checked           选择被√选中的input框
+    input:read-only         选择只读的input框
+    input:write             选择只写的input框
+-->
+    <style>
+        #ul :first-child{/* 可以在ul 后面加li */
+            background-color: yellow;
+        }
+        #ul :last-child{
+            background-color: blue;
+        }
+        #ul :nth-child(5){
+            background-color: pink;
+        }
+         /* E :nth-child(n)	选择父元素E的第n个子元素，
+            * n如果是数字n从1开始计算
+            * n可以是关键字，even偶数  odd奇数  */
+        #ul2 :nth-child(even){
+            background-color: grey;
+        }
+        /* E :nth-child(n)	
+        * n可以是关键字，even偶数  odd奇数  
+        * 如果括号里是n的话标签全选
+        * n如果是公式：n从0开始计算,但是第0个元素或者超出了元素的个数会被忽略
+            常见公式：
+            2n      偶数
+            2n+1    奇数
+            5n      5、10、15....5的倍数
+            n+5     从第5个开始（包含第5个）到最后
+            -n+5    前五个（包含第5个）
+        */
+        ol :nth-child(3n){/* 3的倍数的元素 */
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>这是第1个li标签</li>
+        <li>这是第2个li标签</li>
+        <li>这是第3个li标签</li>
+        <li>这是第4个li标签</li>
+        <span>这是第1个P标签</span>
+        <li>这是第5个li标签</li>
+        <li>这是第6个li标签</li>
+        <li>这是第7个li标签</li>
+        <span>这是第2个P标签</span>
+        <li>这是第8个li标签</li>
+        <span>这是第3个P标签</span>
+    </ul>
+    <ul id="ul2">
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+    </ul>
+    <ol>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+        <li>这是子元素li</li>
+    </ol>
+</body>
+
+</html>

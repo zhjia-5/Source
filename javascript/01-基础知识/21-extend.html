@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>继承</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			 1,传统 形式-->原型链
+				过多继承没有用的属性
+			
+			2，借用构造函数 	call / apply
+				不能继承构造函数的原型
+				每次构造函数都要多走一个函数
+			
+			3,共享原型
+				缺点：不能随便改动自己的原型
+			
+			4,圣杯模式
+				
+			 */
+			
+			// 3,共享原型   
+			// 缺点：给Son增加更改属性时Father也会跟着更改
+			/* Father.prototype.lastName = "Deng";
+			function Father(){
+				
+			}
+			function Son(){
+				
+			}			
+							//目标	//起源
+			function inherit(Target,Origin){//继承构造函数
+				Target.prototype = Origin.prototype;
+			}
+			inherit(Son,Father);
+			var son = new Son(); 
+			son.__proto__.lastName = "zhang";//可以修改父类属性
+			son.__proto__.name = "san";//增加属性的同时父类也一起增加
+			 */
+			
+			// 4,圣杯模式:
+			// 利用function F(){}作为转换函数，使得子类修改属性的时候父类不会跟着更改
+			/* function inherit(Target,Origin){
+					function F(){}	
+					F.prototype = Origin.prototype;
+					Target.prototype = new F();
+					Target.prototype.constrctor = Target;//构造函数原型归位 //如果不归位其原型链为：son.__proto__--> new F().__proto__ --> Father.__proto__
+					Target.prototyp.uber = Origin.prototype;	//查看Target父类的原型
+				}
+			
+			Father.prototype.lastName = "zhang";
+			function Father(){}
+			function Son(){}
+			inherit(Son,Father);
+			var son = new Son();
+			var father = new Father();
+			 */
+			
+			// 雅虎——YUI3 继承方式(建议使用)
+			var inherit = (function (){
+				var F = function (){}//转换函数
+				return function (Target,Origin){
+					F.prototype = Origin.prototype;
+					Target.prototype = new F ();
+					Target.prototype.constructor = Target;//构造函数原型归位 
+					Target.prototype.uber = Origin.prototype;	////查看Target父类的原型
+				}
+			});
+			Father.prototype.lastName = "zhang";
+			function Father(){}
+			function Son(){}
+			inherit (Son,Father);
+			var son = new Son();
+			var father = new Father();
+			
+		</script>
+	</body>
+</html>

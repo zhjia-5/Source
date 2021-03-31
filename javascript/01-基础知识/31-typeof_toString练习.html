@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>typeof_toString练习</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/* 
+		typeof_toString练习：
+		分两类：  
+			一：原始值 :	number
+						string
+						boolean
+						undefined 
+					  
+			二：引用值：
+			 object(对象)：
+						"[object Array]"
+						"[object Object]"
+						"[object Number]"
+						"[object Boolean]"
+						"[object String]"
+						
+			function(函数)："function"
+		 */	
+		function type(target){
+			var template = {
+				"[object Array]" : "array",
+				"[object Object]" : "object",
+				"[object Number]" : "number - object",
+				"[object Boolean]": "boolean - object",
+				"[object String]" : "string - object",
+			}
+			if(target == null){
+				return "null";
+			}else if(typeof(target) == "object"){//引用值——包装类对象
+				var str = Object.prototype.toString.call(target);
+				return template[str];
+			}else{
+				return typeof(target);//判断原始值和function
+			}
+		}
+		
+		
+		</script>
+	</body>
+</html>

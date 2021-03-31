@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+            word-break: keep-all;
+            /* 超出不换行 */
+            overflow: visible;
+            /* 默认值 超出显示 */
+            overflow: hidden;
+            /* 超出隐藏 */
+            overflow: scroll;
+            /* 无论是否超出都显示滚动条区域 */
+            overflow: auto;
+            /* 只有超出才才显示滚动区域 */
+            /* 如果x y 轴其中一个设置了非visible,另一个值就变为auto */
+            overflow-x: auto;
+            /* overflow-y: scroll; */
+
+            /* 可以调节容器大小，慎用 */
+            resize: both;
+            /* x y 轴都可以调节*/
+            resize: vertical;
+            /* y 轴可以调节*/
+            resize: horizontal;
+            /* x 轴可以调节 */
+
+
+            /* 
+                单行超出显示...：
+                 overflow:hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                -o-text-overflow:ellipsis;
+
+                多行超出显示...
+                overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+            
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+        多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出部分隐藏多行文本超出
+    </div>
+
+</body>
+
+</html>

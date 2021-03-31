@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素清除浮动原理</title>
+    <style>
+        .container{
+            background: #cccccc;
+            border: 1px solid black;
+        }
+        .div1,.div2{
+            float: left;
+            width: 100px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        }
+       
+        /*  清除浮动的第二种方法：
+         .clearfix::after{
+            content: "";
+            height: 0;
+            visibility: hidden;
+            clear: both;
+            display: block;
+        } */
+
+        /* 清除浮动的最好的方法： */
+        .clearfix::before,.clearfix::after{
+            content: '';/* 单引号兼容性更好 */
+            display: table;
+        }
+        .clearfix::after{
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container clearfix">
+        <div class="div1">1</div>
+        <div class="div2">2</div>
+    </div>
+</body>
+</html>

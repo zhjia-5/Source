@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div ></div>
+    <div id="div2">div2</div>
+    <span class="span1">span1</span>
+    <span class="span2">span2</span>
+    <script>
+        var span = document.getElementsByClassName('span2')[0];
+        $('#btn').click(function () {
+            $('div').css({
+                width: '100px',
+                height: '100px',
+                background: 'red'
+            }).appendTo('body');
+        });
+
+        // 原生转为jQuery
+        $(span).css('color','red');
+        
+        // jQuery转为原生
+        // 加上[对应角标]就行，不管该类有多少个元素，因为$('.span1')返回的是个数组
+        $('.span1')[0].style.color = 'blue';
+
+        // jQuery链式编程
+        $('#div2').css('background','orange').css({width:'100px',height:'100px'}).css('border','1px solid #000');
+    </script>
+</body>
+
+</html>

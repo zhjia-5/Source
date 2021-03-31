@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>事件处理模型</title>
+	<style type="text/css">
+		.red {
+			width: 300px;
+			height: 300px;
+			background-color: red;
+		}
+
+		.yellow {
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+		}
+
+		.orange {
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+		}
+
+		.red1 {
+			width: 300px;
+			height: 300px;
+			background-color: red;
+			position: absolute;
+			top: 400px;
+		}
+
+		.yellow1 {
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+		}
+
+		.orange1 {
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 
+		 事件处理模型——事件冒泡、捕获
+		 
+		 事件冒泡：
+			结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，
+			即同一件事，自子元素冒泡向父元素。（自底向上）
+			
+		 事件捕获：
+			结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，
+			即同一事件，自父元素捕获至子元素（事件源元素）。（自顶向下）
+			
+			ie没有捕获事件
+		
+		*触发顺序，先捕获 ，后冒泡
+		
+		focus，blur，change，submit，reset，select等事件不冒泡
+		 
+		 -->
+	<div class="red">
+		<div class="yellow">
+			<div class="orange"></div>
+		</div>
+	</div>
+
+	<div class="red1">
+		<div class="yellow1">
+			<div class="orange1"></div>
+		</div>
+	</div>
+		<script type="text/javascript">
+			var red = document.getElementsByClassName('red')[0];
+			var yellow = document.getElementsByClassName('yellow')[0];
+			var orange = document.getElementsByClassName('orange')[0];
+			var red1 = document.getElementsByClassName('red1')[0];
+			var yellow1 = document.getElementsByClassName('yellow1')[0];
+			var orange1 = document.getElementsByClassName('orange1')[0];
+
+			// 事件冒泡：（自底向上）
+			red.addEventListener('click', function () {
+				console.log('red');
+			}, false);//单机red输出：red
+
+			yellow.addEventListener('click', function () {
+				console.log('yellow');
+			}, false);//单机yellow输出：yellow，red
+
+			orange.addEventListener('click', function () {
+				console.log('orange');//单机yellow输出：orange，yellow，red
+			}, false);
+
+			// 事件捕获：（自顶向下）
+			red1.addEventListener('click', function () {
+				console.log('red');
+			}, true);//单机red输出：red
+
+			yellow1.addEventListener('click', function () {
+				console.log('yellow');
+			}, true);//单机yellow输出：redyellow
+
+			orange1.addEventListener('click', function () {
+				console.log('orange');//单机yellow输出：red，yellow，orange
+			}, true);
+
+		</script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型指向</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 1：
+			/* 
+			Person.prototype.name = "hello";
+			function Person(){
+				
+			}
+			Person.prototype.name = "hi";//在原有的基础上该值
+			var person = new Person();
+			console.log(person.name);//打印结果为：hi */
+			
+			
+			// 2：
+			/* Person.prototype.name = "hello";
+			function Person(){
+				
+			}
+			var person = new Person();
+			Person.prototype = {
+				name : "hi"//更改原型，换新对象
+			}
+			console.log(person.name);//打印结果为：hello */ 
+			
+			
+			// 3：
+			Person.prototype.name = "hello";
+			function Person(){
+				
+			}
+			Person.prototype = {
+				name : "hi"//更改原型覆盖原型值
+			}
+			var person = new Person();//
+			console.log(person.name);//打印结果为：hi
+			
+			
+		</script>
+	</body>
+</html>

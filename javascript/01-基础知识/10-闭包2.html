@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>闭包2</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function test() {
+				var arr = [];
+				for (var i = 0; i < 10; i++) {
+					arr[i] = function(){
+						document.write(i + " ");//此行里的i不会随此处for循环而改变，
+					}							//直到执行myArr[j]();才会访问此处i的值。
+												//当i=10时for才停止循环，所以当myArr[j]();访问到的值为10。
+				}
+				return arr;
+			}
+			var myArr = test();
+			for (var j = 0; j < 10; j ++) {
+				myArr[j]();//由于闭包的原因，访问i的值是公有的，所以打印出来为10
+			}
+			// 打印结果：10 10 10 10 10 10 10 10 10 10
+		</script>
+	</body>
+</html>

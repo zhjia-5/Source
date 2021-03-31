@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>预编译</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 			0   +1
+			var str = false + 1;
+			document.write(str + "<br>");			//输出结果：1
+			
+			// 			0不等于1
+			var demo = false == 1;
+			document.write(demo + "<br>");			//输出结果：false
+			
+			// -1 + NaN = NaN, NaN + "" = "NaN"，左右两边都是字符串所以能通过
+			//"undefined"&&  -1   +  	NaN	 	 +""
+			if(typeof(a) && -true + (+undefined) + ""){
+				document.write('基础扎实' + "<br>");//输出结果：基础扎实
+			}
+			
+			// 11 +   22	 ==33
+			if(11 + "11" * 2 == 33){
+				document.write('基础扎实' + "<br>");//输出结果：基础扎实
+			}
+			
+			//true+ false-false——> 1+0-0=1
+			!!" " + !!"" - !!false || document.write('基础不扎实' + "<br>");//不输出
+		</script>
+	</body>
+</html>

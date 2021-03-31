@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--
+        **************细节**********
+        1，未决阶段的处理函数时同步的，会立即执行
+        2，thenable和catchable函数是异步的，就算是立即执行，也会加入到
+            事件队列中等待执行，并且，加入的队列是微队列(相当于VIP，在同步之后，于setTimeout（宏队列）之前)。
+        3，pro.then可以只添加thenable函数，pro.catch可以单独添加catchable函数。
+            1) 含两个函数语法：     pro.then(data=>{},err=>{});
+            2) 单个thenable函数：   pro.then(date=>{});
+            3) 单个catchable函数：  pro.catch(err=>{})
+        4，在未决阶段的处理函数中，如果发生未捕获的错误，会将状态推向rejected，并会被catchable捕获
+        5，一旦状态推向了已决阶段，无法再对状态做任何更改
+        6，promise并没有消除回调，只是让回调变得可控。
+
+
+     -->
+    <script>
+        // Promise接收一个函数为参数
+        // 该函数又接收函数作为参数：resolve reject，一个成功一个失败
+        const pro = new Promise((resolve, reject) => {
+            // 未决阶段的处理
+            // 通过调用resolve函数将Promise推向已决阶段的resolved状态
+            // 通过reject函数将Promise推向已决阶段的jejected状态
+            // resolve和reject均可传递最多一个参数，表示推向状态的数据
+        });
+
+        // then()方法接收两个函数作为参数，一个处理成功，一个处理失败
+        // 
+        pro.then(data => {
+            // 这是thenable函数，如果当前的Promise已经是resolved状态，该函数会立即执行
+            // 如果当前是未决阶段，则会加入作业队列，等待到达resolved状态后执行
+            // data为状态函数
+        }, err => {
+            // 这是catchable函数，如果当前的Primise已经是rejectd状态，该函数会立即执行
+            // 如果当前是未决阶段，则会加入作业队列，等待到达rejected状态后执行
+            // err 为状态函数
+            
+        });
+
+        // 演示
+        const pro2 = new Promise((resolve,reject)=>{
+            console.log('目前处于未决阶段');
+            setTimeout(()=>{
+                if(Math.random() < 0.5){
+                    resolve(200);//推向已决的resolved状态
+                }else{
+                    reject(new Error(404));//推向已决的rejected状态
+                }
+            },0);
+        });
+        // 
+        pro2.then(data=>{
+            console.log(data)//在这里处理已决的resolved状态
+        },err=>{
+            console.log(err);//在这里处理已决的rejected状态
+        });
+
+        console.log('上面代码为异步代码，会先执行此处代码....');
+
+  
+    </script>
+</body>
+
+</html>

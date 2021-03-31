@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>克隆-替换元素</title>
+</head>
+<body>
+    <div class="div1">div1元素</div>
+    
+    <p class="p1">p1标签</p>
+    <p class="p2">p2标签</p>
+    <p class="p3">p3标签</p>
+    <p class="p4">p4标签</p>
+    <script>
+        // clone(true) 表示深克隆（身上的事件也克隆）  
+        // clone() || clone(false) 浅克隆 (身上的事件不克隆)
+        $('.div1').click(function(){
+            $(this).css('color','red');
+        })
+
+        // 将克隆后得到的div2插入到div1后面
+        var div2 = $('.div1').clone();
+        $('.div1').after(div2);
+
+
+        // replaceAll 主动替换方法————> p1 换掉 p2
+        $('.p1').replaceAll($('.p2'));
+
+        // replaceWith 被动替换方法————> p3 被 p2 换
+        $('.p3').replaceWith($('.p4'));
+    </script>
+</body>
+</html>

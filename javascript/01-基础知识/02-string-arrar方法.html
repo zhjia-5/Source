@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串方法</title>
+</head>
+<body>
+    <script>
+        var str = 'abcdef';
+        // str.slice(start,end)截取 , 含头不含尾，返回字符串
+        console.log("slice截取:"+ str.slice(1,3));  //返回字符串
+        console.log("split分割:"+ str.split('c'));
+        console.log(str.toLocaleUpperCase());//转为大写
+        console.log(str.toLocaleLowerCase());//转为小写
+
+        // str.slice(start,end)截取 , 含头不含尾，返回字符串 “bc”
+        var arr = ["a","b","c","d","e","f"];
+        console.log("slice截取:"+ arr.slice(1,3));//返回字符串“b,c”
+        console.log(arr.splice(1,3));//返回数组["b", "c", "d"],该方法具有返回值，原数组将被修改。
+
+    </script>
+</body>
+</html>

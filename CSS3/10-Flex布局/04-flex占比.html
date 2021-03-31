@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            flex的三个属性：flex: 0 0 atuo;
+                flex-grow: 数字、百分比; 在剩余空间中按设定占比分配。（伸比例）
+
+                flex-shrink:数字、百分比;在超出空间中按设定占比分配。（缩比例）,
+
+                flex-basis: 相当于设置了元素的width，含义：基本宽度，优先级比width高
+         */
+        .main1{
+            width: 500px;
+            height: 200px;
+            background: #ccc;
+            display: flex;
+        }
+        .item1{
+            box-sizing: border-box;
+            border-right:1px solid #fff ;
+            width: 100px;
+            height: 100px;
+            background: red;
+            flex-grow: 1;
+        }
+         /* flex-grow演示：在剩余空间 500-300=200px 中拉伸分配比例 */
+        .item1:nth-of-type(1){
+            flex-grow: 2;/* 300px 里面共分5份，占2份： 100 +（200 * 2/4）= 200px*/
+        }
+        .item1:nth-of-type(2){
+            flex-grow: 1;/* 300px 里面共分5份，占1份： 100 +（200 * 1/4）= 150px*/
+        }
+        .item1:nth-of-type(3){
+            flex-grow: 1;/* 300px 里面共分5份，占1份：100 +（200 * 1/4）= 150px*/
+        }
+        
+
+        
+        .main2{
+            width: 500px;
+            height: 200px;
+            background: #333;
+            display: flex;
+        }
+        .item2{
+            box-sizing: border-box;
+            border-right:1px solid #fff ;
+            width: 100px;
+            height: 100px;
+            background: red;
+            flex-shrink: 1;
+            flex-basis: 300px;
+        }
+        /* flex-shrink演示：在超出空间 （300*3）- 600 = 300px 中压缩分配比例 */
+        .item2:nth-of-type(1){
+            flex-shrink: 3;     /*300 - 300 * 3/6 = 150 */
+        }
+        .item2:nth-of-type(2){
+            flex-shrink: 2; /* 300 - 300 * 2/6 = 200 */
+        }  
+        .item2:nth-of-type(3){
+            flex-shrink: 1; /* 300 - 300 * 1/6 = 250 */
+        }
+    </style>
+</head>
+<body>
+    <!-- flex-grow演示 -->
+    <div class="main1">
+        <div class="item1">1</div>
+        <div class="item1">2</div>
+        <div class="item1">3</div>
+    </div>
+
+    <!-- flex-shrink演示 -->
+    <div class="main2">
+        <div class="item2">11</div>
+        <div class="item2">22</div>
+        <div class="item2">33</div>
+    </div>
+    
+</body>
+</html>

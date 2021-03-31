@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数</title>
+</head>
+
+<body>
+    <script>
+        // 实现一个函数无论传的参数(number)有几个都可以让他们求和
+        // arguments是一个伪数组
+        function sum() {
+            let total = 0;
+            for (let i = 0; i < arguments.length; i++){
+                total += arguments[i];
+            }
+            return total;
+        }
+        console.log(sum(1,2,3,6));
+
+
+    // 以上sum方法使用arguments语义化不是很好，不能让调用者明确知道函数的用意
+    // 现在使用es6的...args（剩余参数）封装一个累积就和函数add()
+
+    // 语法：function add(a,b,...args){ }
+    // 一个函数只能有一个剩余参数
+    // 如果有剩余参数，必须在最后一为
+    function add(...args){
+        let total = 0;
+        for(let i =0; i < args.length; i ++){
+            total += args[i];
+        }
+        return total;
+    }
+    console.log(add(1,2,3));
+    </script>
+</body>
+
+</html>

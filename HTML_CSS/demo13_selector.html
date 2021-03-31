@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			/* 元素选择器 */
+			p1{
+				color: red;
+				font-size: 30px;
+			}
+			/* id选择器 */
+			#p2{
+				color: orange;
+				font-size: 35px;
+			}
+			/* 类选择器 */
+			.p3{
+				color: green;
+				font-size: 40px;
+			}
+			/* 复合选择器 */
+			div.div1{
+				color: blue;
+				font-size: 45px;
+			}
+			/* 通配符选择器
+			*{
+				color:yellow;
+				font-size: 10px;
+			} */
+			/* 后代选择器 */
+			#div2 p2 b{
+				font-size: 30px;
+			}
+			/* 子类选择器 */
+			#div2 > b{
+				color:black;
+				font-size: 25px;
+			}
+			/* 群组选择器 */
+			#div3 > p,#div4 > p > b,#div5 > b{
+				color: aqua;
+				font-size: 30px;
+			}
+			/* 兄弟选择器 紧选中#p4后面的唯一一个兄弟元素*/
+			#p4 + p{
+				color: #008000;
+				font-size: 40px;
+			}
+			/* 选中#p5后面所有兄弟元素 */
+			#p5 ~ p{
+				color: brown;
+				font-size: 20px;
+			}
+			
+		</style>
+		<title>css_celector选择器</title>
+	</head>
+	<body>
+		<!-- 
+		 一，选择器：HTML标签的id，class属性和HTML标签的关系
+		 	HTML标签的id属性和HTML标签的关系：身份证和我们
+		 	HTML标签的class属性和HTML标签的关系：名字和我们
+		 
+		 二，选择器
+		 选择器（selector）:声明网页上的哪些标签是我们选中的。
+		 
+		1，元素选择器：选中相同的元素，然后对相同的元素定义同一组css样式。
+			语法：
+			标签名{
+					属性1：取值1；
+					...
+					属性 2：取值2；
+				}
+		 
+		 2，id选择器：为元素设置id属性，然后对设置了这个id 的元素定义css样式.
+		 id选择器具有唯一性。
+		 
+			语法：
+				#id值{
+					color:red;
+					width:100px;
+				}
+		 
+		 3,class选择器：类选择器。我们可以对相同元素和不同元素定义相同的class属性，
+		   然后针对拥有同一个class的元素进行css样式操作。
+			.class值{
+				color：red；
+			}
+			
+		4，复合选择器：可以使用多个选择器，这样可以选择同时满足多个选择器的元素。
+			语法：
+				选择器1选择器2{
+					color：red；
+				}
+			
+		5,通用选择器：
+			语法：*{}
+			
+		6，后代选择器：
+		HTML族谱：		
+		祖先元素：			html
+		兄弟元素：	head 			body
+		后代元素	：meta 	title 	  h1 	 p
+		
+		标签之间的关系：
+			祖先元素：直接或间接包含后代元素的元素
+			后代元素：直接或间接被祖先元素包含的元素
+			父元素：直接包含子元素的元素
+			子元素：直接被父元素包含的元素
+			兄弟元素：拥有相同的父元素的元素
+			
+		后代选择器语法：
+			#div2 p2 b{
+				font-size: 30px;
+			}
+		子元素选择器语法：
+			#div2 > b{
+				font-size: 30px;
+			}
+		其他子元素选择器语法：
+			：first-child 			-选择第一个子标签
+			：last-child 			-选择最后一个子标签
+		
+		7,群组选择器：
+			语法：#div3 > p,#div4 > p > b,#div5 > b{ }
+				
+		8，兄弟选择器：
+			语法：#p4 + p{ }   //紧选中#p4后面的唯一一个兄弟元素
+			语法：#p5 ~ p{}    //选中#p5后面所有兄弟元素
+		
+		9，CSS3:新特性-属性选择器
+			匹配所有src属性 并且值以im开头的元素：[src^='im']{ color:red; }
+			匹配所有src属性 并且值以ng结尾的元素：[src$='png']{ color:red; }
+			匹配所有src属性 并且值包含es的元素：[src*='es']{ color:red; }
+
+			
+		三：选择器的优先级：
+		从高往低：	
+				!important
+				行内样式表
+				id选择器
+				类选测器 == 属性选择器
+				元素选择器
+				通配选择器
+				浏览器自定义
+				继承
+				<div style="color="red";>
+					<p>p标签会继承父标签的样式，因此是red色 。</p>
+				</div>
+
+			!important  		 Infinity
+			行间样式				1000        
+			id 						100
+			class|属性|伪类  		 10
+			标签|伪元素 			  1
+			通配符 					  0
+
+			注意：1000 100 10 1 0 为256进制。
+				
+		 -->
+		 <p1>1，元素选择器</p1>
+		 <br />
+		 <p2 id="p2">2，id选择器</p2>
+		 <br />
+		 <p3 class="p3">3，class选择器</p3>
+		 <br />
+		 <div class="div1">
+			4,div.div选择器
+		</div>
+		<div id="div2">
+			<p2>6,后代<b>选择器</b></p2>
+			<br />
+			<b>6,子元素选择器</b>
+		</div>
+		 
+		<div id="div3">
+			<p>7,div3群组选择器</p>
+		</div>
+		<div id="div4">
+			<p>7,<b>div4</b>群组选择器</p>
+		</div>
+		 <div id="div5">
+			7,<b>div5</b>群组选择器
+		 </div>
+		 
+		 <div id="div6">
+		 	<p id="p4">8,兄弟选择器1</p>
+			<p>紧选中#p4后面的唯一一个兄弟元素</p>
+			<p id="p5"></p>
+			<p>选中#p5后面所有兄弟元素</p>
+			<p>选中#p5后面所有兄弟元素</p>
+		 </div>
+		 
+		 
+	</body>
+</html>
