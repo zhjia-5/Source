@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 980px;
+            margin: 0 auto;
+            background: #eee;
+        }
+
+        .wrapper::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .wrapper .col{
+            float: left;
+            width: 25%;
+        }
+
+        .wrapper .col .item{
+            margin: 10px;
+            padding: 10px;
+            background: #fff;
+        }
+        img{
+            width: 100%;
+            /* 高度自适应 */
+        }
+    </style>
+</head>
+<body>
+    <ul class="wrapper">
+        <li class="col">
+            <!-- <div class="item">
+                <img src="./image/0.png" alt="">
+                <p>这是第1张图片</p>
+            </div> -->
+        </li>
+        <li class="col">
+            <!-- <div class="item">
+                <img src="./image/1.png" alt="">
+                <p>这是第2张图片</p>
+            </div> -->
+        </li>
+        <li class="col">
+            <!-- <div class="item">
+                <img src="./image/2.png" alt="">
+                <p>这是第3张图片</p>
+            </div> -->
+        </li>
+        <li class="col">
+            <!-- <div class="item">
+                <img src="./image/3.png" alt="">
+                <p>这是第4张图片</p>
+            </div> -->
+        </li>
+        
+    </ul>
+    <script src="./js/ajax.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "ai-service",
+  "version": "1.0.0",
+  "description": "ai-service",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/zhjia-5"
+  },
+  "author": "zhjia-5",
+  "license": "ISC"
+}

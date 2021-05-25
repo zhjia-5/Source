@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    跨域访问资源： 
+        哪些东西属于资源？
+            js文件算是资源，但js文件允许被跨域请求的。
+            css，jpg，png...等都可以被跨域请求的。
+            href资源大部分都是可以被跨域请求的。
+        哪些资源算跨域请求的资源？
+            1，后端接口的数据
+            2，其他域的cookie
+            3，其他域的缓存
+                1):什么是其他的域？怎么算跨域？
+                    页面本身：有协议（http/https），域名 ，端口
+                    要有请求的数据：https://www.baidu.com:80
+                    发送方与接收方协议，域名，端口号有任意一个不一样就算跨域
+        
+       跨域这个行为在哪里发生，发生在哪里？
+       答案：
+        1，即使跨域了（协议，域名，端口号又不一样），请求也可以发出
+        2，服务器端也是可以接收的。
+        3，服务器端也是可以正常处理的。
+        4，服务器端也是可以返回数据的。
+        5，浏览器也能接收到这些数据。
+        6，接受到了之后，发现当前页面的域和请求的域不同，所以判断为跨域。
+        7，我们的代码在这等着结果呢，但是因为浏览器判定跨域了，不会把结果传递给我们的代码
+        
+        虽然跨域了，但是我们依然需要这个数据，怎么办？
+        解决跨域的问题：
+            1，后端配合我们进行跨域(别人的后端：例如：百度)
+                pan.baidu.com --》 zhidao.baidu.com （公司一样，域名不一样，也是跨域） 
+                1）JSONP
+                2）后端设置Access-Control-Allow-Origin属性————支持跨域。
+            2，后端不配合我们进行跨域。
+                3）iframe(只能显示，不能控制)
+                4）通过后端代理(自己的后端)
+
+     -->
+     <script>
+         var xhr = new XMLHttpRequest();//不兼容ie6
+        //  后端设置了 Access-Control-Allow-Origin: *; 所以不报错
+         xhr.open('get','http://developer.duyiedu.com/edu/testAjaxCrossOrigin');
+         xhr.send();
+     </script>
+</body>
+</html>
