@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var value = 1;
+        var obj = {
+            value:100
+        }
+
+        function show(name,age){
+            console.log(this.value);
+            console.log(name + "-" + age);
+        }
+        // bind(arg1,arg2,...); 
+        // 如果第一个参数为如果为null，该函数的this指向为window,
+        // 如果为某个对象obj，该函数的this指向就为obj
+        var newShow = show.bind(obj,'张三',18);
+        newShow();//输出 100     张三-18
+    </script>
+</body>
+</html>

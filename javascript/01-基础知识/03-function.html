@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 命名函数表达式：
+			函数名为abc
+			var test = function abc (){
+				document.write('a');
+			} 
+		 */	
+		/* 	匿名函数表达式(函数表达式)：
+			var demo = function(){
+				document.write('b');
+			}
+		*/
+	   
+	   /* 
+		带参函数
+	  括号里的ab 相当于var a,var b;
+	  function test(a,b){
+		  var c = a + b;
+		  document.write(c);
+	  }
+	  test(2,3);
+		 */   
+		/* 求任意数相加的和
+		function sum(){
+			var result=0;
+			for (var i = 0; i < arguments.length; i ++) {
+				result += arguments[i];
+			}
+			console.log(result);
+		}
+		sum(1,2.4,5.5,7,89,"a");//可以填任意类型的数据 */
+		
+		/* 
+		 返回值
+		 */
+		
+		function myNumber(target){
+			return +target;//加号表示隐式转换成数字
+		}
+		
+		var num = myNumber(123);
+		console.log(num);
+		
+		
+		
+		
+		</script>
+		
+	</body>
+</html>

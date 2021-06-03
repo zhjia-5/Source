@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform-style: preserve-3d</title>
+    <style>
+        body{
+            perspective: 800px;/* 景深高度 */
+            perspective-origin: 200px 100px;/* 眼睛直视屏幕的坐标 */
+        }
+        .div1{
+            position: relative;
+            left: 200px;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+            background: red;
+            transform-style: preserve-3d;/* 展示三维空间  只对子元素负责*/
+            transform: rotateY(0deg);    /* 在控制台手动更改角度可以实现3D旋转 */
+        }
+        .div2{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            transform: translateZ(100px);/* 子元素div2距离父元素div1的高度 */
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2"></div>
+    </div>
+</body>
+</html>

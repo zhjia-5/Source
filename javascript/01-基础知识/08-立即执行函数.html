@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>立即执行函数</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		/* 
+		 立即执行函数
+		 定义：此类函数没有声明，在一次执行过后即释放。有返回值
+		 适合做初始化工作。
+		 格式:
+		 1：(function(a,b,c) {} (a,b,c))   	W3C	 建议第一种
+		 2：(function() {}) ()
+		 */
+
+		var num = (function (a, b, c) {//num为接收函数的返回值
+
+			var d = a + b + c;
+
+			return d;
+
+		}(1, 2, 3))
+
+		console.log(num);
+
+		// for (var i = 0; i < 10; i++) {
+		// 	((function (j) {
+		// 		console.log(j);
+		// 	})(i))
+		// 	// var test = function(){
+		// 	//     console.log(i + ' ');
+		// 	// }
+		// }
+
+	</script>
+</body>
+
+</html>

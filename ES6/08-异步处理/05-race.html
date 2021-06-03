@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    
+    — race(iterable):当iterable参数里的任意一个子Promise被成功或失败后，父
+        Promise马上也会用子Primise的成功返回值或失败详情作为参数调用父Promise绑定的相应
+        句柄，并返回该Promise对象。
+   -->
+   <script>
+     // 返回min ~ max之间的随机数
+    const getRamdom = (min, max) => {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    const promArr = [];
+    for (let i = 0; i < 10; i++) {
+      promArr.push(new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (Math.random() < 0.5) {
+            console.log(i, "完成");
+            resolve(i);
+          } else {
+            console.log(i,"失败");
+            reject(i)
+          }
+        }, getRamdom(1000, 3000));
+      }));
+    }
+
+    // 只要有一个进入已决（resolved,rejected），就会执行
+    const pro = Promise.race(promArr);
+    pro.then(data => {
+      console.log("有人完成了", data);
+    },err=>{
+      console.log("有人失败了",err);
+    })
+
+    console.log(promArr);
+
+   </script>
+</body>
+</html>

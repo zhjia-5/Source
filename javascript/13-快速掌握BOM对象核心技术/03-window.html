@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">关闭当前窗口</button>
+</body>
+<script>
+    // window.close() 关闭当前窗口
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+        window.close();
+    }
+
+    // window.fonfirm() 显示带有一段消息以及确认按钮和取消按钮的对话
+    // 当点确定返回 true 当点取消返回 false
+    console.log("confirm:" + window.confirm("确定OR取消？"));
+
+    // prompt() 显示可提示用户输入的对话框。
+    // 返回用户输入的文本
+    console.log("prompt:"+window.prompt());
+</script>
+</html>

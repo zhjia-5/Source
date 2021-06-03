@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 600px;
+            border: 1px solid #000;
+            background: url('./img/IMG_2345.JPG') ;
+            /* 三种方式 */
+            /* background-size: 300px 700px;X轴 Y轴 */
+
+             /* 在不改变图片的比例下，拉伸或者缩小图片去铺满整个容器，溢出就裁减掉 */
+            background-size: cover;
+           
+            /* 在不改变图片的比例下， 只要铺满宽，则停止拉伸；或者只要铺满高，则停止拉伸宽，
+                如果不设置repeat可能会出现留白现象。*/
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

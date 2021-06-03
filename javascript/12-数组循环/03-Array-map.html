@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var personArr = [
+            { name: '张三', sex: "male", age: 20 },
+            { name: '李四', sex: "male", age: 22 },
+            { name: '王五', sex: "male", age: 19 },
+            { name: '李倩', sex: "female", age: 23 },
+            { name: '陈丽', sex: "female", age: 31 }
+        ];
+        var obj = {};
+        // map具有映射作用，返回新的数组
+        var newArr = personArr.map(function (ele, index, self) {
+            // return ele.age + 10;  //返回所有元素的加10后的年龄
+            // return ele.name;//循环返回personArr的所有元素的name属性值
+            ele.age += 10;
+            return ele;//返回年龄 + 10后的元素
+        }, obj);//this的指向为obj
+        console.log(newArr);
+        console.log(obj);
+
+
+        // 模拟原生map方法
+        Array.prototype.myMap = function (func) {
+            var len = this.length;
+            var arr = [];
+            var _this = arguments[1] || window;
+            for (var i = 0; i < len; i++) {
+                arr.push(func.apply(_this, [this[i], i, this]));
+            }
+            return arr;
+        }
+
+        var obj = {};
+        var newArr = personArr.myMap(function (ele, index, self) {
+            return ele.name;
+        }, obj);//this的指向为obj
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

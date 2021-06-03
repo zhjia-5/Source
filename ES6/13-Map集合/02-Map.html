@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建Map集合</title>
+</head>
+<body>
+  <script>
+    const map = new Map([["a","a"],["b",2],["c",3],["j","123"]]);
+
+    // size:获取当前map中键的数量 
+    console.log(map.size);//3
+
+    // has(键):判断是否含有某个键:返回boolean 值
+    console.log(map.has("a"));
+
+    // get(键):通过键获取值，如果没有改键返回undefined
+    console.log(map.get("c"));
+
+    //set(键，值):如果不存在添加，如果存在则修改 
+    console.log(map.set("d",4));
+   
+    // delete(键):返回boolean值
+    console.log(map.delete("aaa"));
+
+
+    console.log(map);
+  </script>
+</body>
+</html>

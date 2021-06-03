@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象的解构</title>
+</head>
+<body>
+  <script>
+
+    // 对象解构
+    const Obj = {
+      name:"jack",
+      age:19,
+      sex:"male",
+      abc:1,
+
+      address:{
+        province:"广东",
+        city:"深圳"
+      }
+    }
+    /* 
+      解构同名属性语法： 
+        使用默认值：abc= 123
+        表示：如果Obj对象没有abc属性就给声明一个abc属性并赋值123,
+              如果Obj有abc属性则该默认值无效
+      
+      解构非同名属性语法： 
+        解构出来的sex属性改名为gender变量
+        const {name,age,sex:gender,address,abc = 123} = Obj;
+
+      深层解构：解构Obj里面的address的city
+      const {name,age,sex,address:{city},abc = 123} = Obj;
+
+
+    */
+    const {name,age,sex,address,abc = 123} = Obj;
+    console.log(name,age,sex,address,abc);
+
+    
+  </script>
+</body>
+</html>

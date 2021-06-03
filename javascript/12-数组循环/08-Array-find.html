@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>find</title>
+</head>
+
+<body>
+  <script>
+    const arr = [
+      { name: "jack", age: 18 },
+      { name: "mircle", age: 19 },
+      { name: "bli", age: 20 },
+      { name: "james", age: 21 },
+      { name: "paul", age: 22 },
+    ]
+    // find(fn) 用于查找满足条件的第一个元素，而filter是返回条件的所有元素
+    const obj = arr.find((item,index,self)=>{
+      // console.log(item,index,self);
+      return item.name === "jack";//如果item === "jack" 则返回该item,否则返回undefined
+    })
+    console.log(obj);
+  </script>
+</body>
+
+</html>

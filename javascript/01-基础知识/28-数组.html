@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			javaScript三大部分：ECMAScript、DOM、BOM
+			 数组的定义：
+				new方法 ：var arr = new Array();
+				字面量 ： var arr = [];
+				
+			数组常用的方法：
+				改变原数组的方法：
+					push() : arr.push(e1,e2...)从数组最后一位添加e1,e2元素，数量不限。
+					pop() ：把数组最后一位剪切出来。没有参数
+					shift() ：arr.shift(); 减去数组第一位元素。
+					unshift() ：arr.unshift(e1，e2)从数组第一位开始加e1,e2元素，和push()相反。
+					sort() :按ASCⅡ科码表排序.
+					sort(function(a,b){}) : 按自定义的函数排序。
+						1，必须写两个参数
+						2，看返回值：
+							1）当返回值为负数时，不换位置
+							2）当返回值为正数时，互换位置
+							3）为0不换位置
+					reverse() : 反转数组
+					splice() : arr.splice(n1,n2,n3)，从arr[n1]开始，截取个n2个长度，在切口处添加n3元素
+				
+				不改变原数组方法：
+					concat() ：arr.concat(arr1);连接两个数组，不改变原数组,返回一个新的数组
+					join() : 返回字符串。join("")参数需要加双引号。以双引号里的字符将元素相连。
+					split() ：str.split("-"):用“-”将字符串切割成数组，其元素为字符串。该方法属于字符方法。返回数组。
+					toString() : arr.toString();数组转成字符串
+					slice() : 可以多个参数,返回的是被截取的数组。
+					slice():截取整个数组
+					slice(1):从1位开始截取后面全部。
+					slice(1,2):从位开始截取，截取到2的前一位。含头不含尾 。
+			 */
+			
+			
+			
+			// 模拟系统中push的方法
+			var arr = [1,2,3,4,5];
+			Array.prototype.push = function(){
+				for(var i = 0; i < arguments.length; i ++){//arguments：实参的列表
+					this[this.length] = arguments[i];
+				}
+				return arguments.length;
+			}
+			arr.push(6);
+			
+			
+			
+			// splice方法
+			/* var arr = [1,2,3,4,5];
+			 arr.splice(2,1,0);//从第二位开始，截取1个长度，在切口处添加 0
+			 console.log(arr);//结果：arr = [1,2,0,4,5] */
+			 
+			
+			
+			// sort(function(a,b){})方法：升序
+			  /* var arr = [2,8,4,7,9,1,25,10,6];
+			  arr.sort(function(a,b){
+				  return a - b;
+			  }); */
+			  
+			  
+			  
+		    // sort(function(a,b){})方法：降序
+			/* var arr = [2,8,4,7,9,1,25,10,6];
+			 arr.sort(function(a,b){
+			 	  return b - a;
+			 }); */
+			 
+			 
+			 
+			 // concat()方法：arr.concat(arr1)
+			 /* var arr = [2,8,4,7,9,1,25,10,6];
+			 var arr1 = [2,8,4,7,10,6];
+			 var arr3 = arr.concat(arr1); */
+			 
+			 
+			 
+			 // slice(a,b)方法:含头不含尾
+			 /* var arr = [2,8,4,7,9,1,25,10,6];
+			 var arr1 = arr.slice(1,5);//结果为：[8, 4, 7, 9] */
+			 
+			 
+			 
+			 // join();放回返回字符串
+			  /* var arr = [2,8,4,7,9,1,25,10,6];
+			  var str = arr.join("-");//结果："2-8-4-7-9-1-25-10-6" */
+			 
+			 
+			 // split() ：该方法属于字符方法。返回数组。
+			/* var str = "2-8-4-7-9-1-25-10-6";·
+			var arr = str.split("-");//结果:["2", "8", "4", "7", "9", "1", "25", "10", "6"] */
+			 
+			 
+		</script>
+	</body>
+</html>

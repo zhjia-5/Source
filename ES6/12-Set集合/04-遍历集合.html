@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遍历Set集合</title>
+</head>
+
+<body>
+  <script>
+    const set = new Set([1, "abc", 4, "ed", 6]);
+
+    // for of 遍历集合
+    for (const item of set) {
+      console.log(item);//输出每一项
+    }
+
+    // forEach 遍历集合
+
+    set.forEach((item, index, self) => {
+      /* 
+        item:集合的每一项
+        index:与item一样
+        selt:该集合本身
+      */
+      console.log(item + "——" + index + "——" + self);
+    })
+
+  </script>
+</body>
+
+</html>

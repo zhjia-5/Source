@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景重复</title>
+    <style>
+        div{
+            width: 550px;
+            height: 550px;
+            border: 1px solid #000;
+            background-image: url('./img/007.JPG');/* 不设置background-repeat，默认为repeat */
+            background-size: 100px 100px;/* 背景图片的宽和高 */
+            background-repeat: no-repeat;
+            background-repeat: repeat;
+            background-repeat: repeat-x;/* X轴重复，Y轴不重复 */
+            background-repeat: repeat-y;/* Y轴重复，X轴不重复 */
+            background-repeat: round;/* 没有空隙，如果背景图片不能铺满就拉伸铺满，如果刚好能铺满则新增一张背景 */
+            background-repeat: space;/* 有空隙，如果背景图片不能铺满则用空隙补，如果能铺面新新增一张背景 */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

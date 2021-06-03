@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>共享符号Symbol.for</title>
+</head>
+
+<body>
+  <script>
+    const syb1 = Symbol.for("abc");
+    const syb2 = Symbol.for("abc");
+
+    const obj1 = {
+      a: 1,
+      b: 2,
+      [syb1]: 3
+    }
+    const obj2 = {
+      a: "a",
+      b: "b",
+      [syb2]: "c"
+    }
+    // 两个符号相等
+    console.log(syb1 === syb2);//true
+
+    console.log(obj1[syb1]);//3
+    console.log(obj1[syb2]);//3
+    console.log(obj2[syb1]);//c
+    console.log(obj2[syb2]);//c
+
+
+  </script>
+</body>
+
+</html>

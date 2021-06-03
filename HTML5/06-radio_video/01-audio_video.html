@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多媒体</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .video_wrapper {
+      width: 800px;
+      height: 500px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .video {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .menu {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 50px;
+      background-color: rgba(0, 0, 0, .3);
+      display: none;
+
+    }
+
+    .playBtn {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      border: 1px solid #fff;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+
+    .time {
+      position: absolute;
+      width: 80px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 80px;
+      margin-top: 10px;
+    }
+
+    .progress {
+      position: absolute;
+      left: 0px;
+      top: -2px;
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      cursor: pointer;
+
+    }
+
+    .progress .loaded {
+      position: absolute;
+      width: 0px;
+      height: 1px;
+      background: orange;
+      left: 0px;
+      top: 0px;
+
+    }
+
+    .progress .cir {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 3px;
+      background: #fff;
+      left: 0px;
+      top: -2px;
+    }
+
+    .quick {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 180px;
+      margin-top: 10px;
+    }
+
+    .quick_ul {
+      position: absolute;
+      width: 50px;
+      height: 110px;
+      background: rgba(0, 0, 0, .2);
+      /* padding-bottom: 10px; */
+      left: 185px;
+      top: -90px;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: none;
+    }
+
+    .quick_li {
+      /* position: absolute; */
+      width: 100%;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .quick_li:hover {
+      background: rgba(0, 0, 0, .4);
+    }
+
+    .vol{
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      text-align: center;
+      border: 1px solid #fff;
+      line-height: 30px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 500px;
+      margin-top: 10px;
+    }
+    .vol_sub{
+      margin-left: 580px;
+    }
+
+    .full_screen {
+      position: absolute;
+      right: 20px;
+      width: 80px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .full_screen:hover{
+      color: orange;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+  <!-- audio 和 video除了能否播放视频外，其他属性设置一直。video可以加载使用音频文件 -->
+  <!-- <audio src="录音.m4a" controls></audio> -->
+
+  <div class="video_wrapper">
+    <video class="video" src="./01.mp4"></video>
+    <div class="menu">
+      <div class="playBtn">播放</div>
+      <div class="time">0:00/0:00</div>
+      <div class="progress">
+        <div class="loaded"></div>
+        <i class="cir"></i>
+      </div>
+      <div class="quick">倍数</div>
+      <ul class="quick_ul">
+        <li class="quick_li">正常</li>
+        <li class="quick_li">1.25</li>
+        <li class="quick_li">1.5</li>
+        <li class="quick_li">2.0</li>
+
+      </ul>
+      <span class="vol_add vol">音量+</span>
+      <span class="vol_sub vol">音量-</span>
+      <span class="full_screen">全屏</span>
+    </div>
+  </div>
+  <script>
+    const wrapper = document.getElementsByClassName('video_wrapper')[0];
+    const video = document.getElementsByClassName('video')[0];
+    const menu = document.getElementsByClassName('menu')[0];
+    const playBtn = document.getElementsByClassName('playBtn')[0];
+    const time = document.getElementsByClassName('time')[0];
+    const progress = document.getElementsByClassName('progress')[0];
+    const loaded = document.getElementsByClassName('loaded')[0];
+    const cir = document.getElementsByClassName('cir')[0];
+    const quick = document.getElementsByClassName('quick')[0];
+    const quick_ul = document.getElementsByClassName('quick_ul')[0];
+    const quick_li = document.getElementsByClassName('quick_li');
+    const vol_add = document.getElementsByClassName('vol_add')[0];
+    const vol_sub = document.getElementsByClassName('vol_sub')[0];
+    const full_screen = document.getElementsByClassName('full_screen')[0];
+
+    wrapper.onmouseenter = (e) => {
+      menu.style.display = 'block';
+    }
+    wrapper.onmouseleave = (e) => {
+      menu.style.display = 'none';
+    }
+
+    playBtn.onclick = (e) => {
+      if (video.paused) {//video.paused:返回布尔值；判断是否是暂停
+        video.play();   //播放
+        playBtn.innerHTML = "暂停";
+      } else {
+        video.pause();  //暂停
+        playBtn.innerHTML = '播放';
+      }
+    }
+
+    // 进度条
+    progress.onmouseenter = () => {
+      progress.style.height = "10px";
+      progress.style.top = "-10px";
+      loaded.style.height = "10px";
+      cir.style.height = "14px";
+    }
+    progress.onmouseleave = () => {
+      progress.style.height = "1px";
+      progress.style.top = "-2px";
+      loaded.style.height = "1px";
+      cir.style.height = "6px";
+    }
+    progress.onclick = (e) => {
+      let allWith = progress.clientWidth;//总宽
+      let currentWidth = e.clientX;//当前宽
+      let targetTime = video.currentTime / allWith * video.duration;//获取当前点击处得秒数
+      video.currentTime = targetTime;//将点击得到得当秒数赋值给vieo
+    }
+
+    quick.onmouseenter = () => {
+      quick_ul.style.display = "block";
+    }
+    quick.onmouseleave = () => {
+      quick_ul.style.display = "none";
+
+    }
+    quick_ul.onmouseenter = function () {
+      this.style.display = "block";
+    }
+    quick_ul.onmouseleave = function () {
+      this.style.display = "none";
+    }
+
+// 倍速
+    for (let i = 0; i < quick_li.length; i++) {
+      quick_li[i].index = i;
+      quick_li[i].onclick = function () {
+        switch (this.index) {
+          case 0://正常
+            video.playbackRate = 1;//设置速率
+            quick.innerHTML = "正常"
+            break;
+          case 1: //1.25
+            video.playbackRate = 1.25;
+            quick.innerHTML = "1.25倍"
+            break;
+          case 2://1.5
+            video.playbackRate = 1.5;
+            quick.innerHTML = "1.5倍"
+            break;
+          case 3://2
+            video.playbackRate = 2;
+            quick.innerHTML = "2倍"
+            break;
+        }
+      }
+    }
+
+    // 音量+  video.volume 的值为0 ~ 1
+    vol_add.onclick = ()=>{
+      let vol =  video.volume;
+      video.volume = vol + 0.1 >= 1 ? 1 : vol += 0.1;
+    }
+
+    // 音量-  
+    vol_sub.onclick = ()=>{
+      let vol =  video.volume;
+      video.volume = vol - 0.1 <= 0 ? 0 : vol -= 0.1;
+    }
+
+    // 全屏
+    full_screen.onclick = ()=>{
+      document.documentElement.requestFullscreen();
+      wrapper.style.width = window.screen.width + "px";
+      wrapper.style.height = window.screen.height + "px";
+      video.style.width = window.screen.width + "px";
+      video.style.height = window.screen.height + "px";
+      full_screen.innerHTML = "退出全屏"
+    }
+  
+    const timer = setInterval(() => {
+      let currentTime = video.currentTime;//返回当前时长，带小数(单位：秒)
+      let total = video.duration;//获取总时长，带小数(单位：秒)
+      time.innerHTML = parseInt(currentTime / 60) + ":" + parseInt(currentTime % 60) + "/" + parseInt(total / 60) + ":" + parseInt(total % 60);
+
+      let width = currentTime / total * progress.clientWidth;//得到的是点击的宽
+      loaded.style.width = width + "px";
+      cir.style.left = width + "px";
+
+    }, 10);
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./mock.js"></script>
+    <title>Document</title>
+</head>
+<body>
+     <script>
+         console.log(Mock.Random.region());//随机生成一个大区
+
+         console.log(Mock.Random.province());//随机生成一个省或区、直辖市、行政区
+        
+         console.log(Mock.Random.city(true));//随机生成一个市，如果参数为true，会显示该地的所属
+
+         console.log(Mock.Random.county(true));//随机生成一个县,如果参数为true，会显示该地所属
+
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .oDiv{
+            position: relative;
+            top: 1500px;
+            width: 500px;
+            height: 300px;
+            background: rgba(58, 57, 57, 0.2);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="oDiv"></div>
+    <script>
+        // 预加载 ， 当把图片加载完后才appendChild到oDiv里面
+        var oDiv = document.getElementsByClassName('oDiv')[0];
+        var oImg = new Image();
+        oImg.src = 'https://bkimg.cdn.bcebos.com/pic/83025aafa40f4bfb4f019c66044f78f0f736182a?x-bce-process=image/resize,m_lfit,w_480,limit_1';
+        oImg.onload = function(){
+            oDiv.appendChild(this);
+        }
+    </script>
+</body>
+</html>

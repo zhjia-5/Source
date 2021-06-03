@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <button>增加</button>
+</head>
+
+<body>
+    <script>
+        // 判断数组是否是对称数组
+        var arr1 = ['a', 'b', 'c', 'd', 'c', 'b', 'a']
+        var arr2 = ['a', 'b', 'c', 'd', 'e'];
+        var arr3 = ['a', 'b', 'c', 'vc', 'd', 'e'];
+
+
+        // 方法一：for
+        function compareArr(arr) {
+            var newArr = [];
+            len = arr.length;
+            for (var i = len - 1; i >= 0; i--) {
+                newArr.push(arr[i]);
+            }
+            for (var i = 0; i < len; i++) {
+                if (newArr[i] != arr[i]) {//只要有一组不符合说明不是对称数组
+                    return false;
+                }
+
+            }
+            return true;
+        }
+        console.log(compareArr(arr2));
+
+        //    方法二：数组算法
+        function compareArr2(arr) {
+            var start = 0;
+            var end = arr.length - 1;
+            for (var i = 0; i < arr.length; i++) {
+                if(start >= end){
+                    break;  //减少不必要的循环次数，如果到中间就结束
+                }
+                console.log(1);
+                if (arr[start] != arr[end]) {
+                    return false;
+                }
+                start++;
+                end--;
+            }
+            return true;
+        }
+        console.log(compareArr2(arr1));
+
+
+        const arr5 = ["a","b","c","d","e"]
+        const arr6 = arr5.splice(0,3)//剪切功能  修改原数组
+        // arr5.slice(start,end)复制功能  不修改元素数组
+        console.log(arr6);
+
+
+        const btn = document.getElementsByTagName("button")[0];
+        let deg = 0;
+
+        btn.onclick = function(e){
+            deg += 360;
+            console.log(deg);
+        }
+        console.log(deg);
+
+
+    </script>
+</body>
+
+</html>

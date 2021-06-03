@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //    reduce
+        var cookieStr = 'BIDUPSID=D858B54EA7643; PSTM=1610266738; BAIDUID=D858B57C296F8G=1; BD_UPN=12314353; BAIDUID_BFESS=607BDD689F20D03D1F1FG=1; COOKIE_SESSION=0_0_1_';
+        function parseCookieStr(str) {
+            var obj = {};
+            var cookieArr = str.split(';');
+            return cookieArr.reduce(function (prevValue, icurValue, index, self) {
+                var arr = icurValue.split('=');
+                prevValue[arr[0]] = arr[1];
+                return prevValue;
+            }, obj);
+        }
+        console.log(parseCookieStr(cookieStr));
+
+        // reduce 累积求和的功能
+        const arr2 = [2, 45, 43, 6, 3, 7];
+        const num = arr2.reduce((a, b) => a + b);
+        console.log(num)//106
+
+
+
+
+        function mySort(arr){
+            return arr.sort()
+        }
+        const arr3 = [7, 6, 2, 1, 5, 8, 4, 3];
+        mySort(arr3)
+        console.log(arr3);
+
+
+    </script>
+</body>
+
+</html>

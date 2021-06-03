@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件分类</title>
+	</head>
+	<body>
+		<!--   36
+		 事件分类：
+		 click、mousedown、mouseup、mousemove
+		 其实：click = mousedown + mouseup
+		 contextmenu 右键菜单
+		 mouseover = mouseenter  鼠标经过
+		 mouseout = mouseleave 	 鼠标离开
+		 移动端不识别mousedown，mouseup，mousemove
+		 移动端为 touchstart，touchmove，touchend
+		 
+		 用事件e里面的MouseEvent里screeny属性button值来区分鼠标的按键：
+		 左	键 	: 0
+		 按下滚轮: 1
+		 右	键 	: 2
+		 
+		 DOM3标准规定：click事件只能监听左键，
+		 只能通过mousedown和mouseup来判断鼠标键 
+		 -->
+		 <div style="width: 100px;height: 100px;background-color: #FF0000;"></div>
+		 <div style="width: 100px;height: 100px;background-color:olive;"></div>
+		 <script type="text/javascript">
+			 var div = document.getElementsByTagName('div')[0];
+		 	 div.onmousedown = function(e){//把onmousedown换成onmouseup实现效果一致
+				console.log(e);
+				if(e.button == 0){
+					console.log("左键");
+				}else if(e.button == 2){
+					console.log("右键");
+				}else{
+				console.log("单机滚轮");
+				}
+			} 
+			// 如何解决mousedown和click的冲突
+			var div1 = document.getElementsByTagName('div')[1];
+			var firstTime;
+			var lastTime;
+			var key = false;
+			div1.onmousedown = function(){
+				firstTime = new Date().getTime();//记录鼠标按下的时间
+			}
+			div1.onmouseup = function(){
+				lastTime = new Date().getTime();//记录鼠标抬起的时间
+				if(lastTime - firstTime < 300){//如果时间少于300ms，将key设置true。
+					key = true;
+				}else{//如果时间大于300ms，算是移动
+					console.log('move');
+				}
+			}
+			div1.onclick = function(){
+				if(key){//当key为true时，算是单击
+					console.log('click');
+					key = false;
+				}
+			}
+
+			// 鼠标的滚轮事件
+			document.onmousewheel = (e) => {
+      if(e.deltaY > 0){
+        console.log(e.deltaY,"向下滚动");
+      }
+      if(e.deltaY < 0){
+        console.log(e.deltaY,"向上滚动");
+      }
+    }
+		 </script>
+	</body>
+</html>

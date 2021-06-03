@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象字面量</title>
+</head>
+
+<body>
+    <script>
+        // es5方法写法
+        function createUser1(loginId, loginPwd, userName) {
+            return {
+                loginId: loginId,
+                loginPwd: loginPwd,
+                userName: userName,
+                id: Math.floor(Math.random() * 1000),
+                print: function () {
+                    return this.userName + this.loginId;
+                }
+            }
+        }
+        console.log(createUser1(111, 222, 'zhangsan').print());
+
+        /* 
+            如果对象字面量初始化时，成员的名称来自于一个变量，
+            并且和变量的名称相同，则可以进行简写。
+        */
+
+        // es6方法简写    
+        function createUser2(loginId, loginPwd, userName) {
+            return {
+                loginId,
+                loginPwd,
+                userName,
+                id: Math.floor(Math.random() * 1000),
+                print() {
+                    return this.userName + this.loginId;
+                }
+            }
+        }
+        console.log(createUser2(222, 333, 'zhangsan').print());
+
+        // es6对象里的方法的简写 
+        const user = {
+            loginId: 111,
+            loginPwd: 222,
+            userName: 'zhangsan',
+            id: Math.floor(Math.random() * 1000),
+            print() {
+                console.log(this.userName + this.loginId);
+            }
+        }
+        user.print();
+
+
+        // 用变量/表达式 描述 属性名
+        const prop1 = "name";
+        const prop2 = "age";
+        const prop3 = "wife";
+
+        const student = {
+            [prop1]: 'zhangsan',
+            [prop2]: 21,
+            [prop3]: 'lisi'
+        }
+        console.log(student);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        伪元素选择器(重点)
+        伪元素选择器可以帮助我们利用css创建新的变迁元素，
+        而不需要html标签，从而简化HTML结构。
+
+        选择器              简介
+        ::before            在元素内部的前面插入内容
+        ::after             在元素内部的后面插入内容
+
+        注意：
+            * before 和 after 创建一个元素属于行内元素,可以通过inline-block转换为块级元素
+            * 新创建的这个元素在文档中是找不到的，所以我们成为伪元素
+            * 语法： ele::before{}  ele::after{
+            *  before 和 after 必须有content属性（content:"";）
+            *  before 在父元素内容前面创建元素，after在父元素内容后面创建元素。
+            *  伪元素选择器和标签选择器一样，权重值为1。 
+     -->
+    <style>
+        div:hover::before {
+            content: "我";
+            /* 转为行内块元素 可设置大小 */
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            border: 1px solid black;
+        }
+
+        div:hover::after {
+            content: "中国人";
+            /* 转为行内块元素 可设置大小 */
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>是</div>
+</body>
+
+</html>

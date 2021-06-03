@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM基本操作</title>
+	</head>
+	<body>
+		<!-- 
+		增
+			document.createElement();  创建一个元素节点\标签 
+			document.createTextNode();	创建一个文本节点
+			document.createComment();	创建注释节点
+			document.createDocumentFragment();	创建文档碎片节点
+		插
+			PARENTNODE.appendchild();  如果把页面中已经存在的元素插入到另一个元素中，就是剪切作为。
+			PARENTNODE.insertBefore(a,b); 在父标签里将a插到b的前面
+		删
+			parent.removeChild(); 父节点删除子节点，返回被删除的那个节点，其实是剪切
+			child.remove();		  子节点自己删除自己，这是正真的删除
+		替换
+			parent.replaceChild(new,origin); 拿新的元素替换老的元素
+		 -->
+		 
+		 <p></p>
+		 <c>
+			<d></d>
+		 </c>
+		 <script type="text/javascript">
+		 	/* 
+			var div = document.createElement('div');
+			div.innerHTML = 123;//往div赋值，这里不会再html页面显示123
+			console.log(div);//输出：<div>123<div/>
+			document.body.appendChild(div);//添加后会在html页面上显示div标签 
+			*/
+		
+			/* 
+			var text = document.createTextNode('hello world');
+			console.log(text);//输出："hello world"
+			 */
+			
+			/* 
+			var comment = document.createComment('this is a comment!');
+			console.log(comment);//输出：<!--this is a comment!--> 
+			*/
+			
+			/* 
+			var div1 = document.getElementsByTagName('p')[0];
+			var text1 = document.createTextNode("comment");
+			div1.appendChild(text1);
+			console.log(div1);//输出：comment
+			 */
+			
+			/* appendchild剪切演示 	在浏览器Elements查看区别*/
+			/* 
+			var p = document.getElementsByTagName('p')[0];
+			var text = document.createTextNode('hello');
+			var span = document.createElement('span');
+			p.appendChild(text);
+			p.appendChild(span);
+			var text1 = document.createTextNode('hi');
+			span.appendChild(text1);
+			span.appendChild(text);
+			 */
+			
+			var c = document.getElementsByTagName('c')[0];
+			var d = document.getElementsByTagName('d')[0];
+			var e = document.createElement('e');
+			c.insertBefore(e,d);//在c标签内，把e插入到d之前。
+			
+		 </script>
+	</body>
+</html>

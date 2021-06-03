@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			 es5严格模式
+			 use strict
+			 不再兼容es3的一些不规则语法。使用全新的es5规范
+			 两种用法 ：
+				全局严格模式："use strict"需要写在逻辑代码的最前面
+				局部函数内严格模式（推荐）	
+			就是一行字符串，不会对不兼容 模式的浏览器产生影响。
+			
+			不支持with，arguments.callee，arguments.caller,func，变量赋值前必须声明，局部this
+			必须被赋值（Person.call(null/undefined)）赋值什么就是什么，拒绝重复属性和参数
+				
+			 */
+			
+			// with(对象){}：如果括号里有对象，那个对象会变成代码里作用域链的最顶端，改变作用域链
+			/* var obj = {
+				name :　"obj"
+			}
+			var name = "window";
+			
+			function test(){
+				var name = "scope";
+				with(obj){
+					console.log(name);
+				}
+			}
+			test();//结果 ： obj */
+			
+			// 局部this必须被赋值
+			"use strict";
+			function Test(){
+				console.log(this);
+			}
+			Test();//结果：undefined，没有赋值所以为undefined
+			new Test();//结果：Test{},通过new的形式创建了一个新的构造函数，是赋值的一种方式
+			Test.call(123);//利用call赋值：123,  如果是es3.0的话，传原始值会包装成对象：Number{[[PrimitiveValue]]:123}
+			
+			console.log(this);//全局：this为 windows
+			
+			
+		</script>
+	</body>
+</html>

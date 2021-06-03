@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>浏览器兼容性</title>
+</head>
+
+<body>
+	<!-- 
+		 一：浏览器支持：
+			1，HTML5有部分内容兼容到IE9，IE8及以下对H5完全不兼后面的内容。
+			   不在考虑此类浏览器。最新版本的Safari、Chrome、Firefox
+			   以及Opera支持某些HTML5特性。
+			2，部分内容需要加兼容前缀：
+			   —webkit—  :   Chrome浏览器\Safari浏览器
+			   —moz—     :	 Firefox浏览器
+			   —o—	     :   Opera浏览器
+			   —ms— 	 :	 IE浏览器
+			兼容性查询网站：http://caniuse.com/   
+
+			HTML5语法变化
+				* 标签不区分大小写
+				* 元素可以省略结束标签
+				* 允许省略属性的属性值
+				* 允许不使用引号
+
+			新增语义化标签
+				* <header>:头部标签
+				* <nav>:导航标签
+				* <article>：内容标签
+				* <section>：块级标签
+				* <aside>：侧边栏变迁
+				* <footer>：尾部标签	
+
+			注意:				
+				* 这种语义化标准主要针对搜索引擎的
+				* 这些标签在页面中可以多次使用
+				* 在IE9中，需要把这些元素转化成块级元素
+				* 其实，我们移动端更喜欢使用这些标签
+				* HTML5还增加了很多其他标签，我们后面再学
+
+			<audio>音频标签
+				属性  				值					 描述
+				autoplay			autoplay		    自动播放
+				controls			controls 			显示控件
+				loop 				loop 				播放结束后会重新播放
+				src 				url 				要播放的音频的URL
+			注意：可以设置宽度width，但是舍值高度height不起作用。
+				因为不同浏览器支持的不同的格式，我们采用的解决方案是：
+				我们准备多个视频格式，如果浏览器不支持就跳到下个格式。
+		 -->
+	<audio controls autoplay loop style="width: 500px;">
+		<source src="./media/光辉岁月.flac" type="audio/flac">
+		<source src="./media/光辉岁月.mp3" type="audio/mpeg">
+		<source src="./media/光辉岁月.ogg" type="audio/ogg">
+		你的浏览器太LOW了，不支持audio播放
+	</audio>
+	<!-- 
+			video属性         值			描述
+			autoplay 		autoplay		自动播放
+			controls 		controls 		显示控件
+			loop 			loop 			循环播放
+			src 			url 			视频地址				
+			poster 			imgurl 			加载等待的画面图片(需关掉autoplay自动播放功能)	
+			muted 			muted 			静音播放	
+			preload  		auto(预先加载视频)规定是否加载视频（如已设置autoplay可忽略） 
+							none(不应加载视频)
+		 -->
+	<video controls loop muted poster="./media/保时捷.jpg" width="400px">
+		<!-- 谷歌不支持自动播放 但是可以加静音属性就可以播放 muted属性 -->
+		<source src="./media/index_video_bg.mp4" type="video/mp4">
+		<source src="./media/index_video_bg.ogg" type="video/ogg">
+		你的浏览器太LOW了，不支持video播放
+	</video>
+
+
+</body>
+
+</html>

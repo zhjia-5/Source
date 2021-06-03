@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .div1 {
+            width: 100px;
+            height: 100px;
+            background-color: #6c6c6c;
+            position: absolute;
+            left: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">div1</div>
+    <script>
+        var div1 = document.getElementsByClassName('div1')[0],
+            timer,
+            speed = 0,
+            now;
+        // Math.ceil();向上取整   正负数均可取整
+        // Math.floor();向下取整  正负数均可取整
+        // Math.round();四舍五入  正负数均可取舍
+
+        // 匀速运动   初始位置为：postion:absolute; left:0;
+        // div1.onclick = function () {
+        //     var timer = setInterval(function () {
+        //         now = parseInt(getStyle(div1, 'left'));
+        //         div1.style.left = now + 10 + 'px';
+        //         console.log('now=' + now);//属性参数需加双引号
+        //     }, 30);
+        // }
+
+
+        //加速运动   初始位置为：postion:absolute; left:0;
+        // div1.onclick = function () {
+        //             var timer = setInterval(function () {
+        //                 now = parseInt(getStyle(div1, 'left'));
+        //                 speed ++;
+        //                 div1.style.left = now + speed + 'px';
+        //                 if(now == 990){
+        //                     clearInterval(timer);
+        //                 }
+        //                 console.log('now=' + now);//属性参数需加双引号
+        //             }, 30);
+        //         }
+
+
+        // 减速运动     初始位置为：postion:absolute; left:800px;
+        //     div1.onclick = function(){
+        //         timer = setInterval(function(){
+        //             now = parseInt(getStyle(div1,'left'));
+        //             speed = Math.ceil((now-speed)/6);//向上取整
+        //             if(now == 0){
+        //                 clearInterval(timer);
+        //             }
+        //             div1.style.left = now - speed + 'px';
+        //             console.log(now);
+        //         },30);
+        //    }                                                  
+
+        // 减速运动     初始位置为：postion:absolute; left:800px;
+        div1.onclick = function () {
+            timer = setInterval(function () {
+                now = parseInt(getStyle(div1, 'left'));
+                speed = (0 - now) / 6;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                console.log(now);
+                if (now == 0) {
+                    clearInterval(timer);
+                } else {
+                    div1.style.left = now + speed + 'px';
+                }
+            }, 30);
+        }
+
+        /* 封装获取样式的兼容性方法 */
+        function getStyle(ele, arrt) {
+            if (ele.currentStyle) {//兼容IE浏览器
+                return ele.currentStyle[arrt];
+            } else {//兼容谷歌 火狐浏览器
+                return getComputedStyle(ele, null)[arrt];
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>findIndex方法</title>
+</head>
+
+<body>
+  <script>
+    // 查找某项是否存在数组中，并返回该index值，如果不存在返回 -1
+    const arr = ["dk", "jafi", "saf", "H", "ree"];
+
+    const getIndex = (arr, value) => {
+      return arr.findIndex((item, index, self) => {
+        return item === "jafi";
+      })
+    }
+
+    console.log(getIndex(arr,"jafi")); //1
+
+  </script>
+</body>
+
+</html>

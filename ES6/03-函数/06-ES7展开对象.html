@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const student = {
+            name: '张三', 
+            age:18,
+            score:[100,90,80],
+            address:{
+                country:"中国",
+                provincel:"黑龙江",
+                city:"哈尔滨",
+            }
+
+        }
+
+        // 浅克隆到student1：只是修改student1的引用值，
+        // 当修改student1的属性值时，studen也会跟着一起改变。
+        const student1 = {
+            ...student
+        }
+        student1.address.country = '美国';
+        
+        console.log(student.address.country);
+        console.log(student.address ===student1.address);//引用值一样
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>包装类测试</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 封装个方法，可以实现求任意字符串的字节长度
+			
+			/* 1,创建函数 
+			2，计算字符串长度
+			3，返回Unicode码，判断返回值<=225为英文，返回值>255为中文
+			4，换算：一个英文占一个字节，一个中文占2个字节
+			5，将字节长度返回
+			 */
+			
+			function ByteLength(str){
+				
+				var byteLen = str.length;
+				
+				for( var i = 0; i < str.length; i++){
+					
+						if(str.charCodeAt(i) > 255){
+
+							byteLen ++;
+						}
+				}
+				console.log(byteLen);
+			}
+			
+			new ByteLength("123456789一二三四五六七八九1234");
+			
+			
+		</script>
+	</body>
+</html>

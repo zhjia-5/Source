@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>构造函数与类的区别</title>
+</head>
+
+<body>
+  <script>
+   /* *********ES5构造函数 *********/ 
+    function Animal(name, sex, age) {
+      this.name = name;
+      this.sex = sex;
+      this.age = age;
+    }
+    // 在原型链上添加方法
+    Animal.prototype.print = function () {
+      console.log(`名字：${this.name}`);
+      console.log(`性别：${this.sex}`);
+      console.log(`年龄：${this.age}`);
+    }
+
+    // 调用
+    const dog = new Animal("旺财","雄","3岁");
+    console.log(dog);
+
+
+
+   /* ********* ES6类 *********/ 
+   class Person{
+     constructor(name,sex,age){
+      this.name = name;
+      this.sex = sex;
+      this.age = age;
+     }
+     print(){
+      console.log(`名字：${this.name}`);
+      console.log(`性别：${this.sex}`);
+      console.log(`年龄：${this.age}`);
+     }
+   }
+   
+    // 调用
+   const person = new Person("张三","男","18岁")
+   console.log(person);
+
+  </script>
+
+</body>
+
+</html>

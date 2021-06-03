@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set与数组</title>
+</head>
+<body>
+  <script>
+
+    // 数组去重
+    const arr = [1,2,2,4,5,88,88,1,9,7,2,5];
+    const arrSet = new Set(arr);//将数组转为Set对象
+    const newArr = [...arrSet];//使用展开运算符
+    // const newArr = Array.from(arrSet);也可以使用该方法转为数组
+    console.log(newArr);//[1, 2, 4, 5, 88, 9, 7]
+
+    // 字符串去重
+    const str = "aaabbbcccdddeeeffff";
+    const strSet = new Set(str);
+    // const strArr = [...strSet];
+    const strArr = Array.from(strSet);
+    const newStr = strArr.join("");
+    console.log(newStr);
+
+
+  </script>
+</body>
+</html>

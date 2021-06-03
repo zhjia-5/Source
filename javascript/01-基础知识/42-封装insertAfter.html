@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>面试真题</title>
+	</head>
+	<body>
+		 <div>
+			 <a></a>
+			 <b></b>
+			 <c></c>
+		 </div>
+		 <!-- 封装insertAfter(target,after)函数:将target插入到after的后面；
+		  思路：
+		 	1，通过nextElementSibling返回after的下一个兄弟元素节点nextElem
+		 	2，然后在利用insertBefore在d的前面插入target
+		 	3，再通过afer.nextElementSibling是否返回null，如果null,则after为最后一个元素,
+		 	   再使用after.appendChild()添加。
+			
+			在原型链编程的好处在于可以使用this，它是第一人称代词，数无论谁调用就指谁。
+			   还可以实现继承。
+			   -->
+		 <script type="text/javascript">
+			Element.prototype.insertAfter = function (target,after){
+			
+				var nextElem = after.nextElementSibling;
+				if(nextElem == null){
+					this.appendChild(target);//谁调用就用谁添加
+				}else{
+					this.insertBefore(target,nextElem);
+				}
+			}
+		    var div = document.getElementsByTagName('div')[0];
+			var a = document.getElementsByTagName('a')[0];
+			var b = document.getElementsByTagName('b')[0];
+			var c = document.getElementsByTagName('c')[0];
+			var d = document.createElement('d');
+			div.insertAfter(d,c);
+			console.log(div);
+		 </script>
+	</body>
+</html>

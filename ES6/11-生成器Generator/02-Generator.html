@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator生成器</title>
+</head>
+
+<body>
+  <script>
+    function* test() {
+      console.log("第一次运行");
+      yield 1;
+      console.log("第二次运行");
+      yield 2;
+      return 3;//可以给生成器函数添加返回值，运行第三次后返回{value:3,done:true}
+    }
+    const generator = test();
+    /* 
+      generator.next()
+      第一次运行
+      {value: 1, done: false}
+
+      generator.next()
+      第二次运行
+      {value: 2, done: false}
+
+      generator.next()
+      {value: 3, done: true}
+
+      generator.next()
+      {value: undefined, done: true}
+    */
+    console.log(test());
+  </script>
+</body>
+
+</html>

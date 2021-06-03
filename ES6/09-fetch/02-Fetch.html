@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+</head>
+<body>
+    <button class="btn" style="width: 300px; height:50px;font-size: 30px;">获取所有学生信息</button>
+    <script>
+
+        async function getProvinces(){
+            const url = 'http://api.duyiedu.com/api/student/findAll?appkey=zhjia_1611123253059';
+            const config = {
+                method:'get',
+                // Headers:{
+                //     "Content-Type":"application/json",
+                //     aaa:111
+                // },
+            }
+            // 一：不使用await 的情况
+            // const pro = fetch(url,config);
+            // pro.then(data=>{
+            //     const pro2 = data.json()
+            //     pro2.then(data=>{ 
+            //         console.log(data);
+            //     },err=>{
+            //         console.log(err);
+            //     })
+            // },err=>{
+            //     console.log(err);
+            // })
+
+            // 二：使用await的情况
+            try{
+                const resq =await fetch(url,config);
+                console.log(resq);
+                console.log(resq.ok);//true
+                console.log(resq.status);//200
+                const result =await resq.json();//转为一个对象，转译需要时间所以需要await
+                console.log(result);
+
+            }catch (err){
+                console.log(err);
+            }
+
+    
+
+            
+        }
+
+  
+        document.getElementsByClassName('btn')[0].onclick = function(){
+            getProvinces();
+        }
+    </script>
+</body>
+</html>

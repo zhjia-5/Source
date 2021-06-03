@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .oDiv {
+        position: absolute;
+        left: 1000px;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+    }
+    button{margin-top: 200px;}
+    .oSpan {
+        position: absolute;
+        left: 600px;
+        top: 0;
+        width: 1px;
+        height: 100px;
+        background: black;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓冲减速运动</title>
+</head>
+
+<body>
+    <div class="oDiv"></div>
+    <span class="oSpan"></span>
+    <button>run</button>
+    <script>//缓冲减速运动
+        var oDiv = document.getElementsByClassName('oDiv')[0],
+            oSpan = document.getElementsByClassName('oSpan')[0],
+            btn = document.getElementsByTagName('button')[0];
+
+        function run(dom, target) {  
+            var timer = null,
+                speed = null;
+            clearInterval(timer);
+            timer = setInterval(function () {
+                speed = (target - oDiv.offsetLeft)/9;
+                //当 >0 就向上取整：Math.ceil(0.5)=1
+                // 当<0 就向下取整：Math.floor(-0.5)=-1
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (target == dom.offsetLeft) {
+                    clearInterval(timer);
+                } else {
+                    dom.style.left = dom.offsetLeft + speed + 'px';
+                }
+            }, 30);
+        }
+        btn.onclick = function () {
+            run(oDiv, 600);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">trigger自定义事件</button>
+    <button id="btn1">按钮一</button>
+    <button id="btn2">按钮二</button>
+    <script>
+        $('.btn').on({
+            click:function(){ $(this).css('background','yellow'); },
+            mouseover:function(event,name,age){ 
+                $(this).css('background','orange'); 
+                console.log("鼠标经过事件"+":"+ name + ":" + age);
+            },
+            mouseout:function(){ $(this).css('background','shyblue') },
+            zhjia:function(){ $(this).text('zhjia'); }
+        });
+
+        setTimeout(function(){
+            $('.btn').trigger('click');
+        },1000);
+
+        setTimeout(function(){
+            $('.btn').trigger('mouseover',['zhjia',18]);
+        },2000);
+
+        setTimeout(function(){
+            $('.btn').trigger('zhjia');
+        },3000);
+
+        //手动触发绑定事件：triggerHandler()
+		//区别1：trigger()会触发事件的默认行为；triggerHandler()不会触发事件的默认行为
+		//区别2：trigger()会执行所有选中元素的事件；triggerHandler()只会执行第一个元素的事件
+		//区别3：trigger()会冒泡；triggerHandler()不会冒泡
+		//区别4：trigger()可以使用链式操作；triggerHandler()不可以使用链式操作
+		
+
+		/* 事件对象 */
+		$('#btn1').click(function(event){
+			console.log(event);
+		});
+		$('#btn2')[0].onclick=function(ev){
+			console.log(ev);
+		};
+    </script>
+</body>
+</html>

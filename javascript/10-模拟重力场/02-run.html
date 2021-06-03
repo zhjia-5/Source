@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多向运动</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            transition: background 1s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        div.onclick = function(){
+            run(this);
+        }
+
+        function run(dom){
+            var speedX = 4,
+                speedY = 6,
+                g = 3,//重力加速度
+                u = 0.8,//阻力系数
+                newLeft,newTop,timer;
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                speedY += g;//重力加速度
+                newLeft = dom.offsetLeft + speedX;//获取最新的位置
+                newTop = dom.offsetTop + speedY;
+                // 当元素到达浏览器可视区边框时
+                if(newLeft >= document.documentElement.clientWidth - dom.clientWidth){
+                    speedX *= u;//X轴方向速度减小
+                    speedY *= u;//Y轴方向速度减小
+                    speedX *= -1;//将速度改变正负值，改变运动反向，反方向运动
+                    // 为了防止newLeft超过浏览器宽并出现滚动条，将newLeft重新赋值
+                    newLeft = document.documentElement.clientWidth - dom.clientWidth;
+                    dom.style.backgroundColor = 'red';
+                }
+                if(newTop >= document.documentElement.clientHeight - dom.clientHeight){
+                    speedX *= u;
+                    speedY *= u;
+                    speedY *= -1;
+                    newTop = document.documentElement.clientHeight - dom.clientHeight;
+                    dom.style.backgroundColor = 'orange';
+                }
+                if(newTop <= 0){
+                    speedX *= u;
+                    speedY *= u;
+                    speedY *= -1;
+                    newTop = 0;
+                    dom.style.backgroundColor = 'yellow';
+                }
+                if(newLeft <= 0){
+                    speedX *= u;
+                    speedY *= u;
+                    speedX *= -1;
+                    newLeft = 0;
+                    dom.style.backgroundColor = 'green';
+
+                }
+
+                if(Math.abs(speedX) < 1){
+                    speedX = 0;
+                }
+                if(Math.abs(speedY) < 1){
+                    speedY = 0;
+                }
+                // 如果X Y轴速度都为0，且在地面上，则清除定时器
+                if(speedX == 0 && speedY == 0 && newTop == document.documentElement.clientHeight - dom.clientHeight){
+                    clearInterval(dom.timer);
+                }else{
+                    dom.style.left = newLeft + 'px';
+                    dom.style.top = newTop + 'px';
+                    console.log(speedX +"===" + speedY);
+                }
+            },30);
+        }
+    </script>
+</body>
+</html>

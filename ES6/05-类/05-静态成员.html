@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>static静态成员</title>
+</head>
+
+<body>
+  <script>
+ /* 
+  3，静态成员
+    写法一: static run(){ ... };只能该类调用，new 出来的对象不能访问 
+    写法二: Animal.weight = 100;  这中在构造器上添加的成员也叫静态成员。
+  */
+    class Animal{
+      constructor(name,sex,age){
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+      }
+      print(){
+        console.log(this.name + this.sex + this.age);
+      }
+      // 静态成员
+      static run(){
+        console.log(this.name + "running");
+      }
+    }
+
+    
+
+    Animal.weight = 100;//在构造器上添加静态 成员
+    console.log(Animal.run());//静态成员只能该类调用
+
+    // new 实例
+    const dog = new Animal("旺财","公",3);
+    console.log(dog);//new 出来的实例没有Animal上的静态成员。
+    // console.log(dog.run());  报错 dog.run is not a function
+    dog.print();
+
+  </script>
+</body>
+
+</html>

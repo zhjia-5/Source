@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤朋友信息案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            outline: none;
+        }
+
+        .main {
+            width: 400px;
+            border: 1px solid #999;
+            margin: 100px auto 0;
+            padding: 10px;
+        }
+
+        .search {
+            border: 1px solid #999;
+            width: 230px;
+            height: 25px;
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+
+        .main .btn {
+            padding: 0 5px;
+            color: cornflowerblue;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .main .on {
+            color: #ffffff;
+            background: royalblue;
+        }
+
+        .frientList ul li {
+            position: relative;
+            padding-left: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: 40px;
+            border-bottom: 1px solid #999;
+        }
+
+        .frientList ul li img {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .frientList ul li .name {
+            margin-bottom: 3px;
+        }
+
+        .frientList ul li .message {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <input type="text" class="search">
+            <span class="btn" sex="male">Male</span>
+            <span class="btn" sex="female">Female</span>
+            <span class="btn on" sex="all">All</span>
+        </div>
+        <div class="frientList">
+            <ul>
+                <!-- <li>
+                    <img src="./img/1.png" alt="">
+                    <p class="name">曹操</p>
+                    <p class="message">对酒当歌人生几何</p>
+                </li>
+                <li>
+                    <img src="./img/2.png" alt="">
+                    <p class="name">诸葛亮</p>
+                    <p class="message">蜀国丞相</p>
+                </li>
+                <li>
+                    <img src="./img/3.png" alt="">
+                    <p class="name">张飞</p>
+                    <p class="message">一夫当关万夫莫开</p>
+                </li>
+                <li>
+                    <img src="./img/4.png" alt="">
+                    <p class="name">刘备</p>
+                    <p class="message">桃园结义</p>
+                </li>
+                <li>
+                    <img src="./img/5.png" alt="">
+                    <p class="name">关羽</p>
+                    <p class="message">过五关斩六将</p>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        // 后台服务器数据
+        var personArr = [
+            { name: '刘备', src: './img/4.png', message: '三顾茅庐', sex: 'male' },
+            { name: '诸葛亮', src: './img/2.png', message: '草船借箭', sex: 'male' },
+            { name: '张飞', src: './img/3.png', message: '一夫当关万夫莫开', sex: 'male' },
+            { name: '关羽', src: './img/5.png', message: '过五关斩六将', sex: 'male' },
+            { name: '刘丽', src: './img/6.png', message: '女生', sex: 'female' },
+            { name: '诸葛清风', src: './img/7.png', message: '亭亭玉立', sex: 'female' },
+            { name: '张靓颖', src: './img/1.png', message: '歌手', sex: 'female' }
+        ]
+        var oUl = document.getElementsByTagName('ul')[0];
+        var search = document.getElementsByClassName('search')[0];
+        var state = { text: '', sex: 'all' }//定义一个全局状态对象
+        // 给按钮注册事件  将类数组转为数组才可以使用forEach循环
+        var btnArr = [].slice.call(document.getElementsByClassName('btn'));
+        var lastOnBtn = btnArr[btnArr.length - 1];
+
+        // 用后台数据渲染页面
+        function renderPage(data) {
+            var htmlStr = '';
+            data.forEach(function (ele, index, self) {
+                htmlStr += '<li><img src="' + ele.src + '"><p class="name">' + ele.name + '</p><p class="message">' + ele.message + '</p></li>';
+            });
+            oUl.innerHTML = htmlStr;// 在页面中生成标签
+        }
+        renderPage(personArr);//初始状态 渲染所有数据
+
+        // 封装过滤文本函数 filterArrByText
+        function filterArrByText(data, text) {
+            // 如果inuput输入框text为空就直接返回数据，不在去执行后面的代码(!null == true) 
+            if (!text) { return data; }
+            return data.filter(function (ele, index, self) {// filter函数通过返回true false判断是否则被筛选出来
+                return ele.name.indexOf(text) != -1;        // indexOf(text),如果包含text则返回对应索引，如果不包含返回-1.
+            });                                             // 如果 indexOf(text)返回-1，则 -1 != -1 为 false 不返回
+        }                                                   // 如果 indexOf(text)返回 1，则  1 != -1 为 true  返回
+                                                            
+        //封装筛选性别函数 filterArrBySex
+        function filterArrBySex(data, sex) {
+            if (sex == 'all') { return data; }
+            return data.filter(function (ele, index, seft) {
+                return ele.sex == sex;
+            });
+        }
+         // 改变类名的函数
+         function changeOn(ele) {
+            ele.className = 'btn on';
+            lastOnBtn.className = 'btn';
+            lastOnBtn = ele;//将这次改为上次元素
+        }
+        //当oninput事件：当框的value发生改变都触发该函数
+        //通过input的输入值作为filterArrByText的第二个参数去过滤personArr数组，并返回新的数组
+        search.oninput = function () {
+            state.text = this.value;
+            var newArr = filterArrByText(personArr, state.text);//过滤文本
+            var filterArr = filterArrBySex(newArr, state.sex);  //过滤性别
+            renderPage(filterArr);                              //最后将双重过滤后的数据渲染
+        }
+
+        btnArr.forEach(function (ele, index, self) {
+            ele.onclick = function () {
+                changeOn(this);
+                var sex = this.getAttribute('sex');//获取属性值，
+                state.sex = sex;//并赋值给全局对象state
+                var newArr = filterArrBySex(personArr, state.sex);//先过滤性别
+                filterArrByText(newArr, state.text);              //在过滤文字
+                renderPage(filterArrByText(newArr, state.text));  //最后将双重过滤后的数据渲染
+            }
+        });
+    </script>
+</body>
+
+</html>

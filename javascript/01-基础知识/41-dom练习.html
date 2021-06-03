@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM_test</title>
+	</head>
+	<body>
+	<!-- 
+		练习：
+		1，遍历元素节点数，在原型链上编程。
+		2，封装函数，返回元素e的第n层祖先元素节点。
+		3，封装函数，返回元素e的第n个兄弟元素节点。
+		   n为正，返回后面的兄弟元素节点。n为负，返回前面的兄弟元素节点，
+		   n为0返回自己。
+		4，编程函数，封装myChildren功能，解决以前 部分浏览器的兼容性问题。
+		5，自己封装hasChildren()方法，不可用 children属性。
+	 -->
+	 <div>
+		 <b></b>
+		 acb
+		 <!-- this is comment -->
+		 <strong>
+			 <span>
+				 <em>
+					 <b></b>
+					 <c></c>
+					 <i></i>
+					 <d></d>
+					 <e></e>
+				 </em>
+			 </span>
+		 </strong>
+	 </div>
+	 <script type="text/javascript">
+		
+		/* 2，封装函数，返回元素e的第n层祖先元素节点。 */
+		/* var div = document.getElementsByTagName('div')[0];
+	 	function retElemNode(elem,n){//返回元素父节点
+			while( elem && n){//当elem返回null时结束循环
+				elem = elem.parentNode;
+				n-- ;
+			}
+			return elem;
+		} */
+		
+		
+		/* 
+		3，封装函数，返回元素e的第n个兄弟元素节点。
+		   n为正，返回后面的兄弟元素节点。
+		   n为负，返回前面的兄弟元素节点，n为0返回自己。
+			previousSibling -> 前一个兄弟节点
+		    nextSibling -> 后一个兄弟节点
+		*/	
+		var i = document.getElementsByTagName('i')[0];
+		function retSibling(e,n){
+			while(e && n){//如果返回的的e为null 则结束循环。
+				if(n > 0){
+					if(e.nextElementSibling){//如果是ie9以上就执行，如果不是则跳到else
+						e = e.nextElementSibling;
+					}else{
+						for(e=e.nextSibling; e && e.nodeType !=1; e=e.nextSibling);//ie9及其以下兼容
+					}
+					n --;
+				}else{
+					if(e.previousElementSibling){
+						e = e.previousElementSibling;
+					}else{//因为当遍历到e==null时，此时null.nodeType是不成立的。所以需要e && e.nodeType
+						for(e = e.previousElementSibling; e && e.nodeType !=1; e=e.previousSibling);
+					}
+					n ++;
+				}
+			}
+			return e;
+		}
+			console.log(retSibling(i,-1));//结果：<b><b/>
+			
+		/* 4，编程函数，封装myChildren功能，
+			解决以前部分浏览器的兼容性问题。
+			 不能使用自带div.children方法 
+			 */
+		/* Element.prototype.myChildren = function(){
+			var child = this.childNodes;//返回子节点们,例如[text, b, text, comment, text, strong, text]
+			var len = child.length;
+			var arr = [];
+			for(var i = 0; i < len; i ++){
+				if(child[i].nodeType == 1){//利用节点类型判断是否是元素节点
+					arr.push(child[i]);//如果是就放进数组
+				}
+			}
+			return arr;
+		}
+		var div = document.getElementsByTagName('div')[0];
+		console.log(div.myChildren());//输出：(2) [b, strong] */
+		
+		
+		/* 5，自己封装hasChildren()方法，不能用children属性。
+			Node.hasChildNodes();	boolean型 是否含有子节点
+			children -> 返回当前元素的子元素节点
+			*/
+			/* Element.prototype.myHasChildren = function() {
+				var child = this.childNodes;
+				var len = child.length;
+				for(var i = 0; i < len; i++){
+					if(child[i].nodeType == 1){
+						return  true;
+					}
+				}
+				return false;
+			}
+			var div = document.getElementsByTagName('div')[0];
+			console.log(div.myHasChildren()); */
+	 </script> 
+	 
+	</body>
+</html>

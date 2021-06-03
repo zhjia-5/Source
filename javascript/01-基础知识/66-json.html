@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 			53
+		 JSON是一种传输数据的格式。以对象为样板，本质上就是对象，
+		 但用途有区别，对象就是本地用的，json是用来传输的。
+		 
+		 属性名最好加双引号。
+		 JSON.parse();      string ——>json    后端——>前端
+		 JSON.stringify();  json   ——>string  前端——>后端
+		  
+		  domTree  +  cssTree  =  randerTree
+		  reflow 重排 dom节点的删除，添加。
+					  dom节点的宽高变化，位置变化，display   none ——> block
+					  offsetWidth   offsetLeft
+		  repaiint  重绘  效率比reflow高
+		  
+		  js加载的缺点：加载工具方法没必要阻塞文档，过得js加载会
+		  影响页面效率，一旦网速不好，那么整个网站将等待js加载而
+		  不进行后续渲染等工作。
+		  有些工具方法需要按需加载，用到在加载，不用不加载。
+		 
+		 异步加载的三种方案
+		 一：defer异步加载，但要等到dom文档完全解析完才会被执行。只有ie
+			能用，也可以将代码写到内部。
+			<script type="text/javascript" defer="defer"></script>
+			
+		二：async异步加载，W3C标准。加载完就执行，async只能加载外部脚本(通过src引入的脚本)，
+			不能把js写在script标签里。
+		  <script type="text/javascript" async="async" src="tool.js"></script>
+		  
+		三：创建script，插入到DOM中,设置type=text/javaScript，加载完毕后callBack。
+		
+		总结 ：一和二执行时也不阻塞页面。三的兼容性更好。
+		 -->
+		 <script type="text/javascript">
+
+		 	var json = {
+				"name" : "zhangsan",
+				"age" : 20
+			}
+
+			// json转为字符串
+			var str = JSON.stringify(json);
+			console.log(str);
+			
+			// 字符串转为json对象
+			var json2 = JSON.parse(str);
+			console.log(json2);
+			
+		 </script>
+	</body>
+</html>

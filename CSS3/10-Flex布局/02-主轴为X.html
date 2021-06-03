@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<title></title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #ccc;
+		}
+
+		.content {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+			border: 1px solid #fff;
+			background: yellow;
+			/* flex: 1; */
+		}
+		.main {
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			/* inline-flex 内联块级弹性伸缩盒显示*/
+			display: flex;
+			/* 弹性盒模型换行语法 */
+			flex-wrap: wrap;
+			/* 主轴默认值为X轴 值： row  */
+			flex-direction: row;
+
+			/* 主轴对齐 */
+			justify-content: center; 
+			justify-content: flex-start;	
+			justify-content: flex-end;
+			justify-content: space-around;/* 左右margin一致 */
+			justify-content: space-between;/* 均分对齐 */
+
+			/* 辅轴对齐  在设置flex-wrap:wrap;下有效*/
+			align-content: center;
+			align-content:flex-start;
+			align-content: flex-end;
+			align-content:space-around;/* 上下margin一致 */
+			align-content:space-between;/* 均分对齐 */
+		}
+
+	</style>
+</head>
+<!-- 	注意：多个项目对齐方式需要设置弹性盒模型换行 flex-wrap:wrap;
+
+		一：display: flex 
+			display: flex || inline-flex 内联块级弹性伸缩盒显示
+			flex-wrap: wrap; 弹性盒模型换行语法 
+
+		二：X轴为主轴	默认值
+			语法：flex-direction: row;   row-reverse;
+			1）主轴对齐方式：
+				居中：justify-content:center;   
+				左对齐：justify-content: flex-start;默认值
+				右对齐：justify-content:flex-end;
+				左右margin一致:justify-content: space-around;
+				均分对齐：justify-content:space-between;
+
+
+			2）辅轴（多行）对齐方式一：  在设置flex-wrap:wrap;下有效
+				居中：align-content:center;    
+				上对齐：align-content:flex-start;默认值
+				下对齐：alignn-content:flex-end;
+				上下margin一致:align-content: space-around;
+				均分对齐：align-content:space-between;
+				（虽然是设置多行的对齐方式，如果只有单行的情况下设置了换行一样有效。）
+
+			2）辅轴（单行）对齐方式二：不需要设置换行
+				align-items: flex-start; 默认值
+				align-items:flex-end;
+				align-items:center;
+				align-items:stretch;在不设置高度情况下会拉伸到和父元素一样高。如果设置高度无效。
+ -->
+<body>
+	<div class="main">
+		<div class="content">1</div>
+		<div class="content">2</div>
+		<div class="content">3</div>
+		<div class="content">4</div>
+		<div class="content">5</div>
+		
+		<div class="content">1</div>
+		<div class="content">2</div>
+		<div class="content">3</div>
+		<div class="content">4</div>
+		<div class="content">5</div>
+
+		<div class="content">1</div>
+		<div class="content">2</div>
+		<div class="content">3</div>
+		<div class="content">4</div>
+		<div class="content">5</div>
+	</div>
+</body>
+
+</html>

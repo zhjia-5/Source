@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>解除绑定事件处理函数程序</title>
+	</head>
+	<body>
+		<!-- 解除绑定事件处理函数程序
+		一： ele.onclick = null / false / '';
+		 
+		二：ele.removeEventListener(type,函数引用值,false)；
+		 
+		三： ele.detachEvent('on' + type ,函数引用值);
+		 
+		 注：若绑定匿名函数，则无法解除。
+		 -->
+		 <div style="width: 100px; height: 100px; background-color: red;"></div>
+		 <script type="text/javascript">
+			var div = document.getElementsByTagName('div')[0];
+			function test (){
+				console.log('a');
+			}
+		// 方法一： ele.onclick = null / false / '';    
+		/* 
+			div.onclick = function(){
+				console.log('a');//解除之前会执行输出:a
+				div.onclick = null;
+			}
+			 */
+		
+		//方法二：ele.removeEventListener(type,函数引用值,false)；	
+		 	div.addEventListener('click',test,false);//需要写函数引用值，否则无法解除
+			div.removeEventListener('click',test,false);
+			 
+			
+		//方法三：ele.detachEvent('on' + type ,函数引用值);  ie特有
+		/* 	div.attachEvent('onclick', test);
+			div.detachEvent('onclick',test);
+			 */
+			
+		 </script>
+	</body>
+</html>

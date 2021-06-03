@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>包装类</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			 包装类：
+			 new String();
+			 new Boolean();
+			 new Number();
+			 */
+			var str = 'abcd';//原始值
+			
+			str.length = 2;//系统new String('abcd').length = 2;然后自动delete
+			
+			console.log(str);//结果：abcd
+		</script>
+	</body>
+</html>

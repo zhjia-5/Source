@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="slideUp">上拉</button>
+    <button id="slideDown">下拉</button>
+    <button id="slideToggle">切换</button>
+    <div class="box" style="width: 200px; height: 300px;background: orange;"></div>
+    <script>
+        $('#slideUp').click(function(){
+            // $('.box').slideUp();
+            $('.box').slideUp('fast');
+            $('.box').slideUp('nomal');
+            $('.box').slideUp('slow');
+            $('.box').slideUp(1000,function(){
+                console.log('上拉结束');
+            });
+        });
+        $('#slideDown').click(function(){
+            // $('.box').slideDown();
+            // $('.box').slideDown('fast');
+            // $('.box').slideDown('nomal');
+            // $('.box').slideDown('slow');
+            $('.box').slideDown(1000,function(){
+                console.log('下拉结束');
+            });
+        });
+        $('#slideToggle').click(function(){
+            $('.box').slideToggle();
+            // $('.box').slideToggle('fast');
+            // $('.box').slideToggle('nomal');
+            // $('.box').slideToggle('slow');
+            $('.box').slideToggle(1000,function(){
+                console.log('下拉结束');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组排序</title>
+</head>
+
+<body>
+  <script>
+    // Array.prototype.sort() 的排序稳定性
+    // 排序稳定性（stable sorting）
+    const arr1 = [
+      'peach',
+      'straw',
+      'apple',
+      'spork',
+    ];
+
+    const stableSorting = (s1, s2) => {
+      if (s1[0] < s2[0]) return -1;
+      return 1;
+    };
+
+    arr1.sort(stableSorting);
+    console.log("arr1===" + arr1)// ["apple", "peach", "straw", "spork"]
+
+
+    let arr2 = [5, 3, 6, 2, 7, 1, 8, 4];
+    // arr2.sort(function (a, b) { return a - b });//升序 返回负数（不换位置）  返回正数（换位置）
+    arr2.sort(function (a, b) { return b - a });   //降序 返回负数（不换位置）  返回正数（换位置）
+    console.log("arr2===" + arr2);
+
+  </script>
+</body>
+
+</html>

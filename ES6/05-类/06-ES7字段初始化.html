@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-字段初始化</title>
+</head>
+
+<body>
+  <script>
+      // 2，类的所有代码均在严格模式下执行。
+    class Test {
+      a = 1;
+      b = 2;
+      static c = 3;
+      print(){
+        console.log(this.a);
+      }
+    }
+  /*
+    等同于：
+      class Test{
+        constorctor(){
+          this.a = 1;
+          this.b = 2;
+        }
+        static c = 3;
+      }
+    */
+      const test1 = new Test();
+      test1.print()// 1
+
+      const p = test1.print;
+      p();//这里会报错：因为此处的this为window，但是print方法里使用this.a。window上没有a属性。
+  </script>
+</body>
+
+</html>

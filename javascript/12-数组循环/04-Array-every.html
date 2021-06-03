@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var personArr = [
+            { name: '张三', sex: "male", age: 20 },
+            { name: '李四', sex: "male", age: 22 },
+            { name: '王五', sex: "male", age: 17 },
+            { name: '李倩', sex: "female", age: 23 },
+            { name: '陈丽', sex: "female", age: 31 }
+        ];
+        var obj = { name: '張三' }
+
+        // Array.prototype.every() 返回的是bool而值，如果都符合条件返回true,否则返回false
+
+        // every方法
+        var bool1 = personArr.every(function (ele, index, self) {
+            // 循环判personArr数组所有元素的age属性值是否大于等于18，
+            // 如果有一个不达标就直接返回false，
+            if (ele.age >= 18) {
+                return true;
+            } else {
+                return false;
+            }
+            console.log(this);
+        }, obj);
+        console.log("bool1：" + bool1);
+
+
+
+        // 模拟原生every方法
+        Array.prototype.myEvery = function (func) {
+            var flag = true;
+            var len = this.length;
+            var _this = arguments[1] || window;
+            for (var i = 0; i < len; i++) {
+                //如果有一个为false，将flag = false，终止函数
+                if (func.apply(_this, [this[i], i, this]) == false) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+
+        var myBool = personArr.myEvery(function (ele, index, self) {
+            //循环判personArr数组所有元素的age属性值是否大于等于18，
+            // 如果有一个不达标就直接返回false，
+            if (ele.age >= 18) {
+                return true;
+            } else {
+                return false;
+            }
+            console.log(this);
+        }, obj);
+        console.log(myBool);
+    </script>
+</body>
+
+</html>

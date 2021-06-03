@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="hide">隐藏</button>
+    <button id="show">显示</button>
+    <button id="toggle">切换</button>
+    <div class="box" style="width: 200px;height: 300px;background:orange"></div>
+    <script>
+        /* 
+        jQuery效果之show hide效果
+		 
+		 1，语法：show([speed,[easing],[fn]])
+		 
+		 2，参数：
+			1）参数都可以省略，无动画直接显示
+			2）speed：三种 预定速度之一的字符串（"show","normal","fast"）
+				或表示动画时长的毫秒数值如1000）
+			3）easing:(Optional)用来指定切换效果，默认"swing"-（由慢-快-慢）,可用参数"linear"-（匀速）。
+            4）fn:回调函数，在动画完成时执行的函数，每个元素执行一次。
+        备注：padding margin border 也跟着减小    
+            */
+    // hide 隐藏
+    $('#hide').click(function(){
+        // $('.box').hide();
+        // $('.box').hide('fast');
+        // $('.box').hide('nomal');
+        // $('.box').hide('slow');
+        $('.box').hide('swing',function(){
+            console.log('动画隐藏结束');
+        });
+    });
+    // 显示
+    $('#show').click(function(){
+        // $('.box').show();
+        // $('.box').show('fast');
+        // $('.box').show('nomal');
+        // $('.box').show('slow');
+        $('.box').show(1000,function(){
+            console.log('动画显示结束');
+        })
+    });
+    // 切换
+    $('#toggle').click(function(){
+        // $('.box').toggle();
+        // $('.box').toggle('fast');
+        // $('.box').toggle('nomal');
+        // $('.box').toggle('slow');
+        $('.box').toggle(1000,function(){
+            console.log('动画切换完毕！');
+        });
+
+
+    });
+    </script>
+</body>
+</html>

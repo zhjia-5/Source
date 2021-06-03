@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        .ul li {
+            width: 600px;
+            height: 30px;
+            border: 1px solid orange;
+        }
+        .ol li {
+            width: 600px;
+            height: 30px;
+            border: 1px solid skyblue;
+        }
+        p {
+            width: 600px;
+            height: 30px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--1,创建元素：$('<li></li>');  (一下内容可以为字符串标签'<p></p>')
+    2,添加元素：
+        (1):内部添加：
+            语法：elem.append('内容');  放入匹配元素内部最后面,类似元素appendChild 
+            语法: elem.prepend('内容'); 放入匹配元素内部最前面,类似元素appendChild 
+        (2):内容添加到
+            语法：elem.appendTo(elem); 放入匹配元素内部最后面
+            语法：elem.preappendTo(elem); 放入匹配元素内部最前面
+        (3):外部添加：
+            语法：elem.after('内容'); 把内容放入目标元素后面    
+            语法：elem.before('内容'); 把内容放入目标元素前面   
+    3,删除元素：
+        (1):语法：elem.remove(); 删除匹配的元素(本身)，有返回值，如果该元素本身有添加事件，删除后再通过返回值插入到页面后，该事件会失效。
+        (2):语法：elem.detach(); 删除匹配的元素(本身)，有返回值，如果该元素本身有添加事件，删除后再通过返回值插入到页面后，该事件依然有效。
+        (3):语法：elem.empty();	 删除匹配的元素集合中所有的子节点
+        (4):语法：elem.html(''); 删除匹配的元素集合中所有的子节点 等效于elem.empty()-->
+    <ul class="ul">
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <li>第6个li</li>
+        <li>第7个li</li>
+        <li>第8个li</li>
+    </ul>
+    <hr>
+    <ol class="ol">
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+    </ol>
+    <script>
+        /*********内部添加——父加子**********/
+        // 语法：elem.append('内容');
+        $('.ul').append('<p>使用append——ul最后面插入p标签</p>');
+        // 语法: elem.prepend('内容')
+        $('.ul').prepend('<p>使用preappend——ul最前面插入p标签</p>');
+        // 语法：elem.appendTo(elem); 放入匹配元素内部最后面
+        $('<li>第9个li,通过elem.appendTo(elem)方法加入</li>').appendTo($('.ul'));
+        // 语法：elem.preappendTo(elem); 放入匹配元素内部最前面
+        $('<li>第0个li，通过elem.preappendTo(elem)加入</li>').prependTo($('.ul'));
+    
+        /*********外部添加——添加兄弟元素**********/
+        // 语法：elem.after('内容'); 把内容放入目标元素后面    
+        $('ul li:eq(5)').after('<p>elem.after()：在第6个li后面添加p</p>');
+        $('.ul li:first').before('<p>elem.before：在第1个li前面添加p</p>');
+
+       /*********删除元素**********/
+        // 语法：elem.remove(); 删除匹配的元素(本身)
+        $('.ol li:last').remove();
+        // 语法：elem.empty();	 删除匹配的元素集合中所有的子节点
+        $('.ol').empty();
+
+
+
+        // 插入的内容可以为标签对象
+        var div = $('<div>div标签</div>').css('border','1px solid olive');
+        $('.ul').prepend(div);
+    </script>
+</body>
+
+</html>

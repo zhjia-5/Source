@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = 'aaabbbcccddeffgg';
+        //首先查找单词字符，\1*：查找重复出现一次以上，(\w)将查找到的作为一组存储
+        var reg = /(\w)\1*/g;  
+        console.log(str.replace(reg,'$1'));//用每一组的第一个替换每一组
+    </script>
+</body>
+</html>

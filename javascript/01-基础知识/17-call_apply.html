@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>call_apply改变this指向</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			/* function Person(name,age,sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			function Chinese(nationality,skin){//国籍，肤色
+				this.nationality = nationality;
+				this.skin = skin;
+			}
+			
+			function Student(name,age,sex,nationality,skin,height,weight){
+				Person.call(this,name,age,sex);
+				Chinese.call(this,nationality,skin);
+				this.height = height;
+				this.weight = weight;
+			}
+			 var student = new Student("张三",20,"男","中国","黄色",180,130); */
+			
+			function Person(name,age,sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			function Chinese(nationality,skin){//国籍，肤色
+				this.nationality = nationality;
+				this.skin = skin;
+			}
+			function Student(name,age,sex,nationality,skin,height,weight){
+				Person.apply(this,[name,age,sex]);
+				Chinese.apply(this,[nationality,skin]);
+				this.height = height;
+				this.weight = weight;
+			}
+			 var student = new Student("张三",20,"男","中国","黄色",180,130);
+		</script>
+	</body>
+</html>

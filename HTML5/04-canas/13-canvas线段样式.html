@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>线段样式</title>
+  <style>
+    #canvas {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500px" height="500px">你的浏览器不支持canvas</canvas>
+  <script>
+    const canv = document.getElementById('canvas');
+    const ctx = canv.getContext('2d');
+
+    ctx.beginPath();
+    ctx.lineWidth = 20;
+
+    ctx.moveTo(100,100);
+    ctx.lineTo(300,100);
+    ctx.lineTo(100,200);
+    ctx.lineTo(300,200)
+
+    // ctx.lineJoin="bevel";//折断
+    // ctx.lineJoin="miter";//尖角  === ctx.miterLimit=5;
+    ctx.lineJoin="round";//圆角
+
+    //ctx.lineCap ="round";  (圆角帽子);
+    // ctx.lineCap ="butt"; (默认值不添加帽子);
+    // ctx.lineCap ="square"(两端添加一正方形帽子)；
+
+
+    ctx.stroke();//绘画
+  </script>
+</body>
+</html>

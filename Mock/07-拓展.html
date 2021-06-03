@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./mock.js"></script>
+    <title>方法拓展</title>
+</head>
+<body>
+    <script>
+        // 自定义一个接口，返回自己想要的数据
+        Mock.Random.extend({
+            // zodiac 生肖：鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪
+            zodiac : function(date){
+                var zodiac = ['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪'];
+                
+                // return this.pick(zodiac);//pick方法，从数组中随机获取一个元素
+                return zodiac[Math.floor(Math.random()*zodiac.length)];//取到的是zodiac[0~11]
+            }
+        });
+        console.log(Mock.Random.zodiac());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组迭代</title>
+</head>
+<body>
+  <script>
+    // 数组的隐式原型上也有迭代方法Symbol(Symbol.iterator)
+    const arr = [1,2,3,4,5,6,7]
+    
+    // 方法一
+    const iterator = arr[Symbol.iterator]();//该方法返回一个迭代器
+    let result = iterator.next();//返回一个对象
+
+    while(!result.done){
+      console.log(result.value);
+      result = iterator.next();
+    }
+    
+    // 方法二 等同于 方法一
+    // 使用for of 循环可迭代数组
+    for (const iterator of arr) {
+      console.log(iterator);
+    }
+
+  </script>
+</body>
+</html>

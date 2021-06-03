@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间线</title>
+	</head>
+	<!--
+	 封装defer和async异步加载兼容性方法。
+	 
+	 -->
+	<body>
+		<script type="text/javascript">
+			function loadScript(url,callback){
+				var script = document.createElement('script');//动态创建script
+				script.type = 'text/javascript';
+				if(script.readyState){//如果兼容 IE 浏览器	
+					script.onreadystatechange = function(){
+						if(script.readyState == 'complete' || script.readyState == 'loaded'){
+							callback();//执行参数里的函数
+						}				
+					}
+				}else{
+					script.onload = function(){//如果兼容W3C标准
+					callback();//执行参数里的函数
+					}
+				}
+				script.src = url;
+				document.head.appendChild(script);//如果不把script标签插入到页面，demo.js加载进来也不会执行。
+			}
+			// 这样写的原因是：是因为系统解析代码的时候最多解析到函数的参数
+			// 不会看函数体里面的内容，更无法无法识别从外部加载进来的函数引用，
+			 // 所以需要在参数里写个函数体
+			loadScript('demo41.js',function(){  test();	});
+		</script>
+	</body>
+</html>

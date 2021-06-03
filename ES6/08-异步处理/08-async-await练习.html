@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const pro = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let random = Math.random();
+        if (random < 0.5) {
+          resolve(random)
+        } else {
+          reject(new Error(random))
+        }
+      }, 1000);
+    })
+
+    // 需要使用try catch 不抓错误
+    async function test() {
+      try {
+        const res = await pro;
+        console.log("正常状态resolved",res);
+      } catch (err) {
+        console.log("错误状态rejected",err);
+      }
+    }
+    test()
+  </script>
+</body>
+
+</html>

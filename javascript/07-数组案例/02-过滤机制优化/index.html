@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤朋友信息案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            outline: none;
+        }
+
+        .main {
+            width: 400px;
+            border: 1px solid #999;
+            margin: 100px auto 0;
+            padding: 10px;
+        }
+
+        .search {
+            border: 1px solid #999;
+            width: 230px;
+            height: 25px;
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+
+        .main .btn {
+            padding: 0 5px;
+            color: cornflowerblue;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .main .on {
+            color: #ffffff;
+            background: royalblue;
+        }
+
+        .frientList ul li {
+            position: relative;
+            padding-left: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: 40px;
+            border-bottom: 1px solid #999;
+        }
+
+        .frientList ul li img {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .frientList ul li .name {
+            margin-bottom: 3px;
+        }
+
+        .frientList ul li .message {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <input type="text" class="search">
+            <span class="btn" sex="male">Male</span>
+            <span class="btn" sex="female">Female</span>
+            <span class="btn on" sex="all">All</span>
+        </div>
+        <div class="frientList">
+            <ul>
+                <!-- <li>
+                    <img src="./img/1.png" alt="">
+                    <p class="name">曹操</p>
+                    <p class="message">对酒当歌人生几何</p>
+                </li>
+                <li>
+                    <img src="./img/2.png" alt="">
+                    <p class="name">诸葛亮</p>
+                    <p class="message">蜀国丞相</p>
+                </li>
+                <li>
+                    <img src="./img/3.png" alt="">
+                    <p class="name">张飞</p>
+                    <p class="message">一夫当关万夫莫开</p>
+                </li>
+                <li>
+                    <img src="./img/4.png" alt="">
+                    <p class="name">刘备</p>
+                    <p class="message">桃园结义</p>
+                </li>
+                <li>
+                    <img src="./img/5.png" alt="">
+                    <p class="name">关羽</p>
+                    <p class="message">过五关斩六将</p>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <!-- 一次引入 -->
+    <script src="./js/filterArrByText.js"></script>
+    <script src="./js/filterArrBySex.js"></script>
+    <script src="./js/lastFilter.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

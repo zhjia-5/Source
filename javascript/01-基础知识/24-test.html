@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* function b(x,y,a){
+				arguments[2] = 10;
+				alert(a);
+			}
+			b(1,2,3); //结果为10、、
+			
+			function b(x,y,a){
+				a = 10;
+				alert(arguments[2]);
+			}
+			b(1,2,3);结果为10
+			*/
+		   
+		  /* var f = (
+				function f(){
+					return "1";
+				},//逗号操作符，（1,2）如果括号里第一个为1，就输出2 
+				function g(){
+					return 2;
+					}
+		   )();
+			typeof f;//返回结果为2。 */
+			
+			
+	/* 		var x = 1;
+			if(function f(){}){//括号返回true，f函数消失，执行下列语句
+				x += typeof f;//f 值为“undefined”    
+			}
+			console.log(x);//结果为:1undefined */
+			
+			
+			
+			
+			// isNaN:通过Number()方法转换后判断是否是NaN.
+			function myisNaN(num){
+				var ret = Number(num);//Number(num)判断是否是数字，是返回num值，不是返回NaN
+				ret += "";//将返回值转成字符串
+				if(ret == "NaN"){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		</script>
+	</body>
+</html>

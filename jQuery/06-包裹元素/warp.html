@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>包裹元素</title>
+</head>
+<body>
+    <div class="wrap">
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+        <span>span4</span>
+        <span>span5</span>
+    </div>
+    <ol class="ol">
+        <li>第一个li</li>
+        <li>第二个li</li>
+        <li>第三个li</li>
+    </ol>
+    <!--
+        .wrap()
+            在每个匹配的元素外层包上一个html元素。
+            参数为单标签 '<li>'
+        .wrapAll()
+            在所有匹配元素外面包一层HTML结构。
+            参数为单标签
+        .wrapInner()
+            在匹配元素里的内容外包一层结构。
+        .unwrap()
+            将匹配元素集合的父级元素删除，保留自身（和兄弟元素，如果存在）在原来的位置。
+            参数为单标签     -->
+    <script>
+
+        //.wrap() 给匹配到的每一个元素各自加一个父级
+        $('.wrap span').wrap('<li>');
+        // .wrapAll() 给匹配的的所有元素加一个共同父级
+        $('.wrap li').wrapAll('<ul>');
+
+        // .wrapInner()在匹配元素里的内容外包一层结构。    
+        $('.ol li').wrapInner('<span>');
+        // .unwrap()将匹配元素集合的父级元素删除    
+        $('.ol li').unwrap();
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+input, button {
+	border: none;
+	background: none;
+	outline: none;
+}
+
+html, body {
+	font-size: 14px;
+	/* 这里设置一个字体大小主要是为了在页面里使用rem */
+	color: #333;
+	font-family: 'YouYuan';
+}
+
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+.wrapper header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 4.5rem;
+	background: linear-gradient(to right, #333, #111, #aaa);
+}
+
+.wrapper header::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: url(./images/bg.png) center;
+}
+
+.wrapper header .logo {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	margin-left: 3rem;
+}
+
+.wrapper header .logo img {
+	width: 3rem;
+	height: 3rem;
+}
+
+.wrapper header .logo span {
+	margin-left: 1rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	animation: jump .8s ease infinite alternate;
+	transition: transfrom .3s;
+}
+
+.wrapper header .logo span:nth-of-type(1) {
+	animation-delay: .2s;
+}
+
+.wrapper header .logo span:nth-of-type(2) {
+	animation-delay: .4s;
+}
+
+.wrapper header .logo span:nth-of-type(3) {
+	animation-delay: .6s;
+}
+
+.wrapper header .logo span:nth-of-type(4) {
+	animation-delay: .8s;
+}
+
+.wrapper header .logo span:nth-of-type(5) {
+	animation-delay: 1s;
+}
+
+.wrapper header .logo span:nth-of-type(6) {
+	animation-delay: 1.2s;
+}
+
+/* 学生管理系统动画 */
+
+@keyframes jump {
+	0% {
+		transform: translateY(0px);
+		text-shadow: 0.3rem -0.3rem 0.5rem #ccc;
+	}
+	100% {
+		transform: translateY(-20px);
+		text-shadow: 0.3rem 0.3rem 0.5rem #ccc;
+	}
+}
+
+/* 按钮 */
+.wrapper header .btn {
+	display: none;
+	position: absolute;
+	left: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 6px;
+	/* .btn被伪类盖住，需提升层级 */
+	z-index: 1024;
+	cursor: pointer;
+}
+
+.wrapper header .btn span {
+	display: block;
+	width: 22px;
+	height: 2px;
+	background-color: #fff;
+	margin: 4px 0;
+	transform-origin: center;
+}
+.wrapper header .btn:hover{
+	transition: .3s;
+	transform: scale(1.1) translateY(-50%);/* 需要重新写：translateY(-50%)，如果不写会覆盖上面的transform  */
+}
+.wrapper header .btn:hover span{
+	animation: change 2s infinite;
+	transition: .3s;
+}
+
+@keyframes change {
+	0%{
+		transform: rotate(0);
+	}
+	25%{
+		transform: rotate(45deg);
+	}
+	50%{
+		transform: rotate(0deg);
+	}
+	75%{
+		transform: rotate(-45deg);
+	}
+	100%{
+		transform: rotate(0);
+	}
+}

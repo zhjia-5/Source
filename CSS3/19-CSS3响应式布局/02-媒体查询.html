@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    一：响应式网页开发方法
+        1. 流体网格：可伸缩的网格 （大小宽高  都是可伸缩（可用flex或者百分比来控制大小）float）---》 
+            布局上面 元素大小不固定可伸缩
+        2. 弹性图片：图片宽高不固定（可设置min-width: 100%）
+        3. 媒体查询：让网页在不同的终端上面展示效果相同 
+        4. 主要断点： 设备宽度的临界点 
+            大小的区别 ---》 宽度不同   ---》 根据不同宽度展示不同的样式
+            响应式网页开发主要是在css样式上面进行操作
+
+        5.css2: media type
+            media type(媒体类型)是css 2中的一个非常有用的属性，
+            通过media type我们可以对不同的设备指定特定的样式，从而实现更丰富的界面。
+        6.css3: media query
+            media query是CSS3对media type的增强，事实上我们可以将
+            media query看成是media type+css属性(媒体特性Media features)判断。
+    
+    二：媒体查询的三种引入方式：
+
+        1）外部引入：当满足media = "screen and (max-width:375px)" 才会引入并执行index.css样式
+            语法：
+                <link rel="stylesheet" media="screen and (max-width:375px)" href="./index.css">
+
+        2）@import引入：满足条件引入
+            语法：
+                <style>
+                    @import "index.css" screen and (max-width:375px);
+                </style>
+
+        3）@media 引入方式：满足条件执行   
+         <style>
+           @media screen and (max-width:375px) {
+               div{
+                   background:red;
+               }
+            }
+        </style>
+
+       三：语法的关键字和符号：
+            and : 表示以及的意思
+            ，  ：表示并且的意思
+
+    注意：媒体查询样式没有权重值，一般都放后面。   
+    注意： and 左右两边一定到有空格 
+     -->
+     <div class="div1"></div>
+     <div class="div2"></div>
+     <style>
+         div{
+             width: 200px;
+             height: 200px;
+             border: 1px solid  black;
+         }
+         /* 当(500px <= 屏幕 <= 800px)时执行 */
+         @media screen and (min-width:500px) and (max-width:600px){
+            .div1 {
+                background: red;
+            }
+         }
+
+         /* 当(屏幕 <= 300px 且 >= 500px)时执行 */
+         @media screen and (max-width:300px),(min-width:500px){
+             .div2{
+                 background: orange;
+             }
+         }
+
+     </style>
+</body>
+</html>

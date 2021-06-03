@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3滤镜：图片模糊效果</title>
+    <style>
+        img{
+            width: 200px;
+            filter: blur(5px);/* blur为函数，英文意思为模糊，值越大越模糊 */
+        }
+
+        .div1{
+            width: 300px;
+            height: 300px;
+            background-color: #cccccc;
+        }
+        .div2{
+            width: calc(100% - 30px);/* 宽高度比父元素小30px ,函数内可乘除加减*/
+            height: calc(100% - 30px);
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/保时捷.jpg" alt="">
+    <div class="div1">
+        <div class="div2"></div>
+    </div>
+    
+</body>
+</html>

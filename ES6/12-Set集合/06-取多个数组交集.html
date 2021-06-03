@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>取多个数组交集</title>
+</head>
+
+<body>
+  <script>
+    const arr1 = [1, 2, 3, 4, 5, 6, 7, 8];
+    const arr2 = [5, 6, 7, 8, 9, 10, 11, 12];
+
+    const set1 = new Set(arr1);
+    const set2 = new Set(arr2);
+
+    // 使用forEach方法：
+    const foreachArr = [];
+    set1.forEach((item) => {
+      if (set2.has(item)) {
+        foreachArr.push(item);
+      }
+    })
+    console.log(foreachArr);
+
+    // 使用filter方法：
+    const filterArr = [...set1].filter((item) => {
+      return set2.has(item);//如果包含就返回该项item
+    })
+    console.log(filterArr);
+
+    // 使用filter方法二
+    const filterArr2 = [...set1].filter((item) => {
+      return arr2.indexOf(item) != -1; //如果不等于-1说明包含，
+    })
+    console.log(filterArr2);
+
+
+  </script>
+</body>
+
+</html>

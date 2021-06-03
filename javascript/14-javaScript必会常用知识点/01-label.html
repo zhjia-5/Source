@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- for='id'   当点击label，会自动聚焦到input输入框里-->
+    <label class="label1" for="demo">username</label>
+    <input type="text" id="demo">
+    <script>
+        var oInput = document.getElementById('demo');
+        var oLabel = document.getElementsByClassName('label1')[0];
+        oInput.onclick = function(){
+            console.log(this);
+            /*输出结果： <input type="text" id="demo"> */
+        }
+        oLabel.onclick = function(){
+            console.log(this);
+            // <input type="text" id="demo">
+            // <label for="demo">username</label>
+            console.log(this.className)//label1
+             
+        }
+    </script>
+</body>
+</html>

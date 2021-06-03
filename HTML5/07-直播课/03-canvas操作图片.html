@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas{
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <img id="img1" src="" title="canvas.toDataURL">
+  <div id="box"></div>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    let img = new Image();
+    img.src = './images/img_01.jpg';
+    // 图片已加载完后再去操作
+    img.onload = ()=>{
+
+      // 一：在图片里面画图
+
+      // 1、在canvas的x=50,y=50里面画图,当图片超出canvas范围会被剪切掉
+      // context.drawImage(img,50,50);
+
+      // 2、drawImage(img,img起点x轴,img起点y轴,img宽度,img高度);
+      // context.drawImage(img,0,0,500,500);
+
+      // 3、drawImage(img,img起点x轴,img起点y轴,img宽度,img高度,canvas的x轴,canvas的y轴,img在canvas里显示的宽,img在canvas里显示的高);
+      context.drawImage(img,450,70,150,150,0,0,150,150)
+
+
+      // 二：导出图片
+
+      let imgSrc = canvas.toDataURL();//这个方法需要放到 canvas 身上
+      // console.log(imgSrc);//打印出 base64 数据类型
+      let newImg = document.getElementById('img1');
+      newImg.src = imgSrc;
+
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>date</title>
+	</head>
+	<body>
+		<!-- 
+		 https://www.w3school.com.cn/js/jsref_obj_date.asp
+		 创建Date对象的语法：
+			var date = new Date(); 
+			Date() 				返回当日的日期和时间。
+			getTime() 			返回 1970 年 1 月 1 日至今的毫秒数。等同 Date.now()
+			getFullYear() 		从 Date 对象以四位数字返回年份。
+			getMonth() 			从 Date 对象返回月份 (0 ~ 11)。
+			getDate() 			从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+			getDay() 			从 Date 对象返回一周中的某一天 (0 ~ 6)。
+			getHours() 			返回 Date 对象的小时 (0 ~ 23)。
+			getMinutes() 		返回 Date 对象的分钟 (0 ~ 59)。
+			getSeconds() 		返回 Date 对象的秒数 (0 ~ 59)。
+			getMilliseconds() 	返回 Date 对象的毫秒(0 ~ 999)。
+			
+			setDate() 			设置 Date 对象中月的某一天 (1 ~ 31)。
+			setMonth() 			设置 Date 对象中月份 (0 ~ 11)。
+			setFullYear() 		设置 Date 对象中的年份（四位数字）。
+			setYear() 			请使用 setFullYear() 方法代替。
+			setHours() 			设置 Date 对象中的小时 (0 ~ 23)。
+			setMinutes() 		设置 Date 对象中的分钟 (0 ~ 59)。
+			setSeconds() 		设置 Date 对象中的秒钟 (0 ~ 59)。
+			setMilliseconds() 	设置 Date 对象中的毫秒 (0 ~ 999)。
+			setTime() 			以毫秒设置 Date 对象。
+		 -->
+		 <!-- 封装一个函数获取瞬时时间-->
+		 <script type="text/javascript">
+			function myTime(){
+				 var d = new Date();
+				 var  str = "北京时间：";
+				 str += d.getFullYear() + "年";
+				 str += d.getMonth() + 1 + "月";
+				 str += d.getDate() + "日";
+				 str += ("星期") + d.getDay() + " ";
+				 str += d.getHours() + "点";
+				 str += d.getMinutes() + "分";
+				 str += d.getSeconds() + "秒";
+
+				 console.log(str);
+			 }
+			 myTime();
+		 </script>
+	</body>
+</html>

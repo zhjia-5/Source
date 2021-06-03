@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<title></title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #ccc;
+		}
+
+		.content {
+			width: 100px;
+			height:100px;
+			text-align: center;
+			line-height: 100px;
+			border: 1px solid #fff;
+			background: yellow;
+			/* flex: 1; */
+		}
+		.main {
+			width: 600px;
+			height: 400px;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			/* inline-flex 内联块级弹性伸缩盒显示*/
+			display: flex;
+			/* 弹性盒模型换行语法 */
+			flex-wrap: wrap;
+			/* 主轴默认值为Y轴 flex-direction: column;  column-reverse  */
+			flex-direction: column;
+
+			/* 主轴对齐 */
+			justify-content: center;
+			/* justify-content: flex-start; */
+			/* justify-content: flex-end;  */
+			/* justify-content: space-around; */
+			/* justify-content: space-between; */
+
+			/* 辅轴（多行）对齐  在设置flex-wrap:wrap;下有效*/
+			align-content: center;
+			/* align-content:flex-start; */
+			/* align-content: flex-end; */
+			/* align-content:space-around; */
+			/* align-content:space-between;  */
+
+			
+
+			
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="content">1</div>
+		<div class="content">2</div>
+		<div class="content">3</div>
+		<div class="content">4</div>
+		<div class="content">5</div>
+		<div class="content">6</div>
+		<div class="content">7</div>
+		<div class="content">8</div>
+		<div class="content">9</div>
+		<div class="content">10</div>
+		<div class="content">11</div>
+		<div class="content">12</div>
+		
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 400px;
+            height: 400px;
+            background-color: #ddd;
+            display: flex;
+
+            flex-wrap: wrap;
+            
+            justify-content: center;
+            
+            /* 设置换行情况下可以使用该方法 */
+            align-content: center; 
+
+            /* 单行设置辅轴的对齐：不设置换行情况下使用该方法 */
+            /* align-items: center; */
+
+        }
+        .div2{
+            width: 50px;
+            height: 50px;
+            background: #333;
+            border: 1px solid #fff;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="div2"></div>
+        <div class="div2"></div>
+        <div class="div2"></div>
+    </div>
+</body>
+</html>

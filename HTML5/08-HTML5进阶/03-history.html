@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>history</title>
+  <style>
+    #main div {
+      width: 10vw;
+      height: 10vw;
+      border: 1px solid #000;
+      display: inline-block;
+      text-align: center;
+      line-height: 10vw;
+      font-size: 3vw;
+    }
+
+    button {
+      width: 15vw;
+      height: 3vw;
+      font-size: 2vw;
+      line-height: 3vw;
+    }
+
+    .p {
+      width: 20vw;
+      height: 5vw;
+      border: 1px solid #000;
+      display: inline-block;
+      text-align: center;
+      line-height: 5vw;
+      font-size: 2vw;
+      color: red;
+    }
+
+    .inp {
+      width: 10vw;
+      height: 3vw;
+      font-size: 1vw;
+    }
+
+    .color {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+  </div>
+  <p class="p"></p>
+  <br>
+
+  <button class="back">back 后退</button>
+  <button class="forward">forword 往前</button>
+  <br> <br> <br>
+  <input type="text" class="inp" placeholder="跳到某一页">
+  <button class="go">go(跳转)</button>
+
+  <script>
+    /*      
+           Histroy对象包含用户（在同一个浏览器窗口中）访问过的url
+           1，Histroy 对象的属性
+           属性            描述          
+           lenght          返回浏览器历史列表中的url数量
+            
+           2，Histroy 对象方法
+           方法名              描述
+           back()              加载history列表中的前一个url    
+           forward()           加载history列表中的下一个url
+           go(number)          加载history列表中的某个具体页面，参数为正负数
+
+          pushState(state,title,url)   方法向当前浏览器会话的历史堆栈中添加一个状（state）。
+           - state 添加的状态
+           - title 添加的标题（一般为null）
+           - url   当前状态对应的地址
+          
+          window.addEventListener("popstate",(e)=>{}); 只要url变就会触发（常用）
+          window.addEventListener("hashchange",(e)=>{}); 锚点变了才会触发，即hasn值变了才会触发
+
+    
+     */
+    const main = document.getElementById("main");
+    const back = document.getElementsByClassName("back")[0];
+    const forward = document.getElementsByClassName("forward")[0];
+    const go = document.getElementsByClassName("go")[0];
+    const p = document.getElementsByClassName("p")[0];
+    const inp = document.getElementsByClassName("inp")[0];
+
+    // 给div添加和删除类名来填充背景
+    main.addEventListener("click", (e) => {
+      let target = e.target;
+      target.classList.contains("color") ? target.classList.remove("color") : target.classList.add("color");
+      p.innerHTML = target.className;
+      // 方法向当前浏览器会话的历史堆栈中添加一个状态（state）。
+      history.pushState(target.className, null, "#" + target.className);
+    })
+    // 
+    // 方法向当前浏览器会话的历史堆栈中添加一个状态事件：popstate
+    window.addEventListener("popstate", (e) => {
+      if (e.state == null) return;
+      p.innerHTML = e.state.value;
+    });
+
+    back.addEventListener("click", () => window.history.back());//后退
+    forward.addEventListener("click", () => window.history.forward());//向前
+    go.addEventListener("click", () => window.history.go(inp.value));//跳转到几页，2：往前1页，-2：往后退两页
+
+
+
+  </script>
+</body>
+
+</html>

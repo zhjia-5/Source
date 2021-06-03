@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性运动练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            position: relative;
+            margin: 100px auto 0px;
+            width: 600px;
+            height: 200px;
+        }
+    .ele{
+            float: left;
+            box-sizing: border-box;
+            width: 100px;
+            height: 200px;
+            background-color: rgb(215, 235, 43);
+            border: 1px solid black;
+            text-align: center;
+            line-height: 200px;
+        }
+    .bg{
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100px;
+        height: 200px;
+        background: rgba(255, 001, 212, 0.5);
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="ele">1</li>
+        <li class="ele">2</li>
+        <li class="ele">3</li>
+        <li class="ele">4</li>
+        <li class="ele">5</li>
+        <li class="ele">6</li>
+        <li class="bg"></li>
+    </ul>
+    <script>
+        var ele = document.getElementsByClassName('ele'),
+            bg = document.getElementsByClassName('bg')[0],
+            i;
+        for(i = 0; i < ele.length; i ++){
+            ele[i].onmouseover = function(){
+                run(bg,this.offsetLeft);
+            }
+        }
+
+        function run (dom,target){
+            var timer,
+                u = 0.8,
+                speed = 0;
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                a = (target - dom.offsetLeft)/5;
+                speed += a;
+                speed *= u;
+                if(Math.abs(target - dom.offsetLeft < 1) && Math.abs(speed) < 1){
+                    clearInterval(dom.timer);
+                    dom.style.left = target + 'px';
+                }else{
+                    dom.style.left = dom.offsetLeft + speed + 'px';
+                }
+            },30);    
+        }
+
+
+    </script>
+</body>
+</html>

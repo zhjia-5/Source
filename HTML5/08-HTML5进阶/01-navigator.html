@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取地理位置</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      一些系统不支持此功能
+      定位（GPS）。台式机几乎没有GPS，笔记本绝大多数没有gps，智能手机几乎都有GPS
+      网络。来粗略的估计地理位置。 
+      只能在https协议下才能获取位置。
+
+      
+      需要翻墙：
+      window.navigator.geolocation.getCurrentPosition((position)=>{
+        //...
+      },(err)=>{
+        //...
+      })
+      该函数返回GeolocationPosition对象：
+      latitude: 22.851257999999998  ——表示纬度
+      longitude: 108.32950389999999 ——表示经度
+      
+   */
+
+    window.navigator.geolocation.getCurrentPosition((position) => {
+      console.log("获取数据成功函数", position);
+    }, (err) => {
+      console.log("获取失败的函数", err);
+    })
+  </script>
+</body>
+
+</html>

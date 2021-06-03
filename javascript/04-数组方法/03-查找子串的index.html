@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 查看子串首次出现的位置
+        var str1 = 'abcde45yfg';
+        var str2 = 'fg';
+        // console.log(str1.indexOf('def'));
+        // 方法一
+        function getIndex(str1, str2) {
+            var len2 = str2.length;
+            var len1 = str1.length - len2;
+            for (var i = 0; i <= len1; i++) {//循环次数为父串length - 子串length+1
+                for (var j = 0; j < len2; j++) {
+                    if (str1[i + j] != str2[j]) {//如果不成立，跳出内循环
+                        break;
+                    }
+                    if(j == str2.length - 1){//如果不跳出内循环说明str1[i + j] == str2[j]成立，返回i
+                        return i;
+                    }
+                }
+            }
+            return -1;//找不到返回-1
+        }
+        console.log(getIndex(str1,str2));
+
+
+        // 方法二slice
+        function getIndex2(str1,str2){
+            var start =0;
+            var end = str1.length - str2.length;
+            while(start <= end){
+                if(str1.slice(start,str2.length + start) == str2){//通过截取父串与子串对比
+                    return start;
+                }
+                start ++;
+            }
+            return -1;
+        }
+        console.log(getIndex2(str1,str2));
+
+    </script>
+</body>
+
+</html>

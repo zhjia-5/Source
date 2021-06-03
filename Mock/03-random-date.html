@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./mock.js"></script>
+    <title>随机生成时间</title>
+</head>
+<body>
+    <script>
+        // 随机生成时间
+        console.log(
+            Mock.Random.date(),
+            Mock.Random.date('yyyy-MM-dd'),
+            Mock.Random.date('yyyy-MM-dd:HH:mm:ss'),
+            Mock.Random.now(),//取到现在的时间
+        );
+    </script>
+</body>
+</html>

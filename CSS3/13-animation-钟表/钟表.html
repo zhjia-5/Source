@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钟表</title>
+</head>
+<style>
+    .clock{
+        width: 512px;
+        height: 512px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);/* 居中 */
+        background: url('./img/clock.png') no-repeat;
+        background-size: cover;/* 等比例缩放直至铺满，超出裁剪 */
+    }
+    .hour{
+        position: absolute;
+        left: 241px;
+        top: 124px;
+        width: 32px;
+        height: 148px;
+        background: url('./img/hour.png') no-repeat;
+        background-size: cover;/* 等比例缩放直至铺满，超出裁剪 */
+        transform-origin: center 132px;/* 旋转轴 */
+        animation: hour 3600s linear infinite;/* 走30deg 用时3600s */
+    }
+    .minute{
+        position: absolute;
+        left: 241px;
+        top: 56px;
+        width: 32px;
+        height: 218px;
+        background: url('./img/minute.png') no-repeat;
+        background-size: cover;/* 等比例缩放直至铺满，超出裁剪 */
+        transform-origin: center 202px;/* 旋转轴 */
+        animation: second 3600s linear infinite;/* 走360deg 用时3600s */
+
+    }
+    .second{
+        position: absolute;
+        left: 248px;
+        top: 55px;
+        width: 16px;
+        height: 278px;
+        background: url('./img/second.png') no-repeat;
+        background-size: cover;/* 等比例缩放直至铺满，超出裁剪 */
+        transform-origin: center 202px;/* 旋转轴 */
+        animation: second 60s steps(60,end) infinite/* ;走360deg 用时60s */
+    }
+    
+    @keyframes second{
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    @keyframes minute{
+        0%{ transform: rotate(0deg); }
+        100%{ transform: rotate(deg360); }
+    }
+    @keyframes hour{
+        0%{ transform: rotate(0deg); }
+        100%{ transform: rotate(30deg); }/* 30deg 表示走了1个小时*/
+    }
+</style>
+<body>
+    <div class="clock">
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+    </div>
+</body>
+</html>

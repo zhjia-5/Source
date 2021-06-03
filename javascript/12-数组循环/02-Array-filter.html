@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组filter过滤</title>
+</head>
+
+<body>
+    <script>
+        var personArr = [
+            { name: '张三', sex: "male", age: 20 },
+            { name: '李四', sex: "male", age: 22 },
+            { name: '王五', sex: "male", age: 19 },
+            { name: '李倩', sex: "female", age: 23 },
+            { name: '陈丽', sex: "female", age: 31 }
+        ];
+        /*  
+         Array.prototype.filter
+         对数组的过滤作用，基于遍历的
+         filter(function(ele,index,self)): 参数为函数,该函数的参数又可以为ele,index,self
+         filter执行完毕后，会返回一个新的数组[].
+             如果 return true; 返回新写数组
+             否则 return false; 返回一个空的数组
+        
+         */
+        var newArr = personArr.filter(function (ele, index, self) {
+            // 如果数组元素的sex为‘male' 则被筛选出来
+            //   简写方法:
+            return ele.sex == 'male';
+            //   另一种写法:
+            // if(ele.sex == 'male'){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+        });
+        console.log(newArr);
+
+
+        // 模拟原生filter方法
+        Array.prototype.myFilter = function (func) {
+            var arr = [];
+            var len = this.length;
+            //如果arg[1]第二个参数为undefined，this的指向就是window。
+            var _this = arguments[1] || window;
+            for (var i = 0; i < len; i++) {
+                // &&前面为真才执行后面代码
+                func.apply(_this, [this[i], i, this]) && arr.push(this[i]);
+            }
+            return arr;
+        }
+
+        var newArr = personArr.myFilter(function (ele, index, self) {
+            return ele.sex == 'female';
+        });
+        console.log(newArr);
+
+
+
+
+
+    </script>
+</body>
+
+</html>

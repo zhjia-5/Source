@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组合并</title>
+</head>
+
+<body>
+  <script>
+    //   求最大值
+    const arr1 = [1, 2, 3, 4, 5];
+    const arr2 = [6, 7, 8, 9, 10];
+
+
+    arr1.push(...arr2);// 将 arr2放到arr1的尾部
+    console.log(arr1);
+
+    // arr1 连接arr2 返回新的数组,不修改原数组
+    const arr3 = arr2.concat(arr1)
+    console.log(arr3);
+
+     // arr1 连接arr2 返回新的数组,不修改原数组
+    const arr4 = [...arr1,...arr2]
+    console.log(arr4);
+  </script>
+</body>
+
+</html>

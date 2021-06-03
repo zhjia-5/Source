@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>带默认参数解构练习</title>
+</head>
+
+<body>
+  <script>
+
+    // method 与 ajax 为默认参数
+    // 如果用户没有给 ajax传参，就使用默认值{} 当作默认值,如果没有默认对象，ajax() 无参数调用会报错
+    /*    
+    语法:
+    ({
+       method = "get",
+       url = "/",
+     } = {})
+  */
+    function ajax({
+      method = "get",//如果调用ajax函数没有传method参数，则使用get为默认值
+      url = "/",//如果调用ajax函数没有传url参数，则使用"/"为默认值
+    } = {}) { //使用{}作为默认值，防止无参调用会报错
+      console.log(method, url);
+    }
+
+    ajax({
+      url: "/abc"
+    });
+
+
+  </script>
+</body>
+
+</html>

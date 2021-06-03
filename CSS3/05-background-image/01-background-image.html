@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 600px;
+            height: 300px;
+            border: 20px solid rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            position: absolute;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+            /* 添加多张背景图片：用户网络加载慢或者容错，然后显示第二张图片 */
+            background-repeat: no-repeat;
+            background-image: url('./img/IMG_1837.JPG'), url('./img/IMG_1896.JPG');
+            background-size: 300px 300px, 300px 300px;
+            background-position: 0 0, 300px 0;/* 背景图片的位置 */
+
+            /* background-origin 的默认值是padding-box; */
+
+            /* 背景颜色的position从paddig开始平铺 */
+            background-origin: padding-box;
+            
+            /* 背景颜色的position从border开始平铺 */
+            background-origin: border-box;
+           
+            /*背景颜色的position从content开始平铺 */
+            background-origin: content-box;
+            
+
+            /* background-clip 的默认值是padding-box; 需要结合background-origin使用 */
+
+            /*背景颜色的position从paddig开始平铺, 从paddig结束平铺 */
+            background-clip: padding-box;
+            
+             /*背景颜色的position从border开始平铺，从border结束平铺 */
+            background-clip: border-box;
+           
+            /*背景颜色的position从content开始平铺，从content结束平铺 */
+            background-clip: content-box;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

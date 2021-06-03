@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>把对象的原型改为自定义</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			Person.prototype.name = "abc";
+			
+			function Person (){
+				// var this = {
+				// 		__proto__ : Person.prototype
+				// }
+			}
+			
+			// 自定义属性
+			var obj ={
+				name : "sunny"
+			}
+			
+			// 创建对象
+			var person = new Person();
+			
+			//修改原型属性指向为obj
+			person.__proto__ = obj;
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

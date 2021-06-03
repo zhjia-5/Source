@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>对象/带参构造函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			对象：
+			 1，用已学的知识点，描述以下你心中的对象。
+			 2，属性的增，删，查，改 
+			 3，对象的创建方法: 
+				1，	var obj = {}   plainObject:对象字面量/对象直接量 
+					
+				2,构造函数：
+					1):系统自带：
+						例如：new Object();	Number();	Boolean();	String();	Date();	Array();
+					2):	自定义
+					构造函数使用大驼峰命名规则
+				3,Object.create(原型)方法
+				
+        		 var obj = { ...arr } 数组转为对象
+
+			 */
+			/* // 1,字面量
+			var Person = {
+				name : '张三',
+				age : 20,
+				sex : 'male',
+				girlFriend : '小王',
+				prepareWife : '小李',
+				wife : '',
+				
+				divorce : function (){
+					delete this.wife;
+					this.wife = this.prepareWife;
+				},
+				getMarried : function (){
+					this.wife = this.prepareWife;
+				},
+				changeGirlFriend : function (someone){
+					this.girlFriend = someone;
+				}
+			}
+			console.log(Person.getMarried());
+			console.log(Person.changeGirlFriend('小红'));
+			console.log(Person.girlFriend); */
+			
+			// 2,构造函数：带参构造
+			
+			function Student(name, age, sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+				this.grade = 2019;
+			}
+			var student1 =new Student('张三',20,'male');
+			
+			console.log(student1);
+			
+			
+			// Object.keys(obj)方法:返回数组,数组的元素为obj的属性名：key
+			obj={
+				name:"jack",
+				age:18,
+				sex:"male",
+			}
+			console.log(Object.keys(obj));
+
+			// Object.keys(arr)方法:返回数组,数组的元素为arr的index值：0，1，2...
+			arr=["name","age","sex"];
+			console.log(Object.keys(arr));
+
+			// 添加属性的方法
+			// 对象的取值方法
+			obj["height"] = "180cm";//等同于obj.height = "180cm"
+			console.log(obj["height"]);//等同于 obj.height
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>run</button>
+    <script>
+   /*      
+        s引擎线程 （解释执行js代码、用户输入、网络请求）
+        GUI线程 （绘制用户界面、与js主线程是互斥的）
+        http网络请求线程 （处理用户的get、post等请求，等返回结果后将回调函数推入任务队列）
+        定时触发器线程 （setTimeout、setInterval等待时间结束后把执行函数推入任务队列中）
+        浏览器事件处理线程 （将click、mouse等交互事件发生后将这些事件放入事件队列中）
+        GUI线程 （绘制用户界面、与js主线程是互斥的）
+        
+        loop();//此处会导致死循环
+        loop(); */
+        var btn = document.getElementsByTagName('button')[0];
+        function loop(){
+            while(true){
+            }
+        }
+        btn.onclick = function(){
+            console.log('a');
+        }
+
+    </script>
+</body>
+</html>

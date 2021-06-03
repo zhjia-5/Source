@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透明度渐变</title>
+    <style>
+        .oDiv{
+            width: 100px;
+            height: 100px;
+            background: #ff0000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="oDiv"></div>
+    <script>
+        var oDiv = document.getElementsByClassName('oDiv')[0];
+        var timer;
+        oDiv.onclick = function(){
+            run(this,23);
+        }
+        // 封装改变透明度渐变函数
+        function run(dom,target){
+            clearInterval(timer);
+            var iSpeed = null, 
+                iCur = null;
+            timer = setInterval(function(){
+                // 将当前opacity透明度放大100倍更具有效果
+                iCur = parseFloat(getStyle(dom,'opacity'))*100;
+                iSpeed = (target - iCur)/7;
+                //当 > 0 就向上取整：Math.ceil(0.5)=1
+                //当< 0 就向下取整：Math.floor(-0.5)=-1
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                if(iCur == target){
+                    clearInterval(timer);
+                }else{
+                    dom.style.opacity = (iCur + iSpeed)/100;
+                    console.log(iCur);
+                }
+            },100);
+        }
+
+           // 封装获取元素样式的兼容性方法
+           function getStyle(dom,attr){
+            if(window.getComputedStyle){//chrome fireFox
+                return window.getComputedStyle(dom,null)[attr];
+            }else{//IE老版本
+                return dom.currentStyle[attr];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多物体运动</title>
+</head>
+<style>
+    div{
+        width: 20px;
+        height: 100px;
+        background: #ff00ff;
+        float: left;
+        margin-bottom: 600px;
+        margin-right: 3px;
+    }
+</style>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        var timer;
+        var oDiv = document.getElementsByTagName('div');
+        for(var i = 0; i < oDiv.length; i++){
+            oDiv[i].onmouseover = function(){
+                run(this,650);
+            }
+            oDiv[i].onmouseout = function(){
+                run(this,100);
+            }
+        }
+        function run(dom, target) {  
+            //清除每个的定时器
+            clearInterval(dom.timer);
+            var speed = null,height = null;
+            // 给每个div添加自己的定时器
+            dom.timer = setInterval(function () {
+                // 记录每次width的值，在该基础上增加
+                height = parseInt(getStyle(dom,'height'));
+                speed = (target - height)/7;
+                //当 >0 就向上取整：Math.ceil(0.5)=1
+                // 当<0 就向下取整：Math.floor(-0.5)=-1
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (target == height) {
+                    clearInterval(dom.timer);
+                } else {
+                    dom.style.height = height + speed + 'px';
+                }
+            }, 30);
+        }
+        // 封装获取元素样式的兼容性方法
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){//chrome fireFox
+                return window.getComputedStyle(dom,null)[attr];
+            }else{//IE老版本
+                return dom.currentStyle[attr];
+            }
+        }
+    </script>
+</body>
+</html>

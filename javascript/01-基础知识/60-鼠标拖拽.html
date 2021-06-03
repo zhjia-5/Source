@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标拖拽</title>
+	</head>
+	<body>
+		<!--
+		 offsetWidth: 100。水平方向的宽度，含padding,border  只读
+		 offsetHeight:100。垂直方向的高度，含padding,border  只读
+		 
+		 clientWidth :100。水平方向的宽度，含padding 		只读
+		 clientHeight:100。垂直方向的高度，含padding 		只读
+		 
+		 offsetLeft:50。到父元素Left的距离 					只读
+		 offsetTop:50。到父元素Top的距离					只读
+		 
+		 div.style.left:50px。距父元素左边距离    可读可写
+		 div.style.top:50px。距父元素上边距离	 可读可写
+		 div.style.width:"100px" 元素的宽       可读可写
+		 div.style.height:"100px" 元素的高		 可读可写
+		 -->
+		<div style="width: 200px;height: 200px;background-color: #FFA500;position: absolute;">
+				<div style="width: 100px;height:100px; background-color: #FF0000;
+					position: absolute;left: 0;top: 0;"></div>
+		</div>
+		<script type="text/javascript">
+			var div = document.getElementsByTagName('div')[1];
+			drag(div);
+			
+			//封装鼠标拖拽事件
+				function drag(elem){
+				elem.onmousedown = function (e){
+					var event = e || window.event;
+					var left = event.clientX - elem.offsetLeft,//鼠标与elem左边的距离 
+						 top = event.clientY - elem.offsetTop; //鼠标与elem顶边距距离 
+						shopBubble(event);//取消冒泡事件
+						cancelHandler(event);//阻止默认事件
+					document.onmousemove = function(e){
+						var event = e || window.event;
+						var leftW = event.clientX - left;//鼠标的位置减去鼠标与elem左边的距离
+						var topH = event.clientY - top;//鼠标的位置减去鼠标与elem顶边边的距离
+						if(leftW < 0){//左边不能超出浏览器
+							leftW = 0;//鼠标的位置减去鼠标与elem左边的距离最多为 0
+						}
+						if(topH < 0){//上边不能超出浏览器
+							topH = 0;//鼠标的位置减去鼠标与elem顶边边的距离最多为 0
+						}
+						//右边不能超出
+						if(leftW > document.documentElement.clientWidth - elem.offsetWidth){
+							leftW = document.documentElement.clientWidth - elem.offsetWidth;
+						}//下边不能超出
+						if(topH > document.documentElement.clientHeight - elem.offsetHeight){
+							topH = document.documentElement.clientHeight - elem.offsetHeight
+						}
+						elem.style.left =leftW + 'px';
+						elem.style.top = topH + 'px';
+					}
+				} 
+				//鼠标抬起解除事件
+				document.onmouseup = function(e){
+					document.onmousemove = null;
+				}
+				// 取消冒泡
+				function shopBubble(event){
+					if(event.shopPropagation){
+						event.shopPropagation();//取消冒泡 方法一
+					}else{
+						event.cancelBubble = true;//取消冒泡 方法二
+					}
+				}
+				//阻止默认事件
+				function cancelHandler(event){
+					if(event.preventDefault){
+						event.preventDefault();
+					}else{
+						event.returnValue = false;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition过渡</title>
+     <!-- 
+        transition-property : all; 所有属性都设置过渡效果
+        transition-duration : 0.5s; 过渡的时间
+        transition-timinig-function:ease;平滑  默认值
+                                    linear;线性
+                                    ease-in;由慢到快
+                                    ease-out;由快到慢
+                                    ease-in-out;由慢到快再慢
+        transition-delay: 1s;多久后执行动画，起到延时效果。
+
+        简写格式：
+        transition: width 0.5s  ease  1s;
+        多属性：
+        transition: width 0.6s, height 1s;
+     -->
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: width 2s linear 5s;
+            /* transition: width 1s, height 2s; */
+
+        }
+        .div1:hover{
+            width: 200px;
+            /* height: 200px; */
+        }
+    </style>
+</head>
+<body>
+   <div class="div1"></div>
+</body>
+</html>

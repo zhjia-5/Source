@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>对象的枚举</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			对象的枚举:enumeration ：
+			
+			 for in
+				用法：for(var prop in obj)
+			 
+			 1,hasOwnProperty
+				用法：Object.hasOwnProperty(prop)
+				类型：boolean,  判断是自身属性还是继承或原型属性，如果是返回true
+			 
+			 2,in   ---极少用
+				用法："prop" in Object
+				类型：boolean  判断对象是否能调用该属性，如果可以返回true
+			 
+			 3,instanceof
+				格式：A instanceof B
+				官方解析：A对象 是不是 B构造函数 构造出来的。
+				总	 结 ：其实是看A对象的原型链上有没有B的原型。
+			 
+			 
+			 判断对象与数组的三种方法：
+				1，constructor ：[].constructor	
+				2，instanceof : [] instanceof Array 
+				3，toString : Object.prototype.toString.call();-->缩写 toString,call(需要判断的对象)
+			 */
+				
+			/* prop是一个变量，名字可以随便写。
+			格式：for(var prop in Object)  循环对象里的属性
+			obj.name  == obj["name"] 所以下面的person[prop]里的prop不能加双引号 */
+			var person = {
+				name : "san",
+				age : 20,
+				sex : "male",
+				__proto__ : { lastName : "zhang" }//该属性为原型属性
+			}
+			for(var prop in person){
+				if(person.hasOwnProperty(prop)){//判断prop是否为自身属性
+					console.log(person[prop]);
+				}
+			}
+			
+			// 3,instanceof
+			function Person(){
+			}
+			var person = new Person ();
+			console.log(person instanceof Person);//true
+			
+			
+			
+		</script>
+	</body>
+</html>

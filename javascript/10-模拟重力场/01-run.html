@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./mock.js"></script>
+    <title>多向运动</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            transition: background 1s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        div.onclick = function(){
+            run(this);
+        }
+
+        function run(dom){
+            var speedX = 3,
+                speedY = 5,
+                newLeft,newTop,timer;
+            clearInterval(dom.timer);
+            dom.timer = setInterval(function(){
+                newLeft = dom.offsetLeft + speedX;
+                newTop = dom.offsetTop + speedY;
+                if(newLeft >= document.documentElement.clientWidth - dom.clientWidth){
+                    speedX *= -1;
+                    newLeft = document.documentElement.clientWidth - dom.clientWidth;
+                    dom.style.backgroundColor = Mock.Random.color();//随机颜色
+                }
+                if(newTop >= document.documentElement.clientHeight - dom.clientHeight){
+                    speedY *= -1;
+                    newTop = document.documentElement.clientHeight - dom.clientHeight;
+                    dom.style.backgroundColor = Mock.Random.color();
+                }
+                if(newTop <= 0){
+                    speedY *= -1;
+                    newTop = 0;
+                    dom.style.backgroundColor = Mock.Random.color();
+                }
+                if(newLeft <= 0){
+                    speedX *= -1;
+                    newLeft = 0;
+                    dom.style.backgroundColor = Mock.Random.color();
+
+                }
+                dom.style.left = newLeft + 'px';
+                dom.style.top = newTop + 'px';
+                console.log(speedX +"===" + speedY);
+            },30);
+        }
+    </script>
+</body>
+</html>

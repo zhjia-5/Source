@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach-array</title>
+</head>
+
+<body>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        </ul>
+</body>
+<script>
+    // 类数组不能使用 forEach filter map every some...等方法
+    // forEach  是array数组原生方法
+    // 目的：数组实例可以调用该方法，要达到循环遍历的目的
+    // 参数：需要一个函数 最后实现我们一些的功能，函数在执行的时候也会接受一些参数：
+    // ele:数组里的元素         index:数组角标              self（数组本身）
+    var personArr = [
+        { name: '张三', sex: "male", age: 20 },
+        { name: '李四', sex: "male", age: 22 },
+        { name: '王五', sex: "male", age: 19 },
+        { name: '李倩', sex: "female", age: 23 },
+        { name: '陈丽', sex: "female", age: 31 }
+    ];
+    var li = document.getElementsByTagName('li');
+   
+    personArr.forEach(function(ele,index,self){
+        li[index].innerHTML= ele.name;
+        console.log(ele,index);
+    });
+
+
+
+
+    /* 模拟原生forEach实现方法 */
+    // Array.prototype.myForEach = function (func) {
+    //     var len = this.length;
+    //     // 三元运算判断第二个实参是否有值,如果有this的指向就是第二个实参
+    //     var _this = arguments[1] == undefined ? window : arguments[1]; 
+    //     for(var i = 0; i < len; i ++){
+    //         func.apply(_this,[this[i],i,this]);
+    //     }
+    // }
+
+    // function change(ele, index, self) {
+    //     li[index].innerHTML = ele.name;
+    //     console.log(ele, index,this);//此处this指向为obj
+    // }
+    // obj = {
+    //     name:'張三',sex:'male',age:'20,'
+    // }
+    // personArr.myForEach(change,obj);
+
+</script>
+
+</html>

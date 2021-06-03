@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆角矩形</title>
+    <style>
+        .mycanvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="mycanvas" width='500px' height='500px'>你的浏览器不支持canvas</canvas>
+    <script>
+        var mycanvas = document.getElementsByClassName('mycanvas')[0];
+        var ctx = mycanvas.getContext('2d');
+        /* 
+        正方形的左上角为 A
+                右下角为 B
+                右下角为 C
+                右上角为 D
+        ctx.arcTo(B(x,y), C(x,y),圆角大小);
+        */
+        ctx.moveTo(100, 110); //此处的Y轴坐标需要往下10px像素
+        ctx.arcTo(100, 200, 200, 200, 10);//B点坐标——> C坐标 + 弧度方向
+        ctx.arcTo(200, 200, 200, 100, 10);//C点坐标——> D坐标 + 弧度方向
+        ctx.arcTo(200, 100, 100, 100, 10);//D点坐标——> A坐标 + 弧度方向
+        ctx.arcTo(100, 100, 100, 200, 10);//A点坐标——> B坐标 + 弧度方向
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

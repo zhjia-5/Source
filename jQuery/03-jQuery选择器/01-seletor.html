@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+</head>
+<!-- jQuery 选择器
+		 选择器				实例								 选取
+		 *					$("*")								所有元素
+		 #id				$("#lastname")						id="lastname" 的元素
+		 .class				$(".intro")							所有 class="intro" 的元素
+		  element			$("p")								所有 <p> 元素
+		 .class.class		$(".intro.demo")					所有 class="intro" 且 class="demo" 的元素
+         
+         子代选择器 		 $("ul > li") 					     使用>号，获取亲儿子层级的元素
+		 后代选择器 		 $("ul li") 						 使用空格，代表后代选择器，获取ul下的所有li元素。
+
+         属性选择器
+		 [attribute]		$("[href]")							所有带有 href 属性的元素
+		 [attribute=value]	$("[href='#']")						所有 href 属性的值等于 "#" 的元素
+         [attribute!=value]	$("[href!='#']")					所有 href 属性的值不等于 "#" 的元素
+         [attribute$=value]	$("[class^=abc]")					所有 class 属性的值以 abc 开头的元素
+         [attribute$=value]	$("[href$='.jpg']")					所有 href 属性的值包含以 ".jpg" 结尾的元素
+         [attribute$=value]	$("[class*=abc]")					所有 class 属性的值包含 abc 的元素   
+
+		 :first				$("p:first")						第一个 <p> 元素
+		 :last				$("p:last")							最后一个 <p> 元素
+		 :even				$("tr:even")						所有偶数 <tr> 元素
+		 :odd				$("tr:odd")							所有奇数 <tr> 元素
+		 :eq(index) 		$("li:eq(2)") 						选择索引为2的li元素
+				  
+		 .eq(index)			$("ul li").eq(3)					第四个li,eq括号里可以是一个变量（推荐使用）
+		 :gt(no)			$("ul li:gt(3)")					列出 index 大于 3 的元素
+		 :lt(no)			$("ul li:lt(3)")					列出 index 小于 3 的元素
+		 :not(selector)		$("input:not(:empty)")				所有不为空的 input 元素
+		 
+		 parent()  			$("li").parent() 					查找父级元素
+		 children(selector) $("ul").children("li") 				相当于$("ul > li")，最近一级（亲儿子）
+		 find(selector) 	$("ul").find("li") 		 			相当于$("ul li")后代选择器 		
+		 siblings(selector) $(".first").siblings("li") 			查找兄弟节点，不包括自身
+		 next([expr])    	$(".first").next() 					查找当前元素之后一个同辈元素		 
+		 nextAll([expr])    $(".first").nextAll() 				查找当前元素之后所有的同辈元素		 
+		 prevt([expr]) 		$(".last").prevt() 	 				查找当前元素之前一个同辈元素	
+		 prevtAll([expr]) 	$(".last").prevtAll() 	 			查找当前元素之前所有的同辈元素	
+	     
+		 :header			$(":header")						所有标题元素 <h1> - <h6>
+		 :animated	 											所有动画元素
+		  	 	 
+		 :contains(text)	$(":contains('W3School')")			包含指定字符串的所有元素
+		 :empty				$(":empty")							无子（元素）节点的所有元素
+		 :hidden			$("p:hidden")						所有隐藏的 <p> 元素
+		 :visible			$("table:visible")					所有可见的表格
+							
+		 s1,s2,s3			$("th,td,.intro")					所有带有匹配选择的元素
+         
+		 :input				$(":input")							所有 <input> 元素
+		 :text				$(":text")							所有 type="text" 的 <input> 元素
+		 :password			$(":password")						所有 type="password" 的 <input> 元素
+		 :radio				$(":radio")							所有 type="radio" 的 <input> 元素
+		 :checkbox			$(":checkbox")						所有 type="checkbox" 的 <input> 元素
+		 :submit			$(":submit")						所有 type="submit" 的 <input> 元素
+		 :reset				$(":reset")							所有 type="reset" 的 <input> 元素
+		 :button			$(":button")						所有 type="button" 的 <input> 元素
+		 :image				$(":image")							所有 type="image" 的 <input> 元素
+		 :file				$(":file")							所有 type="file" 的 <input> 元素
+		  	 	 
+		 :enabled			$(":enabled")						所有激活的 input 元素
+		 :disabled			$(":disabled")						所有禁用的 input 元素
+		 :selected			$(":selected")						所有被选取的 input 元素
+         :checked			$(":checked")						所有被选中的 input 元素 
+         
+         hasClass(class) 	$('div').hasClass("protected") 		检查当前的元素是否含有某个特定的类，如果有，返回true -->
+
+<body>
+    <ul id="ul">
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <li>第6个li</li>
+        <li>第7个li</li>
+        <li>第8个li</li>
+    </ul>
+    <ol id="ol">
+        <li class="li1">第1个li</li>
+        <li id="li2">第2个li</li>
+        <span class="lispan">span1</span>
+        <li id='li3' class="li3">第3个li</li>
+        <li>第4个li</li>
+        <span class="aaa">span2^-^</span>
+        <li id="li5" class="li5">第5个li</li>
+        <p>p1</p>
+        <li class="li6">第6个li</li>
+        <p>p2</p>
+        <li class="li7">第7个li</li>
+        <li>第8个li<span>span3</span></li>
+        <div class='div1' alt="div">div1</div>
+        <a href="href">a标签1</a>
+    </ol>
+
+    <input id="inp" type="checkbox" value="male" checked>男<input type="checkbox" value="female">女
+    <script>
+//ul列表 
+        $('#ul li').css({ width: '500px', height: '35px', border: '1px solid red' });
+        //  第一个li
+        $('#ul li:first').css('background', 'grey');
+        // 最后一个li
+        $('#ul li:last').css('background', 'orange');
+        // 偶数li
+        $('#ul li:even').css('background', 'yellow');
+        // 奇数li
+        $('#ul li:odd').css('background', 'olive');
+        // 选择角标为3的元素,第四个li
+        $('#ul li:eq(3)').css('color', 'blue');
+        // 选择index为n的元素,第n+1个li
+        var n = 0;
+        $('#ul li').eq(n).css('color', 'blue');
+        // 列出 index 大于 6 的元素
+        $('#ul li:gt(6)').css('color', 'red');
+        // 列出 index 小于 2 的元素
+        $('#ul li:lt(2)').css('color', 'pink');
+// ol列表
+        $('#ol li').css({ width: '500px', height: '35px', border: '1px solid olive' });
+        // 带有href属性的a元素
+        $('#ol a[href]').css('color', 'black');
+        // class=xx的li   
+        $('#ol div[class=div1]').css('background', 'skyblue');
+        // ol下class以li开头的所有元素
+        $('#ol [class^=li]').css('background', 'red');
+        // ol下class以li开头的li元素
+        $('#ol li[class^=li]').css('background', 'grey');
+        // id以i5结尾的li
+        $('#ol li[id$=i5]').css('background', 'skyblue');
+        // class名包含aaa的span标签
+        $('#ol span[class*=aaa]').css('color', 'yellow');
+
+        // checkbox标签不能添加样式，给其加个父元素再操作父元素
+        $('#inp').wrap('<span></span>').parent().css('border','1px solid red');
+    </script>
+</body>
+
+</html>

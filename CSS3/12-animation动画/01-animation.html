@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- 
+        兼容性问题一般：在各个浏览器中需要加前缀。除了IE以外
+        animation:run 4s; || run 4s, color,4s;    复合属性。
+
+        （1）animation-name	:动画名称,可以自定义名称
+        （2）animation-duration			单次动画持续时间
+        （3）animation-timing-function	过渡类型
+            取值    linear              线性
+                    ease                平滑过渡
+                    ease-in             慢到快
+                    ease-out            快到慢
+                    step-start          等同于 steps(1, start) 
+                    step-end            等同于 steps(1, end)
+                    steps(num, end | start):
+                            第二个参数是可选的，默认值为 end。
+                            start：保留下一帧状态，直到这段动画时间结束
+                            end：保留当前帧状态，直到这段动画时间结束
+
+        （4）animation-delay			延迟的时间
+
+        （5）animation-iteration-count	循环次数  默认值1， infinite
+
+        （6）animation-direction		循环中是否反向运动 
+            normal  正常方向
+            reverse  返方向运动
+            alternate 先正一次，再返一次（前提是需要重复2次以上）
+            alternate-reverse  先返一次，再正一次（前提是需要重复2次以上）
+        
+        （7）animation-fill-mode  	
+                none        默认值  不设置
+                forwards    将最后一帧的状态当做停止动画后的状态
+                backwards   将第一帧的状态当做未开始动画时的状态
+
+                both        将第一帧当做未开始动画的状态，
+                            将最后一帧当做结束后的状态
+                            （相当于设置了forwards和backwards集合）
+     -->
+    <style>
+        @keyframes run{
+            0%{ 
+                left: 0;
+                top: 0;
+                background-color: red;
+             }
+             25%{
+                 left: 200px;
+                 top: 0;
+                 background-color: greenyellow;
+             }
+             50%{
+                left: 200px;
+                top: 200px;
+                background-color: orange;
+             }
+             75%{
+                 left: 0;
+                 top: 200px;
+                 background-color: orchid;
+             }
+             100%{
+                 left: 0;
+                 top: 0;
+                 background-color: red;
+             }
+        }
+        @keyframes fontColor{
+            0%{ color: #333; }
+            25%{ color: #000; }
+            50%{ color: #f00; }
+            75%{ color: #ff0; }
+            100%{ color: #f0f; }
+        }
+        .div1{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            color: #333;
+            background: red;
+            /* animation: run 4s 3,fontColor 4s 3;复合写法 */
+             animation:run 4s alternate 2; /*循环两次 */
+
+        }
+    </style>
+</head>
+<body>
+   
+     <div class="div1">animation</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* *****ES6 继承方法***** 
+      
+    */
+    class Person{
+      constructor(name,sex,age){
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+      }
+      run(){
+        console.log(this.name + " is running");
+      }
+    }
+
+    class Student extends Person{
+      constructor(name,sex,age,money){
+        super(name,sex,age);//调用了父类的constructor函数
+        this.money = money;//子类特有的属性
+        // this.money = "1000元"; 也可以这样写
+      }
+      
+      study(){//子类特有的方法，如果父类也有同名，会覆盖 
+        console.log(this.name + " is study");
+      }
+
+      run(){//同名覆盖父类的方法
+        super.run();//使用super调用父类的run方法
+      }
+    }
+
+    const student1 = new Student("张三","男",19,"1000元");
+    student1.run();
+    student1.study();
+    console.log(student1.name,student1.sex,student1.age,student1.money);
+
+
+  </script>
+</body>
+</html>

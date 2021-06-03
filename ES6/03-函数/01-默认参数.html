@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参数配置</title>
+</head>
+<body>
+    <script>
+        /* 
+            参数的默认值
+                在书写形参时，直接给形参赋值，赋的值为默认值
+                这样一来，当调用函数时，如果没有给对应的参数赋值
+                （给它的值undefined）,则会自动使用默认值。
+
+            给函数参数b,c设置默认值:sum(a,b=1,c=2); 默认值也可以为表达式，变量
+
+        */
+        // 当没有对应的形参的时候默认值为undefined
+        function sum(a,b,c){
+            return a+b+c;
+        }
+        console.log(sum(10));//a=10，b=undefined,c=undefined,打印：NaN
+
+
+        let n = 2;
+
+        // 给b，c加默认值分别为1,变量n,当b,c没有传参的时候(即b的值为undefined)会使用默认值
+        function add(a,b=1,c=n){
+            return a+b+c;
+        }
+        console.log(add(10));//返回13
+
+        console.log(add(10,undefined,))//这里打印的结果也是13
+    </script>
+</body>
+</html>

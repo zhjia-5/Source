@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    — all(iterable):这个方法返回一个新的Promise对象，该Promise对象在iterable参数对象里
+      所有的Promise对象都成功的时候才会触发成功，一旦有任何一个iterable里面的Promise对象失败
+      则立即触发Promise对象的失败。这个新的Promise对象在 触发成功状态以后，会把一个包含
+      iterable里所有Promise返回值的数组作为成功回调的返回值，顺序跟iterable
+      的顺序保持一致；如果新的Promisse对象触发了失败状态，他会把iterable里第一个
+      触发失败的Promise对象的错误信息作为它的失败错误信息。Promise.all方法
+      常被用于处理多个Promise对象的状态集合。
+   -->
+  <script>
+    // 返回min ~ max之间的随机数
+    const getRamdom = (min, max) => {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    const promArr = [];
+    for (let i = 0; i < 10; i++) {
+      promArr.push(new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (Math.random() < 0.9) {
+            console.log(i, "完成");
+            resolve(i);
+          } else {
+            console.log(i,"失败");
+            reject(i)
+          }
+        }, getRamdom(1000, 3000));
+      }));
+    }
+
+    // 等到所有的Promise变成resolve状态后输出：全部完成。
+    // 如果有一个进入reject状态就不会输出；
+    const pro = Promise.all(promArr);
+    pro.then(data => {
+      console.log("全部完成进入resolved状态", data);
+    },err=>{
+      console.log("未能全部完成进入rejected状态",err);
+    })
+
+    console.log(promArr);
+
+
+  </script>
+</body>
+
+</html>

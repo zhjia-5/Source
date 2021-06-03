@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建一个迭代器</title>
+</head>
+
+<body>
+  <script>
+    const arr = [1, 2, 3, 4, 5,6,7,8]
+    // 封装一个返回迭代器的函数
+    const createIterator = (arr) => {
+      let i = 0;
+      return {
+        next() {
+          let result = {
+            value: arr[i],
+            done: i >= arr.length,//如果i的值小于arr.length
+          }
+          i++;
+          return result;
+        }
+      }
+    }
+    const iterator = createIterator(arr);
+    
+    let obj = iterator.next();
+
+    // 如果done为false就一直执行
+    while(!obj.done){
+      console.log(obj.value);
+      obj = iterator.next()
+    }
+
+    console.log("迭代完成");
+
+
+  </script>
+</body>
+
+</html>

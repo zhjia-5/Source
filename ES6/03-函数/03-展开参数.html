@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开参数</title>
+</head>
+<body>
+    <script>
+        // 获取一个指定长度的随机数组
+       function getRandomNumbers(length){
+           const arr = [];
+           for(let i = 0; i < length; i ++){
+               arr.push(Math.random());
+           }
+           return arr;
+       }
+       var numbersArr = getRandomNumbers(5);
+
+       //封装一个函数，参入一个数组，将数组里面的数组累加
+       // ...numbers展开参数：可以把传入的实参数组展开，再通过循环让其相加    
+       function add(...numbers){
+           let total = 0;
+           for(let i = 0; i < numbers.length; i ++){
+               total += numbers[i];
+           }
+           return total;
+       }
+       console.log( add(...numbersArr) );
+    </script>
+</body>
+</html>

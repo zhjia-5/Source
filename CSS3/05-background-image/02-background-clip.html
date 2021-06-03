@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 800px;
+            height: 300px;
+            line-height: 300px;
+            font-size: 100px;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            background-image:url('./img/IMG_1896.JPG'); 
+
+            /* chrome浏览器 或者webkit内核的 私有属性  只有笔画显示背景颜色*/
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>hello  wrod</div>
+</body>
+</html>

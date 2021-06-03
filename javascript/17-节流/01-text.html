@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击抢购</button>
+    <span id="span">0</span>
+    <div></div>
+    <script>
+        var btn = document.getElementById('btn');
+        var span = document.getElementById('span');
+        // 封装每隔一秒钟点击一次函数
+       function throttle(handler,wait){
+           var lastTime = 0;
+           return function(e){
+               var nowTime = new Date().getTime();
+               if(nowTime - lastTime > wait){
+                   handler();
+                   lastTime = nowTime;
+               }
+           }
+       }
+       function buy(){
+           span.innerText ++;
+       }
+
+       btn.onclick = throttle(buy,1000);
+
+       var oDiv = document.getElementsByTagName('div')[0];
+       oDiv.class = 'duyi';
+
+
+
+        // function add(){
+        //     for(var i = 0; i < 1000; i ++){
+        //         btn.click();
+        //     }
+        // }
+        // add();// 每执行一次会点击1000次，
+        
+    </script>
+</body>
+</html>

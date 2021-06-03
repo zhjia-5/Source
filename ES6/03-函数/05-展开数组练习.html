@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>展开数组练习</title>
+</head>
+
+<body>
+  <input type="number" value="0" class="inp"><br />
+  <input type="number" value="0" class="inp"><br />
+  <input type="number" value="0" class="inp"><br />
+  <input type="number" value="0" class="inp"><br />
+  <input type="number" value="0" class="inp"><br />
+  
+  <h3>最大值:<span class="maxSpan"></span></h3>
+  <h3>最小值:<span class="minSpan"></span></h3>
+
+  <button class="btn">求最值</button>
+  <script>
+    const inputNode = document.getElementsByClassName("inp");
+    const maxSpan = document.getElementsByClassName("maxSpan")[0];
+    const minSpan = document.getElementsByClassName("minSpan")[0];
+    const btn = document.getElementsByClassName("btn")[0];
+
+    // 实现获取最大值和最小值的功能
+    const inputArr = Array.from(inputNode);//将伪数组（inputNode）转为数组
+
+    // 遍历数组获取ele.value值，并添加到数组arr
+    const InputValuetArr = ()=>{
+      let arr= [];
+      inputArr.forEach((ele)=>{
+        arr.push(ele.value);
+      })
+      return arr;
+    }
+    
+    // 点击事件
+    btn.onclick = ()=>{
+      let maxNum = Math.max(...InputValuetArr());//通过Math.max求最大值
+      let minNum = Math.min(...InputValuetArr());//通过Math.min求最小值
+      maxSpan.innerHTML = maxNum;
+      minSpan.innerHTML = minNum;
+    }
+    
+  </script>
+</body>
+
+</html>

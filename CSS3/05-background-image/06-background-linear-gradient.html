@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            /* 方向：关键字写法 */
+            /* 上 ——> 下  默认值 */
+            background: linear-gradient(pink,orange,black,red);
+            /* 左 ——> 右 */
+            background: linear-gradient(to right,red,blue,yellow);
+            /* 左下 ——> 右上 */
+            background: linear-gradient(to right top,green,yellow);
+            /* 左上 ——> 右下 */
+            background: linear-gradient(to right bottom,red,yellow,white);
+            
+            /* 方向：deg 角度 ，0度表示向上，90度向右，180向下，顺时针递增*/
+            background: linear-gradient(0deg,red,blue,yellow);
+            background: linear-gradient(90deg,red,white,yellow);
+            background: linear-gradient(45deg,red,blue,yellow);
+
+            /* 渐变色的起始位置 px 终止位置值，可以正负值*/
+            background: linear-gradient(to right,red 100px,yellow);
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

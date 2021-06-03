@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陀螺仪：deviceorientation</title>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script>
+    /* 
+      陀螺仪：只有带有陀螺仪的设备才支持体感
+      苹果设备（11.1.x以及之前）可以使用陀螺仪
+      苹果设备（11.1.x以及之后）的页面只有在https协议的情况下菜能使用这些接口
+
+      alpha:指南针——[0,360)
+        - 0   指北
+        - 90  值东
+        - 180 指南
+        - 270 指西
+
+      beta:平衡度
+        - 0 放平
+        - 90 垂直立起（短边接触桌面）
+      
+      gamma:
+        - 0 放平
+        - 90 垂直立起（长边接触桌面）
+
+    */
+    //  添加陀螺仪事件，需要放到手机上才能运行
+    window.addEventListener("deviceorientation", (e) => {
+      document.getElementById("main").innerHTML = `
+      alpha值：${e.alpha}
+      beta值：${e.beta}
+      gamma值：${e.gamma}
+    `;
+    })
+  </script>
+</body>
+
+</html>

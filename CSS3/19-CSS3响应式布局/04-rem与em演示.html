@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem单位</title>
+    <style>
+        :root{
+            font-size: 10px;
+        }
+        /* rem示例：相对于跟标签:root的字体大小 
+            如跟:root跟标签没有设置font-siz值，则相对于浏览器的默认字体尺寸
+        */
+        .div1{
+            width: 10rem;
+            height: 10rem;
+            border: 1rem solid #000;
+        }
+
+        /* em示例： 相对于自身的font-size大小来取值，
+            如本身font-size没有被设置，则相对于:root跟标签取值
+            如跟:root跟标签没有设置font-siz值，则相对于浏览器的默认字体尺寸
+        */
+        .div2{
+            /* font-size: 20px; */
+            width: 10em;
+            height: 10em;
+            border: 1em solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"></div>
+
+    <p><div class="div2"></div></p>
+</body>
+</html>

@@ -1,0 +1,19 @@
+// 提供各种混合样式
+
+// 居中：参数默认值为absolute
+.self-center(@pos:absolute){
+  position:@pos;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+
+//铺满父元素，带定位,参数默认值为absolute
+.self-fill(@pos:absolute){
+  position: @pos;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+

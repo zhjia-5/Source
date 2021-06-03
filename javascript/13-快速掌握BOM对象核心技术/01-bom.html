@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    BOM是browser object model的缩写，简称浏览器对象模型
+    DOM是document object model的缩写 简称文档对象模型
+        主要处理浏览器窗口（window）和框架（iframe），
+        描述了与浏览器进行交互的方法和接口，可以对浏览器窗口进行访问和操作，
+        不过通常浏览器特定的 JavaScript 扩展都被看做 BOM 的一部分。扩展如下：
+
+        1.弹出新的浏览器窗口
+
+        2.移动、关闭浏览器窗口以及调整窗口大小
+
+        3.提供 Web 浏览器详细信息的定位对象
+
+        4.提供用户屏幕分辨率详细信息的屏幕对象
+
+        5.对 cookie 的支持
+
+        6.IE 扩展了BOM，加入了ActiveXObject 类，可以通过 JavaScript 
+            实例化 ActiveX 对象
+
+        window对象是BOM的顶层(核心)对象，玩转BOM，就是玩转window的属性和方法
+            Window对象它具有双重角色，既是通过js访问浏览器窗口的一个接口，又是一个全局对象。
+            这意味着在网页中定义的任何对象，变量和函数，都是window的属性
+
+    BOM和DOM的关系：
+    
+        JavaScript语法的标准化组织是ECMA
+        DOM的标准化组织是W3C
+        BOM 操作各种厂商的浏览器，兼容性不足   
+
+    BOM组成：
+        Window JavaScript 层级中的顶层对象表示浏览器窗口
+        Navigator包含客户端浏览器的信息
+        History 包含了浏览器窗口访问过的 URL
+        Location 包含了当前 URL 的信息
+        Screen 包含客户端显示屏的信息——（用处不大，兼容性差）
+
+    window对象属性：https://duyiedu.yuque.com/docs/share/17c3a868-d15a-448f-ad3c-93a7cb554f4f?#
+     -->
+     <ul>
+         <li>1</li>
+         <li>2</li>
+         <li>3</li>
+         <li>4</li>
+         <li>5</li>
+     </ul>
+     <div class="div"></div>
+</body>
+    <script>
+    // var str = '110';
+    // var a = prompt();//弹框提示用户输入信息
+    // var b = confirm("是否删除" + str);//弹出确认提示框，当点击确认就会返回true ，点击取消返回false  
+    // console.log(a) //返回文本框输入的信息
+    // console.log(b)//返回 boolean值
+
+
+    //  循环获取index
+        // var li = document.getElementsByTagName('li');
+        // for(var i = 0; i < li.length; i ++){
+        //     li[i].index = i;
+        //     li[i].onclick = function(){
+        //         console.log(this);//this 表示当前点击的li元素
+        //         console.log(this.index)
+        //     }
+        // }
+        // var obj = {10:'yt',20:'ert',30:'dg',40:'td',50:'erw',60:'wer'}
+    //    console.log(obj[10])//[]里面不是index，而是key,此处输出的是key对应的value值
+
+    //     // forEach既可以循环对象，又可以循环数组
+    //     // 如果是数组的话，prop就是index，如果是对象的话，prop就是属性名。
+    //    var arr = [15,23,42,95,17,8]
+    //    for(var prop in arr){
+    //        console.log(arr[prop])
+    //     //    console.log(prop)
+    //    }
+       
+       var arr = [15,23,42,95,17,8]
+       var div = document.getElementsByClassName('div');
+       console.log(div)
+    </script>
+</html>

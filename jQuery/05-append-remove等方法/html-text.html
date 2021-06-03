@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <p id="p1"></p>
+    <script>
+        // html()方法可读可写。获取里面的面内容，包括标签
+       $('div').html('<em><strong>html与text演示</strong></em>');
+        
+        // text()方法可读可写。  获取里面的面内容，不包括标签.内容为纯文本
+        console.log($('#p1').text('<em><strong>纯文本</strong></em>'));
+    </script>
+</body>
+</html>

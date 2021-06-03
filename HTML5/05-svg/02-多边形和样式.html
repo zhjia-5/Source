@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .polyine1 {
+      stroke-width: 3px;
+      fill: red;
+      stroke: #000;
+      fill-opacity: 0.5;/* 背景透明度 */
+      stroke-opacity: 0.5;/* 边框透明度 */
+      
+    }
+    .text1{
+      font-size: 50px;
+      stroke: green;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg width='1000px' height='1000px' style='border:1px solid #000'>
+    <!-- points:每条边的坐标点用逗号隔开，如果多边形没有闭合，它不会会自动闭合 -->
+    <polyline points='100 100,200 50,300 100,300 200,200 250' class="polyine1"></polyline>
+    
+    <!-- points:每条边的起点用逗号隔开，如果多边形没有闭合，它会自动闭合 -->
+    <polygon points='100 300,200 300,200 400' ></polygon>
+
+    <text x='400' y='100' class="text1">text标签演示</text>
+
+  </svg>
+
+</body>
+
+</html>

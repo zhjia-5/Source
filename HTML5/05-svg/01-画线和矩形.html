@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG画线和矩形</title>
+  <style>
+    /* 所有非闭合的绘画都需要stroke()来绘画 */
+    .line1 {
+      stroke: #000;
+      stroke-width: 3px;
+    }
+
+    .line2 {
+      stroke: #f00;
+      stroke-width: 3px;
+    }
+    .circle1{
+      fill: red;/* 颜色填充 */
+    }
+    .ellipse{
+      fill: transparent;
+      stroke: greenyellow;/* 边框颜色 */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    SVG:矢量图，放大不会失真，适合大面积的贴图，通常动画较少或者比较简单，标签和css去画。
+    Canvas：适合用于小面积的绘图，适合动画。（因为都是通过js去操作）；
+   -->
+  <svg width='500px' height='500px' style='border:1px solid #000'>
+    <line x1='100' y1='100' x2='200' y2='100' class="line1"></line>
+    <line x1='200' y1='100' x2='200' y2='200' class="line2"></line>
+    <!-- 
+      矩形：
+        x : X轴坐标
+        y : Y轴坐标
+        rx: X轴方向圆角
+        ry: Y轴方向圆角
+    -->
+    <rect width='100' height='100' x='0' y='0' class="rect1" rx='10' ry='20'></rect>>
+    <!-- 
+      圆形：
+        r  : 半径
+        cx : 圆心X轴坐标
+        cy : 圆心Y轴坐标
+     -->
+    <circle r='50' cx='300' cy='50' class="circle1"></circle>>
+    <!-- 
+      椭圆：
+        rx : X轴半径
+        ry : Y轴半径
+        cx : 圆心X轴坐标
+        cy : 圆心Y轴坐标
+      -->
+    <ellipse rx='100' ry='50' cx='100' cy='300' class="ellipse"></ellipse>
+
+
+
+  </svg>
+</body>
+
+</html>

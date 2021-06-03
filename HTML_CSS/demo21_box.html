@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#div1{
+				width: 300px;
+				height: 300px;
+				background-color: #00FFFF;
+				border: 10px red solid;
+				padding: 80px 60px 40px 20px;
+				overflow: auto;
+				/* 盒子阴影 参数：横向位移 纵向位移 半径羽化程度 阴影颜色 */
+				box-shadow: 4px 4px 10px #222;
+				margin:40px 30px 20px 10px;
+				
+			}
+				
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<!-- 
+		1,CSS盒子模型
+		 盒子由四个部分组成：
+			一：内容区-content：
+				注意：width和height默认下不包括内边距，边框和外边距。
+			content属性值			说明
+				visble 				默认值，内容不会被修剪，会是现在元素枢之外
+				hidden 				内容会被修剪 ，并且其余内容不是可见的。
+				scroll 				内容会被修剪，但是浏览器会显示滚动条以便看其余的内容
+				auto 				如果内容被修剪，浏览器会显示滚动条以便查看其余内容
+				inherit 			规定也应该从父元素继承overflow属性值
+			
+			verflow属性  			
+				visble 				默认值，显示超出的文字		
+				auto 				自动
+				scroll 				滚动 
+			二：边框-border
+			
+			三：内边距-padding 
+			padding局部样式：
+				padding-top；	上内边距
+				padding-right：	右内边距
+				padding-bottom：下内边距
+				padding-left：	左内边距
+			整体样式：顺时针赋值
+				padding整体样式：			上		右		下		左
+				padding：1px;				1px 	1px 	1px 	1px	
+				padding：1px 2px;			1px 	2px 	1px 	2px	
+				padding：1px 2px 3px;		1px 	2px 	3px 	2px
+				padding；1px 2px 3px 4px;	1px 	2px 	3px  	4px
+					
+					
+			四：外边距-margin
+			padding是在元素内部，而margin是在元素外部
+			margin局部样式：
+				margin-top：	上外边距
+				margin-right 	右外边距
+				margin-bottom 	下外边距
+				margin-left 	左外边距
+				
+			整体样式：顺时针赋值
+				margin整体样式：				上		右		下		左
+				margin：1px;				1px 	1px 	1px 	1px	
+				margin：1px 2px;			1px 	2px 	1px 	2px	
+				margin：1px 2px 3px;		1px 	2px 	3px 	2px
+				margin；1px 2px 3px 4px;	1px 	2px 	3px  	4px
+				
+				
+				
+		2，行内元素span设置display属性转块级元素。
+			display属性值 		说明
+			inline 				默认此元素会被显示为内联元素，元素前后没有换行符
+			inline-block 		行内块元素，既有行内元素属性，又有块级元素属性，有宽高，不会独占一行
+								含有该属性的的元素键会有间隙，间隙大小为该元素的font-size值，可以通过
+								设置font-size值为0去去除间隙。
+			none 				此元素不会被显示
+			block 				此元素将显示为块级元素，会独占一行，有换行符
+			
+		与display相似的属性：visibility
+		visibility属性 		说明
+			visible 		可见的
+			hidden 			隐藏的（被隐藏但是会占位置）
+		 -->
+		 <div id="div1">
+		 	内边距padding
+			盒子由四个部分组成：
+						一：内容区-content：
+							注意：width和height默认下不包括内边距，边框和外边距。
+						content属性 			说明
+							visble 				默认值，内容不会被修剪，会是现在元素枢之外
+							hidden 				内容会被修剪 ，并且其余内容不是可见的。
+							scroll 				内容会被修剪，但是浏览器会显示滚动条以便看其余的内容
+							auto 				如果内容被修剪，浏览器会显示滚动条以便查看其余内容
+							inherit 			规定也应该从父元素继承overflow属性值
+							内边距padding
+			盒子由四个部分组成：
+						一：内容区-content：
+							注意：width和height默认下不包括内边距，边框和外边距。
+								content属性 			说明
+									visble 				默认值，内容不会被修剪，会是现在元素枢之外
+							
+		 </div>
+		 
+	</body>
+</html>

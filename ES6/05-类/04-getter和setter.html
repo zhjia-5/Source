@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>getter和setter</title>
+</head>
+
+<body>
+  <script>
+    /* 
+     2，getter 和 setter
+           Object.defineProperty可定义某个对象成员属性的读取和设置(es5)
+           使用getter和setter控制的属性不在原型上
+    */
+    class Animal {
+      constructor(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+      }
+      // 创建一个age属性，并给它加上getter，读取该属性时，会运行该函数。（setAge）
+      set age(age) { 
+        if (age < 0) {
+          age = 0;
+        } else if (age > 1000) {
+          age = 1000;
+        }
+        this._age = age;
+      }
+
+      // 创建一个age属性，并给它加上seeter，给该属性赋值时，会运行该函数（getAge）
+      get age(){
+        return this._age + "岁";
+      }
+    }
+
+    const dog = new Animal("旺财",3,"公");
+    console.log(dog);
+    dog.age = 10; //原型链上没有age属性
+    console.log(dog.age);//10岁
+    console.log(dog);//原型链上没有age属性
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态钟表</title>
+</head>
+<style>
+    .clock {
+        width: 512px;
+        height: 512px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* 居中 */
+        background: url('./img/clock.png') no-repeat;
+        background-size: cover;
+        /* 等比例缩放直至铺满，超出裁剪 */
+    }
+
+    .hour {
+        position: absolute;
+        left: 241px;
+        top: 124px;
+        width: 32px;
+        height: 148px;
+        background: url('./img/hour.png') no-repeat;
+        background-size: cover;
+        /* 等比例缩放直至铺满，超出裁剪 */
+        transform-origin: center 132px;
+        /* 旋转轴 */
+
+    }
+
+    .minute {
+        position: absolute;
+        left: 241px;
+        top: 56px;
+        width: 32px;
+        height: 218px;
+        background: url('./img/minute.png') no-repeat;
+        background-size: cover;
+        /* 等比例缩放直至铺满，超出裁剪 */
+        transform-origin: center 202px;
+        /* 旋转轴 */
+    }
+
+    .second {
+        position: absolute;
+        left: 248px;
+        top: 55px;
+        width: 16px;
+        height: 278px;
+        background: url('./img/second.png') no-repeat;
+        background-size: cover;
+        /* 等比例缩放直至铺满，超出裁剪 */
+        transform-origin: center 202px;
+        /* 旋转轴 */
+    }
+</style>
+
+<body>
+    <div class="clock">
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+    </div>
+    <script>
+        var oHour = document.getElementsByClassName('hour')[0],
+            oMinute = document.getElementsByClassName('minute')[0],
+            oSecond = document.getElementsByClassName('second')[0],
+            d, secondCount, secondDeg,
+            minuteCount, minuteDeg,
+            hourCount, hourDeg;
+
+        function myWatch() {
+            // 获取事件对象
+            d = new Date();
+            // 秒针度数
+            secondCount = d.getSeconds();
+            secondDeg = secondCount * 6;/* 每一秒钟占6度 */
+            oSecond.style.transform = 'rotate(' + secondDeg + 'deg)';
+
+            // 分针度数
+            minuteCount = d.getMinutes();
+            /* 每分钟占6度 + 秒针每走60秒，分针走6度的比例*/
+            minuteDeg = minuteCount * 6 + secondCount / 60 * 6;
+            oMinute.style.transform = 'rotate(' + minuteDeg + 'deg)';
+
+            // 时针度数
+            hourCount = d.getHours();
+            /* 每小时占 30度 + 分针每走60分，时针走30度的的比例 */
+            hourDeg = hourCount * 30 + minuteCount / 60 * 30;
+            oHour.style.transform = 'rotate(' + hourDeg + 'deg)';
+        }
+        // 先让函数运行再运行定时器，避免刷新页面时不会里面显示当前时间
+        myWatch();
+        setInterval(function(){
+            myWatch();
+        },1000);
+    </script>
+</body> 
+
+</html>

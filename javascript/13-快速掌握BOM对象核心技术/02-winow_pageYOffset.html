@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pageXoffset懒加载练习</title>
+</head>
+<style>
+    body{ height: 3000px; }
+    .demo{
+        width: 200px;
+        height: 200px;
+        background-color: #000000;
+        position: relative;
+        left: 50%;
+        top: 1500px;
+    }
+</style>
+<!-- demo.offsetTop <= window.innerHeight + window.pageYOffset   关系-->
+
+<body>
+    <!-- 为了下面方便操作透明度，在行间样式中定义 -->
+    <div class="demo" style="opacity: 0.1;"></div>
+</body>
+<script>
+    function check(_className){
+        var demo = document.getElementsByClassName(_className)[0];
+        // demo.timer  给demo添加timer属性变量属性
+        demo.timer = setInterval(function(){
+            // 当滚动的距离+浏览器内容区的高度 <=元素距离浏览器最顶边距离时
+            if(demo.offsetTop <= window.innerHeight + window.pageYOffset){
+                if(demo.style.opactiy == 1){
+                    clearInterval(timer);
+                }else{
+             // console.log(typeof(demo.style.opacity));   opacity返回是string类型，所以需要转为浮点型再加
+                demo.style.opacity = parseFloat(demo.style.opacity) + 0.01;
+                }
+        }
+        },500);
+    }
+
+    // 当滚动事件别触发时，执行check函数
+    window.onscroll = function(){
+        // 此处当滚动事件一直再执行，就会触发，需要加锁
+        check('demo');
+    }
+</script>
+</html>

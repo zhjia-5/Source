@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性运动</title>
+    <style>
+           div{
+        width: 100px;
+        height: 100px;
+        background: #ff0000;
+        position: absolute;
+        left: 0;
+        top: 100px;
+    }
+    span{
+        position: absolute;
+        left: 500px;
+        top: 100px;
+        width: 1px;
+        height: 100px;
+        background: #000000;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        var div = document.getElementsByTagName('div')[0],
+            span = document.getElementsByTagName('span')[0];
+
+            div.onclick = function(){
+                run(div,500);
+            }
+            function run(dom,target){
+                var timer,
+                    u = 0.9,//阻力系数，每次运动都会速度会减少
+                    a = 3,
+                    speed = 0;
+                clearInterval(timer);
+                dom.timer = setInterval(function(){
+                    a = (target - dom.offsetLeft) / 5;//加速度根据当前的位置不动变换
+                    speed += a;
+                    speed *= u;//阻力
+                    if(Math.abs(speed) < 1 && Math.abs((target - dom.offsetLeft)) < 1){
+                        clearInterval(dom.timer);
+                        dom.style.left = target + 'px';
+                    }else{
+                        dom.style.left = dom.offsetLeft + speed + 'px';
+                    }
+                    console.log(target - dom.offsetLeft);
+                   
+                },30);
+            }
+    </script>
+</body>
+</html>

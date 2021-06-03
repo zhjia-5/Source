@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>symbol</title>
+</head>
+<body>
+  <script>
+
+    const a = Symbol();
+    const b = Symbol();
+
+    const s1 = Symbol("symbol1");
+    const s2 = Symbol("symbol2");
+    
+    const s3 = Symbol("symbol3");
+    const s4 = Symbol("symbol3");
+
+    console.log(a,s1,s2);//Symbol() Symbol(symbol1) Symbol(symbol2)
+
+    console.log(a === b ); // false
+
+    console.log(s3 ===  s4);//false
+
+  </script>
+</body>
+</html>

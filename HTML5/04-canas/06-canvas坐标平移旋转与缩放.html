@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .canv {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #000;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas class="canv" width="500px" height="500px">你的浏览器不支持canvas</canvas>
+  <script>
+    let canvas = document.getElementsByClassName("canv")[0];
+    let ctx = canvas.getContext('2d');//获取画笔
+    ctx.lineWidth = 2;//画笔大小
+
+    /* *** 旋转与坐标平移 演示一 **** */
+    //开始绘画，如果该绘画再循环中绘画，就需要使用beginPath(),如果不使用的话会就不会重新开始绘画。而是接着上次绘画
+    // ctx.beginPath();
+    // // canvas默认的旋转中心为画布的x轴:0px y轴：0px 坐标
+    // ctx.translate(100, 100);//坐标系平移，也就是落笔点和旋转中心。
+    // ctx.rotate(Math.PI / 6)// 1 PI==180°  ，旋转30°，会以上面的旋转中心来旋转
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(100, 0);
+    // ctx.stroke();
+
+    /* *** 矩形缩放 演示 **** */
+    ctx.beginPath();
+    ctx.scale(2,1);//X轴：放大2倍，Y轴：不缩放；
+    // ctx.scale(2,2);//X轴：放大2倍，Y轴：放大2倍；
+
+    ctx.strokeRect(0,0,100,100);
+  </script>
+</body>
+
+</html>

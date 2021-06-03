@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>带参的next方法</title>
+</head>
+
+<body>
+  <script>
+
+    function* createGenerator() {
+      let num = yield 1;
+      num = yield 1 + num;
+    }
+
+    const generator = createGenerator()
+    // 控制台运行generator.next(10);
+  </script>
+</body>
+
+</html>

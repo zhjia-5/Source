@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建一个斐波拉契数列的迭代器
+    function* createFeiboGenerator() {
+      let n = 1,
+        prev = 1,
+        next = 1,
+        newValue = 0;
+      while (true) {
+        if (n <= 2) {//前两个都为1
+          yield 1;
+        } else {
+          newValue = prev + next;
+          yield newValue;
+          prev = next;//将下一个给前一个
+          next = newValue;//将下一个变为最新的
+        }
+        n++;//每次运行将 n 加一位
+      }
+    }
+    const generator = createFeiboGenerator();
+    // 控制台运行 generator.next();
+  </script>
+</body>
+
+</html>

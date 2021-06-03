@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contenteditable元素可编辑性</title>
+</head>
+<body>
+    <!-- 
+        contenteditable：false/true; 默认值为false。
+            1，没有兼容性问题，但是Firefox的边框样式为点状形
+            2，具有继承性，父元素设置后，子元素会继承。
+            3，尽量不要嵌套其他标签使用，在编辑过程中会把标签对都可以删除。
+
+     -->
+     <div contenteditable>
+         你好<br>
+         <span contenteditable="true">大家好</span><!-- span标签也会被删除掉 -->
+     </div>
+</body>
+</html>

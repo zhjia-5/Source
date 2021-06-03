@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Symbol]符号作为属性名</title>
+</head>
+
+<body>
+  <script>
+    /* 
+        符号可以作为对象的属性名存在，这种属性称之为符号属性。
+        - 开发者可以通过精心的设计，让这些属性无法通过常规的方式被外界访问
+        - 符号属性是不能被枚举的，因为在 for in 循环中无法读取到符号属性，
+
+    [getRandom](min,max)方法无需被外界访问，所以使用符号作为属性名，这样外界通过常规方法不可以调用该方法，因为该方法具有唯一性
+    */
+    const hero = () => {
+      const getRandom = Symbol("我只是描述该符号的文字");//内部声明一个唯一的符号
+      return {
+        hurt: 80,// 攻击
+        hp: 300,//血
+        defence: 10, //防御
+        attack() { //攻击
+          const dmg = this.hurt * this[getRandom](0.8, 1.2);//内部调用[getRandom](min,max)方法
+          console.log(dmg);
+        },
+        [getRandom](min, max) {// 使用该符号作为属性名
+          return Math.random() * (max - min) + min;
+        }
+      }
+    }
+
+    const obj = hero();
+
+    obj.attack();
+
+    // obj.getRandom(1,1.9); 外部无法访问
+
+    // 可以获取到符号数组
+    const symbolArr = Object.getOwnPropertySymbols(obj)
+    console.log( symbolArr[0] );
+  </script>
+</body>
+
+</html>

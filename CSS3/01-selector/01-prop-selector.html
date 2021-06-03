@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        css3新特性
+            * 新增的css3特性有兼容性问题，IE9+ 才支持
+            * 移动端支持优于PC端
+            * 现阶段主要学习选择器和盒子模型
+
+            1: 属性选择器
+                 ele[prop]              选择具有prop属性的ele元素
+                 ele[prop = "val"]      选择具有prop属性且值等于val的ele元素        **重点掌握**
+                 ele[prop ^= "val"]     选择具有prop属性且值以val开头的ele元素
+                 ele[prop $= "val"]     选择具有prop属性且值以val结尾的ele元素
+                 ele[prop *= "val"]     选择具有prop属性且值含有val的ele元素
+                 ele[class ~= "a"]      选择具有class属性且值具有独立的"a"  例如：class="a b" class="a"
+                 ele[class |= "a"]      选择具有class类名且以"a"开头或者以 "a-"开头的元素
+            
+            2: div + span{} : 选择 div 后面且为span标签的元素 
+               div ~ span{} : 选择 div 后面所有兄弟元素
+
+            3: 设置被鼠标选中的span元素里的文字的背景颜色和颜色
+                span::selection{
+                    background-color:'yellow';
+                    color:'red';
+                }
+
+            注意：类选择器和属性选择器伪类选择器权重都是：10。
+                  元素选择器的权重为：1，且他们具有层叠性
+            例如： 
+                div[class=div]，div元素选择器权重为1，属性选择器的权重为10，
+                所以总的权重为11。
+
+     -->
+    <style>   
+        input {
+            width: 400px;
+            height: 30px;
+            margin: 2px;
+            font-size: 18px;
+        }
+
+        input[name] {
+            /* 选中有name属性的input元素*/
+            color: red;
+        }
+
+        input[type=password] {
+            /* 选中有属性type，且该属性的值为password的input元素 */
+            color: blue;
+        }
+
+        input[type ^=nu] {
+            /* 选择具有type属性且值以nu开头的input元素 */
+            color: green;
+        }
+
+        input[type $=il] {
+            /* 选择具有type属性且值以il结束的input元素 */
+            color: indigo;
+        }
+
+        input[type *=at] {
+            /* 选择具有type属性且值包含at的input元素 */
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="text" name="text"><br>
+    <input type="password" value="密码"><br>
+    <input type="number" value="110"><br>
+    <input type="email" value="email"><br>
+    <input type="date" name="" id="">
+</body>
+
+</html>

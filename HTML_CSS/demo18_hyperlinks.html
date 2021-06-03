@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			a{
+				font-size: 20px;
+				text-decoration: none;
+				color: black;
+				/* cursor: crosshair; 鼠标形状*/
+			}
+			a:hover{
+				color: blue;
+			}
+			a:active{
+				color: #008000;
+			}
+			a:visited{
+				color: #FF0000;
+			}
+			
+			
+			
+		</style>
+		<title>超链接伪类</title>
+	</head>
+	<body>
+		<!-- 
+		 1，超链接伪类
+			a元素未访问：  	a:link{...}
+			a元素激活瞬间：	a:active{...}
+			a元素访问后： 	a:visited{...}
+			a元素经过时：	a:hover{...}
+		
+	`	2,鼠标样式
+		在css中，有两种方式定义 鼠标样式
+		一：浏览器鼠标样式：  
+			cursor属性		说明
+			default 		默认
+			auto 			浏览器设置的光标
+			crosshair 		十字线
+			pointer 		一只手
+			move 			此光标指示可移动
+			e-resize 		此光标指示矩形框的边缘可被向右移动
+			......	
+		二：自定义鼠标样式：
+			可以使用cursor属性来自定义鼠标样式
+			其中鼠标图片后缀名一般都是.cur，可以使用Photoshop制作
+			语法：
+				cursor:url(图片地址),属性值;//后面的属性值是为了防止URL地址失效，属性值会覆盖。
+		
+		
+			
+		 -->
+		 <a href="http://www.baidu.com" target="_blank">百度超链接</a> <br>
+		 <a href="http://www.jd.com" target="_blank">京东超链接</a> <br>
+		 <a href="http://www.sina.com" target="_blank">新浪超链接</a>	<br>
+		 <a href="http://www.taobao.com" target="_blank">淘宝超链接</a>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件 上传</title>
+</head>
+<body>
+  <!-- 
+      文件上传流程：
+      1，客户端将文件数据发送给服务器端
+      2，服务器保存上传的文件数据到服务器端
+      3，服务器响应给客户端一个文件访问地址
+
+      测试地址：http://101.132.72.36:5100/api/upload(只接受图片)
+      键的名称（表单域名称）：imagefile
+
+      请求方法：post
+      请求的表单格式：multipart/form-data
+      请求体中必须包含一个键值对，键的名称是服务器要求的名称，值是文件数据。
+
+      HTML5中，js任然无法随意的获取文件数据，但是可以获取到input元素中，
+      被用户选中的文件数据
+
+      可以利用HTML5提供的FormData构造函数来创建请求体。
+   -->
+   <img src="" alt="" id="img" width="300px" height="300px">
+   <input type="file" id="inp">
+   <button id="btn">上传文件</button>
+  <script>
+   async function upload(){
+     const img = document.getElementById("img");
+     const inp = document.getElementById("inp");
+     const btn = document.getElementById("btn");
+    // inp.file 返回的是一个文件类数组
+    if(inp.files.length === 0){
+      alert("请选择要上传的文件");
+      return;
+    }
+    const formData = new FormData();//构建请求体
+    formData.append("imagefile",inp.files[0]);//键："imagefile"；值：inp.files[0])
+    // 可以append其他信息
+    const resq = await fetch("http://101.132.72.36:5100/api/upload",{
+      method:"POST",
+      body:formData,
+    });
+    const result = await resq.json();//得到服务器的响应结果，里面有path路径
+    img.src = result.path;//url图片地址
+
+  }
+
+   btn.onclick = ()=> upload();
+  </script>
+</body>
+</html>

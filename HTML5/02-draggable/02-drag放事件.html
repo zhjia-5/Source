@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag目标区域的放事件</title>
+    <style>
+        .div1{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+        .div2{
+            position: absolute;
+            left: 300px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    draggable:true/false;  默认值为false
+    a标签和img标签的draggable默认值为true
+    兼容性问题：Chrome Safari支持，Firefox不怎么支持。
+
+     拖事件：  
+        dragstart           当一个元素开始被拖拽时触发
+        drag                这事件正在拖拽时触发
+        dragend             拖拽源在拖拽操作结束将得到dragend事件对象，不管操作是否成功。
+     放事件：
+        dragenter           当拖拽中鼠标第一次进入一个元素的时候触发,不是元素进入就触发
+        dragover            当拖拽中鼠标移动经过一个元素时触发
+        dragleave           当拖拽的鼠标离开元素时触发
+        drop                这个事件在拖拽操作结束释放是于释放元素上触发
+     
+    所有的标签元素，当拖拽周期结束时，默认事件是回到原处
+    事件是由行为触发的
+    但是，一个行为可以不止触发一个事件
+
+    ondragover  if判断优先执行默认事件dragend         ->  执行dragend事件回到原处
+                如果默认事件被阻止e.preventDefault()  ->  就执行drop事件
+
+    事件调用链，（底层叫事件责任链）：需要在B处阻止默认事件C。
+        A——>B(阻止)——>C
+    -->
+     
+    <div class="div1" draggable="true"></div>
+    <div class="div2"></div>
+    <script>
+      var div1 = document.getElementsByClassName('div1')[0];
+      var div2 = document.getElementsByClassName('div2')[0];
+      div2.ondragenter = function(e){
+          console.log('鼠标点进入目标区域');
+      }
+      div2.ondragover = function(e){
+        //   console.log('鼠标点经过目标区域');
+        // 阻止默认事件
+        e.preventDefault();
+      }
+      div2.ondragleave = function(e){
+          console.log('鼠标点离开目标区域');
+      }
+      div2.ondrop = function(e){
+          console.log('鼠标点放进目标区域');
+      }
+
+
+
+
+
+ 
+    </script>
+</body>
+</html>

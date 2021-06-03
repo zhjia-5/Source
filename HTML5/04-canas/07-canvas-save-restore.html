@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas{
+      width: 500px;
+      height: 500px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500px" height="500px">你的浏览器不支持canvas</canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.save();//保存之前的数据：坐标系的平移数据，缩放数据，旋转数据
+    // 当使用restore()后就不会使用前面定义的：坐标系的平移数据，缩放数据，旋转数据
+
+    // 第一矩形
+    ctx.beginPath();
+    ctx.translate(100,100);
+    ctx.rotate(Math.PI/4);
+    ctx.fillRect(0,0,100,100);
+
+    // 第二个矩形
+    ctx.beginPath();
+    ctx.restore();
+    ctx.translate(300,100);
+    ctx.rotate(Math.PI/4);
+    ctx.fillRect(0,0,100,100)
+
+  </script>
+</body>
+</html>

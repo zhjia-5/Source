@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>H5新标签</title>
+		<style type="text/css">
+			.div1{
+				width: 200px;
+				height: 50px;
+			}
+			summary{
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+		 特殊结构标签：
+		 1，<mark></mark>:定义带有记号的文本，用于突出显示。
+		 2，<ruby></ruby>:定义注释，PS：<rt>注释文字</rt>不支持时
+			显示rp里的文字。
+		 3，<meter min="" max="" value="" low="" high=""></meter>:
+							定义一直范围或分数值内的标量测量。也被称为gauge(尺度)。
+			min:最小值  
+			max:最大值 
+			value在low和high之间显示绿色，其他显示黄色。
+			比如磁盘用量、查询结果的相关性，等等 。
+			注意：不支持改变样式，不同浏览器显示的效果不一样.
+			
+		 4，<progress min="" max="" value=""></progress>:标签显示任务的进度
+			或者进程一般结合js使用
+			注意：不同浏览器显示的效果不一样.
+		 5，<details></details>:用于描述文档或者文档某个部分的细节。
+			<summary></summary> 三角符号
+			可以修改样式去掉边框：outline:none;
+		 6,<figure></figure>:定义独立的 流内容(图片，图表，照片，代码等等)
+			 可以对元素进行组合。
+			<figcaption>对图片的描述</figcaption> 
+
+		 7,	<header></header> 头部标签
+		 8，<footer></footer>定义文档底部区域。
+		 9，<nav></nav> 导航标签
+		 10，<article></article> 文章标签
+		 11，<section></section> 段落标签
+		 12，<asidee></asidee>:定义侧边栏
+		 13，<canvas></canvas> 画布
+		 -->
+		 
+		 <!-- 1,mark标签-->
+		 <div class="div1">
+		 	<mark>mark</mark>的演示
+		 </div>
+		 <!-- 2，rudy、rt、rp标签-->
+		 <div>
+			 <ruby>槑<rt>mei<rp>mei</rp></rt></ruby><!-- <rp></rp>为备胎标签 -->
+		 </div>
+		 <!-- 3,meter标签-->
+		 <div class="div3">
+			 <meter min="0" max="100" value="80" low="20" heigh="70"></meter>
+		 </div>
+		 <!-- 4,progress 标签-->
+		 <div class="div4">
+		 	<progress min="0" max="100"></progress>
+		 </div>
+		 <!-- 5,details标签-->
+		 <div class="div5">
+			 <details>
+				 <summary>say hello！</summary><!-- 隐藏开关 -->
+				 <p>hello</p><!-- 隐藏文字 -->
+			 </details>
+		 </div>
+	</body>
+</html>

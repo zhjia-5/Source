@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组去重</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 数组去重利用对象属性不能重复的原理来操作
+			var arr = [1,3,1,4,4,3,5,5,1,1,0,0,0];
+			Array.prototype.unique = function (){
+				var temp = {},//创建一个空对象 
+					arr = [],//创建一个空数组
+					len = this.length;//把this.length提出来效率更高
+				for(var i = 0; i < len; i++){
+					if(!temp[this[i]]){//将数组里的元素作为temp的属性，利用if(条件语句)返回值判断是否有属性值，如果有值就不执往下执行
+						temp[this[i]] = "abc";//然后给属性随便赋个值
+						arr.push(this[i]);//给空数组添加元素
+					}
+				}
+				return arr;
+			}
+			console.log(arr.unique());//[1, 3, 4, 5]
+		</script>
+	</body>
+</html>

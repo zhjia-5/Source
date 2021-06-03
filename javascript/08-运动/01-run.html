@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匀速运动</title>
+    <style>
+        .oDiv{
+            position: absolute;
+            left: 1000px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="oDiv"></div>
+    <button>run</button>
+    <script>
+        var timer,
+            oDiv = document.getElementsByClassName('oDiv')[0],
+            btn = document.getElementsByTagName('button')[0];
+            function run(dom,target,time){  //元素、距离，定时器时间
+                 //为了防止多次点击速度叠加，需要每次点击时都先清除上次的timer
+                clearInterval(timer);
+                // 判断要运动的元素在停止线的左边还是右边,在左边的话speed为整数，反之。
+                var speed = target - oDiv.offsetLeft > 0 ? 3 : -3;
+                timer = setInterval(function(){
+                    //Math.abs(num)无论正负数都返回正数 
+                    // 当dis - dom.offsetLeft 的差小speed时，就不能再按照speed的值区移动，否则会越界，
+                    // 当还剩1px 或2px (speed=3)时，直接让dom到达目的地dis
+                    if(Math.abs(target - Math.abs(dom.offsetLeft)) < Math.abs(speed)){
+                        clearInterval(timer);
+                        dom.style.left = target +'px';
+                    }else{
+                        dom.style.left = dom.offsetLeft + speed + 'px';
+                    }
+                },time); 
+            }
+            btn.onclick = function(){
+                run(oDiv,400,5);
+            }
+    </script>
+</body>
+</html>

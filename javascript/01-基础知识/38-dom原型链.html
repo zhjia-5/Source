@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM4</title>
+	</head>
+	<body>
+		<!--
+		 原型链	：
+				 继承				          继承					   继承
+		document ————> HTMLDocument.prototype ————> Document.prototype ————> Node
+		
+		document.prototype = {
+			__proto__  : HTMLDocument.prototype
+		}
+		
+		HTMLDocument.prototype = {
+			__proto__ : Document.prototype
+		}
+		
+		Document.prototype = {
+			__proto__ : Node
+		}
+		
+		DOM的基本操作：
+		1，getElementById方法定义在Document.proptotype上，
+			即Element节点上不能使用。
+		
+		2，getElementByName方法定义在HTMLDocument.prototype上，
+			即非html中的document不能使用（xml document ,Element）。
+		
+		3,getElementByTagName方法定在Document.prototype和Element.prototype上。
+		
+		4，HTMLDocument.prototype定义了一些常用的属性，
+			body，html分别指代HTML文档中的<body><head>标签。
+		
+		5，Document.prototype上定义了documentElement属性，指代文档的根元素，
+			在HTML文档中，他总是指代<html>元素。
+		
+		6，getElementByClassName、querySelectorAll、querySelector在
+			Document.prototype,Element.prototype类中均有定义。
+		 -->
+		<div>
+			<span>1</span>
+			<span>2</span>
+		</div>
+		<span>3</span>
+		<span>4</span>
+		<div>
+			5
+		</div>
+		<script type="text/javascript">
+			//在document下，获取角标为1的div元素下所有内容
+			var div = document.getElementsByTagName("div")[1];
+			
+			//在body首个div标签下，获取角标为0的span元素下所有内容
+			var span = div.getElementsByTagName("span")[0];
+			
+			console.log(div);//结果为 5
+			console.log(span);//结果：<span>1</span>
+		</script>
+	</body>
+</html>

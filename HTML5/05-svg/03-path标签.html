@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .path1 {
+      fill: transparent;
+      stroke: #000;
+    }
+    .path2 {
+      fill: transparent;
+      stroke: #F00;
+    }
+  </style>
+</head>
+
+<body>
+  <svg width='1000px' height='1000px' style='border:1px solid #000'>
+    <!-- 
+        M:表示moveTo
+        L:表示lineTo,大写L相对于整个坐标系去描边
+        l:表示lineTo,小写l相对于上次坐标系去描边
+    -->
+    <path d='M 100 100 L 200 100 L 200 200 l 100 100' class="path1"></path>
+
+    <!-- 
+      horizontal:水平
+      vertical：垂直
+      H 200: 相对整个坐标系X轴平移到200
+      V 200：相对整个坐标系Y轴平移到200
+
+      h 200:相对上次坐标在X轴增加200px
+      v 200:相对上次坐标在Y轴增加200px
+     -->
+    <path d='M 100 400 h 200 v 200' class="path2" ></path>
+
+    
+    
+  </svg>>
+
+</body>
+
+</html>

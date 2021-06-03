@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            /* 背景颜色渐变设置 */
+            border: 10px solid #000;
+            border-image-source: linear-gradient(red,yellow);
+            border-image-slice: 1;/* 拉伸系数 */
+        }
+
+        .div2{
+            width: 200px;
+            height: 200px;
+            /* 背景颜色渐变设置 */
+            border: 30px solid #000;
+            border-image-source: url(img/border.png);
+            border-image-slice: 10;/* 分割的像素值 */
+            /* border-image-repeat: stretch | round | repeat | space; 共有四个值
+                stretch: 默认值，拉伸图案，不新增块    
+                round:   拉伸+增加图案，当没满足新增一个块就拉伸块，当满足后就新增   
+                repeat:  平铺 ，能显示多少块就显示多少。 
+                space：  增加图案，当没满足新增一个块，块与快间隙增加，当所有间隙能够放入一个块就新增    
+            */
+            border-image-repeat: space;
+            vertical-align:middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+</body>
+</html>

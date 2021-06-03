@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map遍历</title>
+</head>
+
+<body>
+  <script>
+    const map = new Map([["a", "a"], ["b", 2], ["c", 3], ["j", "123"]]);
+    //    - for of ：每次迭代得到的是一个长度为2的数组
+    for (const item of map) {
+      console.log(item);
+    }
+    // - forEach:每次回调函数遍历
+    //   - 参数一 : 每一项的值
+    //   - 参数二 ：每一项的键
+    //   - 参数三 ：map本身 
+    map.forEach((key, value, self) => {
+      console.log(key, value, self);
+    });
+  </script>
+</body>
+
+</html>

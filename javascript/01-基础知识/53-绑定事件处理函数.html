@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 200px;
+				background-color: #FF0000;
+				position: absolute;
+			}
+			li{
+				width: 50px;
+				height: 50px;
+				list-style: square;
+			}
+		</style>
+		<title>绑定事件处理函数</title>
+	</head>
+	<body>
+		<!-- 
+		 绑定事件处理函数三种方法：
+		 1，ele.onxxx = function(event){ }
+			兼容性好，但是一个元素的同一个事件上只能绑定一个处理函数。
+			基本等同于写在HTML行间上（句柄）
+			
+		2，obj.addEventListener('事件类型',function(){},false);
+			第一个参数是事件的类型（如“ click”或“ mousedown”）。
+			第二个参数是我们想要在事件发生时调用的函数。
+			第三个参数是一个布尔值，指定是使用事件冒泡还是事件捕获，
+				默认值为false 事件冒泡。true为事件捕获
+			IE9以下不兼容，可以为一个事件绑定多个处理程序
+	
+		3，obj.attachEvent('on' + 事件类型,function(){});
+			IE独有，一个时间同样可以绑定多个处理程序。
+		 -->
+		<!-- <div id="div1">
+		 </div> -->
+		 <ul>
+		 	<li>a</li>
+			<li>a</li>
+			<li>a</li>
+			<li>a</li>
+		 </ul>
+		 <script type="text/javascript">
+			
+		 	var div = document.getElementById('div1');
+			
+			 //方法一：ele.onxxx = function(event){ }
+			 
+			/*div.onclick = function(e){
+				console.log(e.target)//可以获取到被点击元素对象
+				console.log('a');
+			} */
+			
+			//方法二：obj.addEventListener('事件类型',function(){},false);
+			
+			/* div.addEventListener('click',function(){
+				console.log('a');
+			},false);
+			div.addEventListener('click',function(){
+				console.log('b');
+			},false); */
+			
+			//方法三：IE浏览器独有：obj.attachEvent('on' + 事件类型,function(){});
+			
+			/* div.attachEvent('on' + 'click',function(){
+				console.log('a');
+			}); */
+			
+			
+			// 练习：使用原生js，addEventListener,给每个li元素绑定一个click事件。输出它们的顺序
+			//使用立即执行函数
+			var li = document.getElementsByTagName('li');
+			var len = li.length;
+				for(var i = 0; i < len; i ++){
+					(function( i ){ //此处i 为形参，会随73行的 i ++而++。
+						li[i].addEventListener('click',function(){
+							console.log(i);
+						},false);
+					}(i))//i 为实参，随for循环而++
+				}
+			
+		
+		 </script>
+	</body>
+</html>

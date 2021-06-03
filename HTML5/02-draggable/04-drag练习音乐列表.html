@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽音乐列表</title>
+    <style>
+
+        .li {
+            background: #ccc;
+            margin-bottom: 1px;
+            padding-left: 20px;
+            width: 500px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <ol id="ul-list">
+        <li class="li" draggable="true">光辉岁月</li>
+        <li class="li" draggable="true">难念的经</li>
+        <li class="li" draggable="true">相逢何必曾相识</li>
+        <li class="li" draggable="true">遥远的她</li>
+        <li class="li" draggable="true">十年</li>
+        <li class="li" draggable="true">真的爱你</li>
+        <li class="li" draggable="true">冷雨夜</li>
+        <li class="li" draggable="true">喜欢你</li>
+    </ul>
+    <script>
+        var ollist = document.getElementById("ul-list"),
+            li = document.getElementsByClassName("li"),
+            len = li.length,
+            i;
+        // 拖事件，获取ID值
+        for (i = 0; i < len; i++) {
+            li[i].id = "myli" + i;
+            li[i].ondragstart = function (e) {
+                e.dataTransfer.setData("id", this.id);
+            }
+
+            //放之前阻止默认是事件
+            li[i].ondragover = function (e) {
+                e.preventDefault();
+            }
+            // 放事件
+            li[i].ondrop = function (e) {
+                var id = e.dataTransfer.getData("id");
+                var tuo = document.getElementById(id);
+                ollist.insertBefore(tuo, this);//换位置，this为当前鼠标经过的元素li
+                this.style.borderTop = "2px solid #cccccc";
+            }
+            
+            // 放的时候显示效果
+            li[i].ondragenter = function(){
+                this.style.borderTop = "2px solid #000000"
+            }
+            li[i].ondragleave = function(){
+                this.style.borderTop = "0px solid #000000"
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

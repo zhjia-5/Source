@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>命名空间</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// 命名空间使用闭包方法
+			//立即执行函数格式(function(){}())
+			/* var name = "zhangsan";
+			var init = (function (){
+				var name = "lisi";
+				function callName(){
+					console.log(name);
+				}
+				return function (){
+					callName();
+				}
+			}())
+			init();//打印结果为lisi */
+			
+			
+			
+			// 方法连续调用的的知识点：是函数返回this
+			/* var zhangsan = {
+				read :　function (){
+					console.log("reading");
+					return this;
+					},
+				write : function (){
+					console.log("writing");
+					return this;
+					},
+				say :　function (){
+					console.log("saying");
+					return this;
+					}
+			}
+			zhangsan.read().write().say(); */
+			
+			
+			
+			/* 知识点
+			obj.name == obj["name"]  前者需隐式转成后者才能执行，后者效率更高
+			var obj = {
+				name : "zhangsan"
+			}
+			console.log(obj.name);
+			console.log(obj["name"]); */
+			// 演示
+			var zhangsan = {
+				friend1 : {name : "lisi"},
+				friend2 : {name : "wangwu"},
+				friend3 : {name : "zhaoliu"},
+				friend4 : {name : "zhouqi"},
+				friend5 : {name : "liaoba"},
+			  sayFriend : function (num) {
+				  console.log(this["friend" + num]);
+					// return  this["friend" + num];ame: "wangwu"}
+				}
+			}
+			zhangsan.sayFriend(2);
+			
+			
+		</script>
+	</body>
+</html>

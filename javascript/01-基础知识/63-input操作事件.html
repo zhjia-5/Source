@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>文本操作事件</title>
+		<style type="text/css">
+			.input0{
+				width: 300px;
+				height: 30px;
+				border: 2px black solid;
+			}
+			.input1{
+				width: 300px;
+				height: 30px;
+				border: 2px black solid;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+		 文本操作事件
+		 oninput：只要输入框内容发生改变即可触发。
+		 			
+		 onchange:事件不会随着文字的输入而触发，而是等到文本框失去聚焦时才会触发，
+		 		 也就是没有即时性！且必须值变化才触发。
+		 		 
+		 onfocus : 事件在对象获得焦点时发生。		 
+		 		 
+		 onblur  ：事件不会随着文字的输入而触发，而是等到文本框失去聚焦时才会触发，
+		 		  也就是没有即时性！与onchange基本相同，唯一区别是不管值是否变化，都触发。
+
+		 onsubmit : 属性只在 <form> 表单中使用。事件会在表单中的确认按钮被点击时发生。
+			 		当该事件触发的函数中返回false时，表单就不会被提交。
+		 -->
+		 oninput：<input type="text" class="input0">
+		 <br><br>
+		 onchange：<input type="text"class="input1" value="">
+		 <script type="text/javascript">
+		 	var input0 = document.getElementsByClassName('input0')[0];
+			var input1 = document.getElementsByClassName('input1')[0];
+			input0.oninput = function(e){
+				//this.value:每触发一次事件（每按一次键盘）都记录文本框中的内容
+				console.log(this.value);
+			}
+			
+			input1.onchange = function(e){
+				//this.value：每输入内容不会马上执行，失去聚焦（即 :按下enter或鼠标点击其他地方）才会输出内容。
+				//console.log(this.value);
+				console.log(e.target.value);
+			}
+		 </script>
+	</body>
+</html>

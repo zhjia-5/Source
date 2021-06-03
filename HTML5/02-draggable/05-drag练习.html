@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽放入</title>
+    <style>
+        .div {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            list-style: none;
+            margin-bottom: 5px;
+            text-align: center;
+            line-height: 50px;
+            position: fied;
+            left: 0;
+            top: 0;
+        }
+
+        #container {
+            width: 400px;
+            height: 400px;
+            background: #cccccc;
+            position: fixed;
+            left: 50px;
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1" class="div" draggable="true">1</div>
+    <div id="div2" class="div" draggable="true">2</div>
+    <div id="div3" class="div" draggable="true">3</div>
+    <div id="div4" class="div" draggable="true">4</div>
+    <div id="div5" class="div" draggable="true">5</div>
+
+    <div id="container"></div>
+    <script>
+        var div = document.getElementsByClassName("div"),
+            container = document.getElementById("container"),
+            len = div.length,
+            i;
+
+        for (i = 0; i < len; i++) {
+            div[i].ondragstart = function (e) {
+                // 通过循环获取每个ID
+                e.dataTransfer.setData("id", this.id);
+            }
+        }
+
+        container.ondragover = function (e) {
+            e.preventDefault(); // 阻止原有事件触发， 也可使用return false;
+        }
+        container.ondrop = function (e) {
+            var id = e.dataTransfer.getData("id");//存储之前的
+            var node = document.getElementById(id);//通过ID获取节点
+            this.appendChild(node);//添加元素
+        }
+        /* 
+        这里使用了dataTransfer（兼容性不好）
+        属性                    说明
+        files                   其属性返回和放置相关的所有文件
+        types                   属性使用数组的形式返回当前注册的格式
+        effectAllowed           通知浏览器当前可被用户选用的操作，如果只是设置copy，move,link和none
+        setData(format,data)    在dragstart事件调用此函数在dataTransfer对象存储数据
+        getData(format)         从dataTransfer对象取出数据
+        还有其他属性    
+        .......
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标跟随效果</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #canvas {
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id='canvas'></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+    let circleList = [];
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 产生一个在min ~ max 之间的随机数
+    const random = (min, max) => {
+      return Math.round(Math.random() * (max - min) + min);
+    }
+
+    //添加鼠标移动事件 
+    canvas.addEventListener('mousemove', (e) => {
+      circleList.push(new Circle(e.clientX, e.clientY));
+    })
+
+    // 圆的构造函数
+    function Circle(x, y) {
+      this.x = x;
+      this.y = y;
+
+      this.vx = (Math.random() - 0.5) * 3;// x轴速度与方向：范围：-0.5~0.5; 可以随机一个方向 
+      this.vy = (Math.random() - 0.5) * 3;// y轴速度与方向：范围：-0.5~0.5; 可以随机一个方向 
+
+      //随机颜色
+      this.color = `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+
+      this.a = 1;//透明为1。
+    }
+
+    Circle.prototype = {
+      draw() {
+        context.beginPath();
+        context.fillStyle = this.color;
+
+        context.globalAlpha = this.a;//设置透明度 
+        context.globalCompositeOperation = 'lighter';// 重叠显示高亮
+        context.arc(this.x, this.y, 30, 0, Math.PI * 2);//画圆
+        context.fill();
+
+        this.update();
+      },
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        this.a *= 0.98; //透明度逐渐变小;
+      }
+    }
+
+    function render() {
+      // 每次渲染前清空画布
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      circleList.forEach((ele, index) => {
+        ele.draw();
+        // 圆的透明度小于0.01时，将其从数组中删掉
+        ele.a < 0.01 ? circleList.splice(index, 1) : null;
+      });
+      // 不断的去绘画
+      requestAnimationFrame(render);
+    }
+
+
+    render();
+  </script>
+</body>
+
+</html>
